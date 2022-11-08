@@ -4,7 +4,7 @@ import {Text, View} from "react-native";
 const DashboardScreen = () => {
     return (
         <View>
-            <Text> Dashboard Screen </Text>
+            <Text style={{fontFamily: "Poppins", fontSize: 60}}> Dashboard Screen </Text>
         </View>
         )
 }
