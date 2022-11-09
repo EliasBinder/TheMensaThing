@@ -424,3 +424,5 @@ dist
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm,visualstudiocode,intellij,phpstorm,node
+
+package-lock.json
