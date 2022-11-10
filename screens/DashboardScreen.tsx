@@ -6,7 +6,7 @@ const DashboardScreen = () => {
         <View>
             <Text style={{fontFamily: "Poppins", fontSize: 60}}> Dashboard Screen </Text>
         </View>
-        )
+    )
 }
 
 export default DashboardScreen

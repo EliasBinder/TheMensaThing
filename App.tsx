@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { useFonts } from 'expo-font';
 import WelcomeScreen from "./screens/WelcomeScreen";
+import React from 'react';
 
 export default function App() {
 
@@ -31,8 +32,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-        <Text>Test</Text>
-        <WelcomeScreen />
+        <WelcomeScreen></WelcomeScreen>
         <StatusBar style="auto" />
     </SafeAreaView>
   )
