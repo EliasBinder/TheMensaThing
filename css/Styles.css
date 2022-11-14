@@ -1,0 +1,29 @@
+#wallpaper {
+    height: 100%;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.image {
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.background {
+    background-color: rgb(20, 12, 52);
+}
+
+.titles {
+    color:aliceblue;
+    text-align: center;
+    font-size: 30px;
+}
+
+* {
+    margin: 100;
+    padding: 100;
+    font-family: 'Poppins', semi-Bold;
+}
