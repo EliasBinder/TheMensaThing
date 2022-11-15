@@ -12,7 +12,8 @@ import MenuIcon from "../assets/images/menu";
 import InfoIcon from "../assets/images/info";
 import MapIcon from "../assets/images/map";
 import RocketIcon from "../assets/images/rocket";
-import {Component} from "react";
+import React, {Component} from "react";
+import {StatusBar} from "expo-status-bar";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -102,6 +103,7 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar backgroundColor={'#081D40'} style={"light"}/>
             <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
                 <Tab.Screen name="Menu" component={MenuScreen} />
                 <Tab.Screen name="Information" component={InformationScreen} />
