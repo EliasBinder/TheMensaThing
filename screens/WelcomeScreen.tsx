@@ -24,26 +24,27 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
         navigation.navigate('BottomNav');
 
     return (
-            <SafeAreaView style={styles.container}>
-                <View style={styles.container}>
-                    <Image source={animatedGif} style={styles.image} />
-                    <View style={styles.titleView}>
-                        <Text style={[styles.title, styles.titleWhite]}>The</Text>
-                        <Text style={[styles.title, styles.titleGreen]}>Mensa</Text>
-                        <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
-                    </View>
-                    <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
-                    <Pressable style={styles.button} onPress={() => {
-                        navigation.navigate('BottomNav');
-                        navigation.reset({
-                            index: 0,
-                            routes: [{name: 'BottomNav'}],
-                        });
-                    }}>
-                        <Text style={styles.buttonText}>Get Started</Text>
-                    </Pressable>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
+                <Image source={animatedGif} style={styles.image} />
+                <View style={styles.titleView}>
+                    <Text style={[styles.title, styles.titleWhite]}>The</Text>
+                    <Text style={[styles.title, styles.titleGreen]}>Mensa</Text>
+                    <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
                 </View>
-            </SafeAreaView>)
+                <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
+                <Pressable style={styles.button} onPress={() => {
+                    navigation.navigate('BottomNav');
+                    navigation.reset({
+                        index: 0,
+                        routes: [{name: 'BottomNav'}],
+                    });
+                }}>
+                    <Text style={styles.buttonText}>Get Started</Text>
+                </Pressable>
+            </View>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({
