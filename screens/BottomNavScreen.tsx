@@ -5,13 +5,14 @@ import {MenuScreen} from "./MenuScreen";
 import {InformationScreen} from "./InformationScreen";
 import {MapScreen} from "./MapScreen";
 import {ProfileScreen} from "./ProfileScreen";
-import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet, Image} from "react-native";
+import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import ProfileIcon from "../assets/images/profile";
 import MenuIcon from "../assets/images/menu";
 import InfoIcon from "../assets/images/info";
 import MapIcon from "../assets/images/map";
 import RocketIcon from "../assets/images/rocket";
+import {Component} from "react";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -37,7 +38,6 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                     });
 
                     if (!isFocused && !event.defaultPrevented) {
-                        // The `merge: true` option makes sure that the params inside the tab screen are preserved
                         navigation.navigate({ name: route.name, merge: true });
                     }
                 };
@@ -49,29 +49,47 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                     });
                 };
 
-                return (
-                    <TouchableOpacity
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
-                        onPress={onPress}
-                        onLongPress={onLongPress}
-                        style={styles.buttonContainer}
-                    >
-                        {
-                            label == 'Menu' ? <MenuIcon color={iconColor}/> :
-                                label == 'Information' ? <InfoIcon color={iconColor}/> :
-                                    label == 'Map' ? <MapIcon color={iconColor}/> :
-                                        label == 'Profile' ? <ProfileIcon color={iconColor}/> :
-                                            label == 'Dashboard' ? <View style={styles.centerOutline}>
-                                                <View style={styles.center}>
-                                                    <RocketIcon color={iconColor}/>
-                                                </View>
-                                            </View> : null
-                        }
-                    </TouchableOpacity>
-                );
+                const getIcon = () => {
+                    switch (label) {
+                        case 'Dashboard':
+                            return <RocketIcon color={iconColor} />
+                        case 'Menu':
+                            return <MenuIcon color={iconColor} />
+                        case 'Information':
+                            return <InfoIcon color={iconColor} />
+                        case 'Map':
+                            return <MapIcon color={iconColor} />
+                        case 'Profile':
+                            return <ProfileIcon color={iconColor} />
+                    }
+                }
+
+                const getTouchable = ({inner, key}: {inner: any, key: string|undefined}) => {
+                    return (
+                        <TouchableOpacity
+                            accessibilityRole="button"
+                            accessibilityState={isFocused ? { selected: true } : {}}
+                            accessibilityLabel={options.tabBarAccessibilityLabel}
+                            testID={options.tabBarTestID}
+                            onPress={onPress}
+                            onLongPress={onLongPress}
+                            style={styles.buttonContainer}
+                            key={key}
+                        >
+                            {inner}
+                        </TouchableOpacity>
+                    )
+                }
+
+                return label == 'Dashboard' ? (
+                        <View key={index} style={styles.buttonContainer}>
+                            <View style={styles.centerOutline}>
+                                {getTouchable({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
+                            </View>
+                        </View>
+                    ): (
+                        getTouchable({inner: getIcon(), key: index})
+                    )
             })}
         </View>
     );
@@ -84,7 +102,7 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
 
     return (
         <SafeAreaView style={styles.container}>
-            <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
+            <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
                 <Tab.Screen name="Menu" component={MenuScreen} />
                 <Tab.Screen name="Information" component={InformationScreen} />
                 <Tab.Screen name="Dashboard" component={DashboardScreen} />
