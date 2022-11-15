@@ -11,6 +11,7 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+!/node_modules/@expo/dev-server/
 
 # AWS User-specific
 .idea/**/aws.xml
