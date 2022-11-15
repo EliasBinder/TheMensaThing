@@ -3,6 +3,10 @@ import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { useFonts } from 'expo-font';
 import WelcomeScreen from "./screens/WelcomeScreen";
 import React from 'react';
+import {NavigationContainer} from "@react-navigation/native";
+import createStackNavigator, {createNativeStackNavigator} from "@react-navigation/native-stack";
+import DashboardScreen from "./screens/DashboardScreen";
+import BottomNavScreen from "./screens/BottomNavScreen";
 
 export default function App() {
 
@@ -30,19 +34,14 @@ export default function App() {
     return null;
   }
 
+  const Stack = createNativeStackNavigator()
+
   return (
-    <SafeAreaView style={styles.container}>
-        <WelcomeScreen></WelcomeScreen>
-        <StatusBar style="auto" />
-    </SafeAreaView>
+      <NavigationContainer>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} />
+          </Stack.Navigator>
+      </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#040F21',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})

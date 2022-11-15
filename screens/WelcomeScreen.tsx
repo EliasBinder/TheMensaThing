@@ -1,11 +1,11 @@
 import React, {Component, useEffect} from "react";
-import {Image, Pressable, StyleSheet, Text, View} from "react-native";
+import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
     const [isFirstTime, setIsFirstTime] = React.useState(true);
 
@@ -20,22 +20,30 @@ const WelcomeScreen = () => {
         });
     });
 
-    return isFirstTime ? (
-            <View style={styles.container}>
-                <Image source={animatedGif} style={styles.image} />
-                <View style={styles.titleView}>
-                    <Text style={[styles.title, styles.titleWhite]}>The</Text>
-                    <Text style={[styles.title, styles.titleGreen]}>Mensa</Text>
-                    <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
+    if (!isFirstTime)
+        navigation.navigate('BottomNav');
+
+    return (
+            <SafeAreaView style={styles.container}>
+                <View style={styles.container}>
+                    <Image source={animatedGif} style={styles.image} />
+                    <View style={styles.titleView}>
+                        <Text style={[styles.title, styles.titleWhite]}>The</Text>
+                        <Text style={[styles.title, styles.titleGreen]}>Mensa</Text>
+                        <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
+                    </View>
+                    <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
+                    <Pressable style={styles.button} onPress={() => {
+                        navigation.navigate('BottomNav');
+                        navigation.reset({
+                            index: 0,
+                            routes: [{name: 'BottomNav'}],
+                        });
+                    }}>
+                        <Text style={styles.buttonText}>Get Started</Text>
+                    </Pressable>
                 </View>
-                <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
-                <Pressable style={styles.button}>
-                    <Text style={styles.buttonText}>Get Started</Text>
-                </Pressable>
-            </View>
-        ): (
-            <View></View>
-        )
+            </SafeAreaView>)
 }
 
 const styles = StyleSheet.create({

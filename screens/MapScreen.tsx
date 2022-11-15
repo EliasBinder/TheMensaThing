@@ -1,0 +1,5 @@
+export function MapScreen() {
+    return (
+        <></>
+    )
+}
