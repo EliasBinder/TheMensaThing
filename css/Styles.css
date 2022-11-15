@@ -3,12 +3,17 @@
     margin: 0px;
     font-family: 'Poppins', sans-serif;
 }
-img {
+.icon {
     max-width: 40px;
     height: auto;
     position:relative;
-    margin: 10px;
-    margin-top: 23px;
+    align-items: right;
+    margin: 25%;
+}
+.dish {
+    max-width: 85px;
+    height: 85px;
+    border-radius: 30px;
 }
 .group {
     background-color: rgb(7, 27, 100);
