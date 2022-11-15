@@ -61,7 +61,7 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                         case 'Map':
                             return <MapIcon color={iconColor} />
                         case 'Profile':
-                            return <ProfileIcon color={iconColor} />
+                            return <ProfileIcon color={iconColor} dim={38} />
                     }
                 }
 

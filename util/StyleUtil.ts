@@ -10,7 +10,7 @@ export const globalStyles = StyleSheet.create({
     },
     header1: {
         color: '#fff',
-        fontSize: scale(40),
+        fontSize: 40,
         fontWeight: 'bold',
         fontFamily: 'Poppins_SemiBold'
     }
