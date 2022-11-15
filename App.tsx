@@ -2,6 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { useFonts } from 'expo-font';
 import WelcomeScreen from "./screens/WelcomeScreen";
+import { NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator, StackScreenProps} from '@react-navigation/stack';
+
 import React from 'react';
 
 export default function App() {
@@ -28,6 +32,10 @@ export default function App() {
 
   if (!loaded) {
     return null;
+  }
+
+  const TabNavigator = () => {
+
   }
 
   return (
