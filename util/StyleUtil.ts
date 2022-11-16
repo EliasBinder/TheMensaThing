@@ -1,5 +1,4 @@
 import {StyleSheet} from "react-native";
-import {scale} from "./ScaleUtil";
 
 export const globalStyles = StyleSheet.create({
     container: {
@@ -11,7 +10,16 @@ export const globalStyles = StyleSheet.create({
     header1: {
         color: '#fff',
         fontSize: 40,
-        fontWeight: 'bold',
-        fontFamily: 'Poppins_SemiBold'
+        fontFamily: 'Poppins_SemiBold',
+    },
+    dropShadow: {
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: .8,
+        shadowRadius: 15,
+        elevation: 15,
     }
 });

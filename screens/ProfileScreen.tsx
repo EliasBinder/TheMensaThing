@@ -2,8 +2,14 @@ import {Text, View, StyleSheet} from "react-native";
 import React from "react";
 import {globalStyles} from "../util/StyleUtil";
 import ProfileIcon from "../assets/images/profile";
+import {scale} from "../util/ScaleUtil";
+import {NotLoggedIn} from "../components/ProfileScreen/NotLoggedIn";
+import {Settings} from "../components/ProfileScreen/Settings";
 
 export function ProfileScreen() {
+
+    const loggedIn = true;
+
     return (
         <View style={[globalStyles.container, styles.root]}>
             <View style={styles.title}>
@@ -12,6 +18,7 @@ export function ProfileScreen() {
                     <ProfileIcon color={'#fff'}  dim={48}/>
                 </View>
             </View>
+            {loggedIn ? <Settings /> : <NotLoggedIn />}
         </View>
     )
 }
@@ -26,7 +33,7 @@ const styles = StyleSheet.create({
     title: {
         paddingVertical: 35,
         paddingHorizontal: 26,
-        marginTop: 35,
+        marginTop: 30,
         backgroundColor: '#040F21',
         flexDirection: 'row',
         justifyContent: "center",
