@@ -28,8 +28,8 @@ export function Settings({navigation, route}: {navigation: any, route: any}) {
         return (
             <TouchableOpacity onPress={() => setShareGPS(s => !s)}>
                 {shareGPS ?
-                    (<ToggleIcon color={'#3AF90A'} dim={30} orient={0} />) :
-                    (<ToggleIcon color={'#F93A3A'} dim={30} orient={180} />)
+                    (<ToggleIcon color={'#3AF90A'} dim={30} orient={90} />) :
+                    (<ToggleIcon color={'#F93A3A'} dim={30} orient={270} />)
                 }
             </TouchableOpacity>
         )

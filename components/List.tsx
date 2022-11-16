@@ -9,16 +9,16 @@ const createDivider = () => {
 }
 
 export function List({items}: {items: any[]}) {
-
     return (
         <ScrollView>
             <View style={styles.listContainer}>
                 {items.map((item, index) => {
+                    //add key to each item
                     return (
-                        <>
+                        <View key={index} style={item.props.children[0].style}>
                             {item}
                             {index !== items.length - 1 && createDivider()}
-                        </>
+                        </View>
                     )
                 })}
             </View>
