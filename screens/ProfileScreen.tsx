@@ -1,6 +1,6 @@
 import {Text, View, StyleSheet} from "react-native";
 import React from "react";
-import {globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 import ProfileIcon from "../assets/images/profile";
 import {scale} from "../util/ScaleUtil";
 import {NotLoggedIn} from "../components/ProfileScreen/NotLoggedIn";
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         paddingVertical: 35,
         paddingHorizontal: 26,
         marginTop: 30,
-        backgroundColor: '#040F21',
+        backgroundColor: globalColors.primary,
         flexDirection: 'row',
         justifyContent: "center",
         alignItems: "flex-start",
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
         borderRadius: 15,
         width: 60,
         maxWidth: 60,

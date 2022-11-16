@@ -1,6 +1,7 @@
 import {View, StyleSheet, ScrollView} from "react-native";
 import React from "react";
 import {scale} from "../util/ScaleUtil";
+import {globalColors} from "../util/StyleUtil";
 
 const createDivider = () => {
     return <View style={styles.dividerContainer}>
@@ -29,7 +30,7 @@ export function List({items}: {items: any[]}) {
 const styles = StyleSheet.create({
     listContainer: {
         width: scale(400),
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
         borderRadius: 15,
         flexDirection: 'column',
         justifyContent: "flex-start",
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     divider: {
-        backgroundColor: '#040F21',
+        backgroundColor: globalColors.primary,
         height: 2,
         width: '90%',
         marginTop: scale(20),

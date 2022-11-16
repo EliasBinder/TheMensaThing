@@ -1,5 +1,5 @@
 import {Pressable, StyleSheet, Text, View} from "react-native";
-import {globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 import ArrowLeft from "../assets/images/arrowLeft";
 
 export function StackNavigationHeader({title, navigation, route}: {title: string, navigation: any, route: any}) {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         justifyContent: "flex-start",
         maxHeight: 80,
-        backgroundColor: '#081D40'
+        backgroundColor: globalColors.secondary
     },
     title: {
         color: '#fff',

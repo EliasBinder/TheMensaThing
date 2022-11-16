@@ -1,5 +1,5 @@
 import {StyleSheet, View, Text, TouchableOpacity} from "react-native";
-import {globalStyles} from "../../util/StyleUtil";
+import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import StarIcon from "../../assets/images/star";
 import LeafIcon from "../../assets/images/leaf";
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         width: scale(400),
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
         borderRadius: 15,
         flexDirection: 'column',
         justifyContent: "flex-start",
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     divider: {
-        backgroundColor: '#040F21',
+        backgroundColor: globalColors.primary,
         height: 2,
         width: '90%',
         marginTop: scale(20),
@@ -92,6 +92,6 @@ const styles = StyleSheet.create({
     button: {
         marginTop: scale(10),
         marginBottom: scale(65),
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
     }
 })
