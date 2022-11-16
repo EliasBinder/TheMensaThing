@@ -1,6 +1,20 @@
+import {View,StyleSheet} from 'react-native';
+
+/*const[] prova = {
+
+//React Native
+
+//image 
+//test
+//view
+//button
+
+}*/
+
+
 export function MenuScreen() {
     return (
-        <></>
+        <View style ={styles.background}></View>
     )
 }
 const styles = StyleSheet.create({
@@ -11,20 +25,20 @@ const styles = StyleSheet.create({
     },
     cells: {
         backgroundColor: 'rgb(7, 27, 100)',
-        margin: '5%',
+        margin: 10,
         align: 'left',
-        borderRadius: '20px',
+        borderRadius: 20,
     },
     title: {
-        textColor: 'aliceblue',
-        Textalign: 'center',
-        fontSize: '30px',
+        color: 'aliceblue',
+        textAlign: 'center',
+        fontSize: 30,
         fontFamily: 'Poppins_Bold',
     },
     subtitles: {
-        textColor: 'aliceblue',
+        color: 'aliceblue',
         textAlign: 'left',
-        fontSize: '24px',
+        fontSize: 24,
         paddingLeft: '10px',
     },
     icon: {
@@ -32,12 +46,12 @@ const styles = StyleSheet.create({
         height: 'auto',
         //align: 'right',
         position: 'relative',
-        margin: '25%',
+        margin: 30,
     },
     images: {
         width: '85px',
         height: '85px',
-        borderRadius: '30px'
+        borderRadius: 30,
 
     }
 
