@@ -14,6 +14,7 @@ import MapIcon from "../assets/images/map";
 import RocketIcon from "../assets/images/rocket";
 import React, {Component} from "react";
 import {StatusBar} from "expo-status-bar";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -102,8 +103,8 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
     const Tab = createBottomTabNavigator();
 
     return (
-        <SafeAreaView style={styles.container}>
-            <StatusBar backgroundColor={'#081D40'} style={"light"}/>
+        <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
+            <StatusBar backgroundColor={globalColors.secondary} style={"light"}/>
             <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
                 <Tab.Screen name="Menu" component={MenuScreen} />
                 <Tab.Screen name="Information" component={InformationScreen} />
@@ -117,13 +118,13 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
         flex: 1
     },
     tabBar: {
         flexDirection: 'row',
         height: 60,
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
         overflow: 'visible'
     },
     buttonContainer: {
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     },
     centerOutline: {
         borderRadius: 100,
-        backgroundColor: '#040F21',
+        backgroundColor: globalColors.primary,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     },
     center: {
         borderRadius: 100,
-        backgroundColor: '#0E3067',
+        backgroundColor: globalColors.tertiary,
         width: 60,
         height: 60,
         flex: 1,

@@ -1,5 +1,5 @@
 import {View, StyleSheet, Text} from "react-native";
-import {globalStyles} from "../../util/StyleUtil";
+import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import {BigButton} from "../BigButton";
 
@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: scale(70),
-        backgroundColor: '#081D40',
+        backgroundColor: globalColors.secondary,
     }
 })

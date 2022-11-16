@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
-import {globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 
 const DashboardScreen = () => {
     return (
@@ -12,7 +12,7 @@ const DashboardScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#040F21',
+        backgroundColor: globalColors.primary,
         flex: 1
     }
 });

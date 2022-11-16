@@ -1,6 +1,6 @@
 import {Text, StyleSheet, TouchableOpacity} from "react-native";
 import {scale} from "../util/ScaleUtil";
-import {globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 
 export function BigButton({text, onPress, style}: {text: string, onPress: () => void, style?: any}) {
     return (
@@ -12,7 +12,7 @@ export function BigButton({text, onPress, style}: {text: string, onPress: () => 
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#28D5B4',
+        backgroundColor: globalColors.accent,
         width: scale(272),
         height: scale(57),
         borderRadius: 15,
