@@ -7,6 +7,7 @@ import {NotLoggedIn} from "../components/ProfileScreen/NotLoggedIn";
 import {Settings} from "../components/ProfileScreen/Settings";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {EatingHabits} from "./ProfileScreen/EatingHabits";
+import {Location} from "./ProfileScreen/Location";
 
 export function ProfileScreen() {
 
@@ -31,6 +32,7 @@ export function ProfileScreen() {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={"Router"} component={Router} />
+            <Stack.Screen name={"Location"} component={Location} />
             <Stack.Screen name={"EatingHabits"} component={EatingHabits} />
         </Stack.Navigator>
     )
