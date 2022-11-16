@@ -1,13 +1,12 @@
-import {Pressable, Text, StyleSheet} from "react-native";
+import {Text, StyleSheet, TouchableOpacity} from "react-native";
 import {scale} from "../util/ScaleUtil";
-import DropShadow from "react-native-drop-shadow";
 import {globalStyles} from "../util/StyleUtil";
 
 export function BigButton({text, onPress, style}: {text: string, onPress: () => void, style?: any}) {
     return (
-        <Pressable style={[styles.button, globalStyles.dropShadow, style && style.hasOwnProperty('button') ? style.button : StyleSheet.create({})]} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, globalStyles.dropShadow, style && style.hasOwnProperty('button') ? style.button : StyleSheet.create({})]} onPress={onPress}>
             <Text style={[styles.buttonText, style && style.hasOwnProperty('buttonText') ? style.buttonText : StyleSheet.create({})]}>{text}</Text>
-        </Pressable>
+        </TouchableOpacity>
     )
 }
 
