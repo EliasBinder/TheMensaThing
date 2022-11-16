@@ -11,7 +11,7 @@ export function ProfileScreen() {
     const loggedIn = true;
 
     return (
-        <View style={[globalStyles.container, styles.root]}>
+        <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
             <View style={styles.title}>
                 <Text style={globalStyles.header1}>Profile</Text>
                 <View style={styles.imgContainer}>
