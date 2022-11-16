@@ -31,7 +31,7 @@ export function Settings() {
 
     const Toggle = () => {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setShareGPS(s => !s)}>
                 {shareGPS ?
                     (<ToggleIcon color={'#3AF90A'} dim={30} orient={0} />) :
                     (<ToggleIcon color={'#F93A3A'} dim={30} orient={180} />)
