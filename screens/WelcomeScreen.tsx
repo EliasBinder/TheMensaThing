@@ -4,6 +4,7 @@ import {scale} from "../util/ScaleUtil";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StatusBar} from "expo-status-bar";
 import {BigButton} from "../components/BigButton";
+import {globalStyles} from "../util/StyleUtil";
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
@@ -27,7 +28,7 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
     // @ts-ignore
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
             <StatusBar backgroundColor={'#040F21'} style={"light"}/>
             <View style={styles.container}>
                 <Image source={animatedGif} style={styles.image} />

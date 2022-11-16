@@ -1,6 +1,9 @@
-import {StyleSheet} from "react-native";
+import {StatusBar, StyleSheet} from "react-native";
 
 export const globalStyles = StyleSheet.create({
+    safeAreaView: {
+        marginTop: StatusBar.currentHeight
+    },
     container: {
         backgroundColor: '#040F21',
         flex: 1,

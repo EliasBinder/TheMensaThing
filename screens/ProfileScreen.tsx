@@ -5,21 +5,34 @@ import ProfileIcon from "../assets/images/profile";
 import {scale} from "../util/ScaleUtil";
 import {NotLoggedIn} from "../components/ProfileScreen/NotLoggedIn";
 import {Settings} from "../components/ProfileScreen/Settings";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {EatingHabits} from "./ProfileScreen/EatingHabits";
 
 export function ProfileScreen() {
 
     const loggedIn = true;
 
-    return (
-        <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
-            <View style={styles.title}>
-                <Text style={globalStyles.header1}>Profile</Text>
-                <View style={styles.imgContainer}>
-                    <ProfileIcon color={'#fff'}  dim={48}/>
+    const Stack = createNativeStackNavigator()
+
+    const Router = ({navigation, route}: {navigation: any, route: any}) => {
+        return (
+            <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
+                <View style={styles.title}>
+                    <Text style={globalStyles.header1}>Profile</Text>
+                    <View style={styles.imgContainer}>
+                        <ProfileIcon color={'#fff'}  dim={48}/>
+                    </View>
                 </View>
+                {loggedIn ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn />}
             </View>
-            {loggedIn ? <Settings /> : <NotLoggedIn />}
-        </View>
+        )
+    }
+
+    return (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name={"Router"} component={Router} />
+            <Stack.Screen name={"EatingHabits"} component={EatingHabits} />
+        </Stack.Navigator>
     )
 }
 

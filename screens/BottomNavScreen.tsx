@@ -14,6 +14,7 @@ import MapIcon from "../assets/images/map";
 import RocketIcon from "../assets/images/rocket";
 import React, {Component} from "react";
 import {StatusBar} from "expo-status-bar";
+import {globalStyles} from "../util/StyleUtil";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -102,7 +103,7 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
     const Tab = createBottomTabNavigator();
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
             <StatusBar backgroundColor={'#081D40'} style={"light"}/>
             <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
                 <Tab.Screen name="Menu" component={MenuScreen} />
