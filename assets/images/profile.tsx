@@ -1,12 +1,12 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
-function ProfileIcon({color}:{color: string}) {
+function ProfileIcon({color, dim}:{color: string, dim: number}) {
     return (
         <Svg
-            width={38}
-            height={38}
-            viewBox="0 0 38 38"
+            width={dim}
+            height={dim}
+            viewBox={"0 0 38 38"}
             fill="none"
         >
             <Path

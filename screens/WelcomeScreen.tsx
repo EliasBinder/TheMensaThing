@@ -3,6 +3,7 @@ import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-nati
 import {scale} from "../util/ScaleUtil";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StatusBar} from "expo-status-bar";
+import {BigButton} from "../components/BigButton";
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
@@ -36,15 +37,13 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
                     <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
                 </View>
                 <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
-                <Pressable style={styles.button} onPress={() => {
+                <BigButton text={'Get Started'} onPress={() => {
                     navigation.navigate('BottomNav');
                     navigation.reset({
                         index: 0,
                         routes: [{name: 'BottomNav'}],
                     });
-                }}>
-                    <Text style={styles.buttonText}>Get Started</Text>
-                </Pressable>
+                }}/>
             </View>
         </SafeAreaView>
     )
@@ -84,21 +83,6 @@ const styles = StyleSheet.create({
         paddingRight: scale(50),
         flex: 1,
         textAlign: 'center'
-    },
-    button: {
-        backgroundColor: '#28D5B4',
-        width: scale(272),
-        height: scale(57),
-        borderRadius: 15,
-        marginBottom: scale(50),
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttonText: {
-        color: '#FFFFFF',
-        fontFamily: 'Poppins',
-        fontSize: scale(30),
-        textAlign: 'center',
     }
 });
 
