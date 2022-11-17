@@ -11,10 +11,11 @@ import ProfileIcon from "../assets/images/profile";
 import MenuIcon from "../assets/images/menu";
 import InfoIcon from "../assets/images/info";
 import MapIcon from "../assets/images/map";
-import RocketIcon from "../assets/images/rocket";
+import RocketIcon from "../assets/images/dashboard";
 import React, {Component} from "react";
 import {StatusBar} from "expo-status-bar";
 import {globalColors, globalStyles} from "../util/StyleUtil";
+import DashboardIcon from "../assets/images/dashboard";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -54,7 +55,7 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                 const getIcon = () => {
                     switch (label) {
                         case 'Dashboard':
-                            return <RocketIcon color={iconColor} />
+                            return <DashboardIcon color={'#fff'} dim={38}/>
                         case 'Menu':
                             return <MenuIcon color={iconColor} />
                         case 'Information':
