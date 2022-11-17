@@ -55,7 +55,7 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                 const getIcon = () => {
                     switch (label) {
                         case 'Dashboard':
-                            return <DashboardIcon color={'#fff'} dim={38}/>
+                            return <DashboardIcon color={iconColor} dim={38}/>
                         case 'Menu':
                             return <MenuIcon color={iconColor} />
                         case 'Information':
