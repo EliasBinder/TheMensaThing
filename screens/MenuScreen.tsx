@@ -1,4 +1,4 @@
-import {View,StyleSheet} from 'react-native';
+import {View,StyleSheet, Text} from 'react-native';
 
 /*const[] prova = {
 
@@ -14,17 +14,30 @@ import {View,StyleSheet} from 'react-native';
 
 export function MenuScreen() {
     return (
-        <View style ={styles.background}></View>
+        <View style={[styles.container, styles.background]} >
+            <Text style={styles.title}>Menu</Text>
+            <View style={styles.cells} >
+            <Text style={styles.subtitles}>Menu</Text>
+            </View>
+           
+            <View style ={styles.cells}></View>
+        </View>
     )
 }
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: "flex-start",
+        alignItems: "center"
+    },
     background: {
         backgroundColor: 'rgb(12, 21, 52)',
         alignItems: 'center',
         justifyContent: 'center',
     },
     cells: {
-        backgroundColor: 'rgb(7, 27, 100)',
+        //backgroundColor: 'rgb(7, 27, 100)',
         margin: 10,
         align: 'left',
         borderRadius: 20,
