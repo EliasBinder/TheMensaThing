@@ -17,7 +17,7 @@ const createListItem = ({text}: {text: string}) => {
     )
 }
 
-export function EatingHabits({navigation, route}: {navigation: any, route: any}) {
+export function EatingHabitsScreen({navigation, route}: {navigation: any, route: any}) {
 
     const listItems = [
         createListItem({text: 'Vegetarian'}),

@@ -16,7 +16,7 @@ const createListItem = ({text, id, checked, setChecked}: {text: string, id: numb
     )
 }
 
-export function Location({navigation, route}: {navigation: any, route: any}) {
+export function LocationScreen({navigation, route}: {navigation: any, route: any}) {
 
     const [checked, setChecked] = React.useState(0);
 

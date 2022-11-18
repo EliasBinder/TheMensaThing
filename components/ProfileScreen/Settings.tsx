@@ -36,7 +36,7 @@ export function Settings({navigation, route}: {navigation: any, route: any}) {
     }
 
     const listItems = [
-        createMenuItem('Preferred Dishes', <StarIcon color={'#fff'} dim={30}/>, () => {}),
+        createMenuItem('Preferred Dishes', <StarIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('PreferredDishes')}),
         createMenuItem('Eating Habits', <LeafIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('EatingHabits')}),
         createMenuItem('Location', <PinIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('Location')}),
         createMenuItem('Share GPS Location', <ShareIcon color={'#fff'} dim={30}/>, () => {setShareGPS(s => !s)}, <Toggle />)
