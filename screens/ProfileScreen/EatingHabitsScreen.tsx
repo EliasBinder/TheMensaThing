@@ -8,7 +8,7 @@ import React from "react";
 import CheckboxMarked from "../../assets/images/checkboxMarked";
 
 const createListItem = ({text}: {text: string}) => {
-    const [checked, setChecked] = React.useState(false);
+    const [checked, setChecked] = React.useState(true);
     return (
         <TouchableOpacity style={styles.menuItem} onPress={() => setChecked(s => !s)}>
             {checked ? <CheckboxMarked color={'#fff'} dim={30}/> : <Checkbox color={'#fff'} dim={30}/>}
