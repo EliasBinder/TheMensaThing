@@ -9,6 +9,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {EatingHabitsScreen} from "./ProfileScreen/EatingHabitsScreen";
 import {LocationScreen} from "./ProfileScreen/LocationScreen";
 import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
+import {LoginScreen} from "./LoginScreen";
 
 export function ProfileScreen() {
 
@@ -25,7 +26,7 @@ export function ProfileScreen() {
                         <ProfileIcon color={'#fff'}  dim={48}/>
                     </View>
                 </View>
-                {loggedIn ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn />}
+                {loggedIn ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn navigation={navigation} route={route}/>}
             </View>
         )
     }
@@ -36,6 +37,7 @@ export function ProfileScreen() {
             <Stack.Screen name={"PreferredDishes"} component={PreferredDishesScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"Location"} component={LocationScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"EatingHabits"} component={EatingHabitsScreen} options={{animation: 'slide_from_right'}} />
+            <Stack.Screen name={"Login"} component={LoginScreen} options={{animation: 'slide_from_right'}} />
         </Stack.Navigator>
     )
 }
