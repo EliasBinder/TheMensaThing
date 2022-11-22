@@ -427,6 +427,8 @@ dist
 
 package-lock.json
 /.idea/
+/yarn.lock
+/.expo/settings.json
 
 yarn.lock
 webpack.config.js
