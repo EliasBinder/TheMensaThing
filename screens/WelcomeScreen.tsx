@@ -44,7 +44,7 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
                         index: 0,
                         routes: [{name: 'BottomNav'}],
                     });
-                }}/>
+                }} style={styles}/>
             </View>
         </SafeAreaView>
     )
@@ -84,6 +84,9 @@ const styles = StyleSheet.create({
         paddingRight: scale(50),
         flex: 1,
         textAlign: 'center'
+    },
+    button: {
+        marginBottom: scale(50)
     }
 });
 

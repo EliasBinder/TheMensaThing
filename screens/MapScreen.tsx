@@ -6,11 +6,15 @@ import TuneIcon from "../assets/images/tune";
 import { BottomSheet } from 'react-native-btr';
 import CloseIcon from "../assets/images/close";
 import {LocationSelector} from "../components/LocationSelector";
+const { height, width } = Dimensions.get( 'window' );
 
 
 export function MapScreen() {
 
     const [changeLocationModal, setChangeLocationModal] = useState(false);
+
+    const LATITUDE_DELTA = 0.0007;
+    const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 
     return (
         <View style={[globalStyles.container, styles.root]}>
@@ -35,7 +39,12 @@ export function MapScreen() {
                 </BottomSheet>
             </View>
             <View style={styles.mapContainer}>
-                <MapView style={styles.map}>
+                <MapView style={styles.map} initialRegion={{
+                    latitude: 46.498151497897666,
+                    longitude: 11.350881422863015,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA
+                }} zoomEnabled={true} provider={"google"}>
                 </MapView>
             </View>
         </View>

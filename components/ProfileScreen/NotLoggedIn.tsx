@@ -3,11 +3,11 @@ import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import {BigButton} from "../BigButton";
 
-export function NotLoggedIn() {
+export function NotLoggedIn({navigation, route}: {navigation: any, route: any}) {
     return (
         <View style={[globalStyles.container, styles.container]}>
             <Text style={styles.message}>Please log in to use all the features of this app</Text>
-            <BigButton text={'Login'} onPress={() => {}} style={styles}/>
+            <BigButton text={'Login'} onPress={() => {navigation.navigate('Login')}} style={styles}/>
         </View>
     )
 }

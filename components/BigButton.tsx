@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
         width: scale(272),
         height: scale(57),
         borderRadius: 15,
-        marginBottom: scale(50),
         alignItems: 'center',
         justifyContent: 'center'
     },
