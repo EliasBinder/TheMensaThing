@@ -6,9 +6,9 @@ export function MenuScreen() {
         <View style={[styles.container, styles.background]} >
             <Text style={styles.title}>Today's Menu</Text>
             <View style={styles.cells} >
-                <Image style={styles.icon} source={require('/assets/images/fork&knife.svg')}></Image>
+                <Image style={styles.icon} source={require('../assets/images/fork&knife.svg')}></Image>
                 <Text style={[styles.subtitles]}>First Dishes</Text>
-                <Image style={styles.icon} source={require('/assets/images/fork&knife.svg')}></Image>
+                <Image style={styles.icon} source={require('../assets/images/fork&knife.svg')}></Image>
                 <Text style={styles.subtitles}>Second Dishes</Text>
             </View>
         </View>
