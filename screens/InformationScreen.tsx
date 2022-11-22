@@ -1,33 +1,43 @@
 import {ScrollView, StyleSheet, Text, View} from "react-native";
 import React from "react";
-import {globalColors, globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {List} from "../components/List";
-import VeganIcon from "../assets/images/vegan";
-import MenuIcon from "../assets/images/menu";
 
 const createListItem = (iconName: string, text: string) => {
     return (
         <View style={styles.menuItem}>
-            <View>{getIcon({label: iconName, color: globalColors.accent})}</View>
+            <View>{getIcon({label: iconName, color: globalColors.accent, dim: {width: 29, height: 29}})}</View>
             <Text style={styles.menuItemText}>{text}</Text>
         </View>
     )
 }
 
-const getIcon = ({label, color}: {label: string, color: string}) => {
+const getIcon = ({label, color, dim}: {label: string, color: string, dim: {width:number, height: number}}) => {
     switch (label) {
-        case 'vegan':
-            return <VeganIcon color={color}/>
-        case 'Menu':
-            return <MenuIcon color={color} />
+        case 'leaf':
+            return <Icon name={'leaf'} size={29} color={globalColors.accent}/>
+        case 'frozen':
+            return <Icon name={'frozen'} size={29} color={globalColors.accent}/>
+        case 'celery':
+            return <Icon name={'celery'} size={29} color={globalColors.accent}/>
+        case 'milk':
+            return <Icon name={'milk'} size={29} color={globalColors.accent}/>
+        case 'wine':
+            return <Icon name={'wine'} size={29} color={globalColors.accent}/>
+        case 'mustard':
+            return <Icon name={'mustard'} size={29} color={globalColors.accent}/>
     }
 }
 
 export function InformationScreen() {
     const listItems = [
-        createListItem('vegan', 'Vegan'),
-        createListItem('icon-name2', 'text2'),
+        createListItem('leaf', 'Vegan'),
+        createListItem('frozen', 'Contains frozen ingredients'),
+        createListItem('celery', 'Celery'),
+        createListItem('milk', 'Contains milk'),
+        createListItem('wine', 'contains sulphur'),
+        createListItem('mustard', 'contains mustard'),
     ];
 
     return (
