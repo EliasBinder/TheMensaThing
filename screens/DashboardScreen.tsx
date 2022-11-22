@@ -1,38 +1,35 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {globalColors, globalStyles} from "../util/StyleUtil";
+import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
-import {Card} from "../components/DashboardScreen/Card";
+import {Card} from "../components/Card";
 import PinIcon from "../assets/images/pin";
 import Tune from "../assets/images/tune";
 import TuneIcon from "../assets/images/tune";
 import {OccupationBar} from "../components/DashboardScreen/OccupationBar";
+import ProfileIcon from "../assets/images/profile";
+import {MensaOccupation} from "../components/DashboardScreen/MensaOccupation";
+import {BarOccupation} from "../components/DashboardScreen/BarOccupation";
+import {Suggestion} from "../components/DashboardScreen/Suggestion";
 
 const DashboardScreen = () => {
     return (
         <View style={globalStyles.container}>
+            <View style={styles.title}>
+                <Text style={globalStyles.header1}>Dashboard</Text>
+                <View style={styles.imgContainer}>
+                    <ProfileIcon color={'#fff'}  dim={48}/>
+                </View>
+            </View>
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                 <View style={styles.cardRow}>
-                    <Card
-                        title={"Mensa"}
-                        icon={<PinIcon color={"#E6E6E6"} dim={25}/>}
-                        interaction={
-                        <TouchableOpacity style={{marginLeft: 'auto'}}>
-                            <TuneIcon color={"#E6E6E6"} dim={25}/>
-                        </TouchableOpacity>}
-                    >
-                        <View style={styles.cardSection}>
-                            <Text style={styles.cardText}>Occupation in Bolzano</Text>
-                            <View style={styles.occupationContainer}>
-                                <OccupationBar occupation={'70%'} style={styles.occupationBar1}/>
-                                <Text style={styles.occupationNum}>70%</Text>
-                            </View>
-                            <View style={{marginTop: 20}}>
-                                <Text style={styles.cardText}>Seats occupied: 60/130</Text>
-
-                            </View>
-                        </View>
-                    </Card>
+                    <MensaOccupation/>
+                </View>
+                <View style={[styles.cardRow, {marginTop: 20}]}>
+                    <BarOccupation/>
+                </View>
+                <View style={[styles.cardRow, {marginTop: 20}]}>
+                    <Suggestion/>
                 </View>
             </ScrollView>
         </View>
@@ -87,7 +84,34 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 15,
         fontFamily: "Poppins_SemiBold",
-        marginLeft: 30
+        marginLeft: 20
+    },
+    detailsContainer: {
+        marginTop: 20,
+        flexDirection: "row",
+        width: '100%'
+    },
+    title: {
+        paddingVertical: 10,
+        paddingHorizontal: 26,
+        marginTop: 15,
+        backgroundColor: globalColors.primary,
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "flex-start",
+        width: '100%',
+    },
+    imgContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: globalColors.secondary,
+        borderRadius: 15,
+        width: 60,
+        maxWidth: 60,
+        height: 60,
+        maxHeight: 60,
+        marginLeft: 'auto',
     }
 });
 

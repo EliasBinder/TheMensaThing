@@ -1,9 +1,9 @@
 import {View, StyleSheet} from "react-native";
 import {globalColors, globalStyles} from "../../util/StyleUtil";
 
-export function OccupationBar({occupation, style}: {occupation: string, style?: any}) {
+export function OccupationBar({occupation, style=StyleSheet.create({})}: {occupation: string, style?: any}) {
     return (
-        <View style={[styles.barOuter, globalStyles.dropShadow, style?style:StyleSheet.create({})]}>
+        <View style={[styles.barOuter, globalStyles.dropShadow, style]}>
             <View style={[styles.barInner, {width: occupation}]}>
             </View>
         </View>

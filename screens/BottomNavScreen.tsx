@@ -19,82 +19,85 @@ import DashboardIcon from "../assets/images/dashboard";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
-        <View style={styles.tabBar}>
-            {state.routes.map((route: { key: string | number; name: any; }, index: any) => {
-                const { options } = descriptors[route.key];
-                const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                            ? options.title
-                            : route.name;
+        <>
+            <View style={{height: 12.5, width: 1000, backgroundColor: globalColors.primary}}></View>
+            <View style={styles.tabBar}>
+                {state.routes.map((route: { key: string | number; name: any; }, index: any) => {
+                    const { options } = descriptors[route.key];
+                    const label =
+                        options.tabBarLabel !== undefined
+                            ? options.tabBarLabel
+                            : options.title !== undefined
+                                ? options.title
+                                : route.name;
 
-                const isFocused = state.index === index;
+                    const isFocused = state.index === index;
 
-                const iconColor = isFocused ? '#fff' : '#787878';
+                    const iconColor = isFocused ? '#fff' : '#787878';
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                            canPreventDefault: true,
+                        });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate({ name: route.name, merge: true });
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate({ name: route.name, merge: true });
+                        }
+                    };
+
+                    const onLongPress = () => {
+                        navigation.emit({
+                            type: 'tabLongPress',
+                            target: route.key,
+                        });
+                    };
+
+                    const getIcon = () => {
+                        switch (label) {
+                            case 'Dashboard':
+                                return <DashboardIcon color={iconColor} dim={38}/>
+                            case 'Menu':
+                                return <MenuIcon color={iconColor} />
+                            case 'Information':
+                                return <InfoIcon color={iconColor} />
+                            case 'Map':
+                                return <MapIcon color={iconColor} />
+                            case 'Profile':
+                                return <ProfileIcon color={iconColor} dim={38} />
+                        }
                     }
-                };
 
-                const onLongPress = () => {
-                    navigation.emit({
-                        type: 'tabLongPress',
-                        target: route.key,
-                    });
-                };
-
-                const getIcon = () => {
-                    switch (label) {
-                        case 'Dashboard':
-                            return <DashboardIcon color={iconColor} dim={38}/>
-                        case 'Menu':
-                            return <MenuIcon color={iconColor} />
-                        case 'Information':
-                            return <InfoIcon color={iconColor} />
-                        case 'Map':
-                            return <MapIcon color={iconColor} />
-                        case 'Profile':
-                            return <ProfileIcon color={iconColor} dim={38} />
+                    const getTouchable = ({inner, key}: {inner: any, key: string|undefined}) => {
+                        return (
+                            <TouchableOpacity
+                                accessibilityRole="button"
+                                accessibilityState={isFocused ? { selected: true } : {}}
+                                accessibilityLabel={options.tabBarAccessibilityLabel}
+                                testID={options.tabBarTestID}
+                                onPress={onPress}
+                                onLongPress={onLongPress}
+                                style={styles.buttonContainer}
+                                key={key}
+                            >
+                                {inner}
+                            </TouchableOpacity>
+                        )
                     }
-                }
 
-                const getTouchable = ({inner, key}: {inner: any, key: string|undefined}) => {
-                    return (
-                        <TouchableOpacity
-                            accessibilityRole="button"
-                            accessibilityState={isFocused ? { selected: true } : {}}
-                            accessibilityLabel={options.tabBarAccessibilityLabel}
-                            testID={options.tabBarTestID}
-                            onPress={onPress}
-                            onLongPress={onLongPress}
-                            style={styles.buttonContainer}
-                            key={key}
-                        >
-                            {inner}
-                        </TouchableOpacity>
-                    )
-                }
-
-                return label == 'Dashboard' ? (
-                        <View key={index} style={styles.buttonContainer}>
-                            <View style={styles.centerOutline}>
-                                {getTouchable({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
+                    return label == 'Dashboard' ? (
+                            <View key={index} style={styles.buttonContainer}>
+                                <View style={styles.centerOutline}>
+                                    {getTouchable({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
+                                </View>
                             </View>
-                        </View>
-                    ): (
-                        getTouchable({inner: getIcon(), key: index})
-                    )
-            })}
-        </View>
+                        ): (
+                            getTouchable({inner: getIcon(), key: index})
+                        )
+                })}
+            </View>
+        </>
     );
 }
 
