@@ -427,3 +427,8 @@ dist
 
 package-lock.json
 /.idea/
+
+yarn.lock
+webpack.config.js
+/android/
+/ios/
