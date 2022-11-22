@@ -36,7 +36,7 @@ const DashboardScreen = () => {
     )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         backgroundColor: globalColors.primary,
         flex: 1
