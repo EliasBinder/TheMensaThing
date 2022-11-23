@@ -425,12 +425,9 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm,visualstudiocode,intellij,phpstorm,node
 
-package-lock.json
 /.idea/
-/yarn.lock
 /.expo/settings.json
 
-yarn.lock
 webpack.config.js
 /android/
 /ios/
