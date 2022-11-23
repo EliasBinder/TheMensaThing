@@ -112,9 +112,9 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
             <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
                 <Tab.Screen name="Menu" component={MenuScreen} />
                 <Tab.Screen name="Information" component={InformationScreen} />
-                <Tab.Screen name="Dashboard" component={DashboardScreen} />
+                <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={route.params}/>
                 <Tab.Screen name="Map" component={MapScreen} />
-                <Tab.Screen name="Profile" component={ProfileScreen} />
+                <Tab.Screen name="Profile" component={ProfileScreen} initialParams={route.params} />
             </Tab.Navigator>
         </SafeAreaView>
     )

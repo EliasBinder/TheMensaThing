@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_SemiBold',
         fontSize: 20,
         marginLeft: scale(18),
-        marginRight: 'auto',
+        marginRight: scale(25)
     }
 })

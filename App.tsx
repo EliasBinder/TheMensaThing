@@ -11,6 +11,7 @@ import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, User, OAuthProvider } from 'firebase/auth';
+import {AuthUtil, AuthUtilType} from "./util/AuthUtil";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBfipLKf2Zo4KZ8D_6GsHdzslsaZB2gPNE",
@@ -30,6 +31,9 @@ const firebaseAuth = getAuth();
 
 
 export default function App() {
+
+  const [auth, setAuth] = React.useState(null as (AuthUtilType | null));
+
   const [loaded] = useFonts({
     Poppins_BlackItalic: require('./assets/fonts/Poppins-BlackItalic.ttf'),
     Poppins_BoldItalic: require('./assets/fonts/Poppins-BoldItalic.ttf'),
@@ -60,8 +64,8 @@ export default function App() {
   return (
       <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Welcome" component={WelcomeScreen} />
-            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} />
+            <Stack.Screen name={"Welcome"} component={WelcomeScreen} />
+            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} initialParams={{auth, setAuth}}/>
           </Stack.Navigator>
       </NavigationContainer>
   )

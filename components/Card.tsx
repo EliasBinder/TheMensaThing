@@ -7,7 +7,7 @@ export function Card({title, icon, interaction, children}:{title: string, icon: 
         <View style={[globalStyles.box, styles.box]}>
             <View style={styles.topBar}>
                 {icon ? icon : <></>}
-                <Text style={styles.title}>{title}</Text>
+                <Text style={[styles.title, {marginLeft: icon ? 20 : 0}]}>{title}</Text>
                 {interaction ? interaction : <View style={{marginLeft: 'auto'}}></View>}
             </View>
             <View style={styles.content}>
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     title: {
         color: "#fff",
         fontSize: 25,
-        marginLeft: 20,
         fontFamily: "Poppins_SemiBold"
     },
     content: {
