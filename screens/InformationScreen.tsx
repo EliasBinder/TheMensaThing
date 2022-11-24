@@ -14,32 +14,7 @@ const createListItem = (iconName: string, text: string) => {
 }
 
 const getIcon = ({label, color, size}: {label: string, color: string, size:number}) => {
-    switch (label) {
-        case 'leaf':
-            return <Icon name={'leaf'} size={size} color={color}/>
-        case 'frozen':
-            return <Icon name={'frozen'} size={size} color={color}/>
-        case 'celery':
-            return <Icon name={'celery'} size={size} color={color}/>
-        case 'milk':
-            return <Icon name={'milk'} size={size} color={color}/>
-        case 'wine':
-            return <Icon name={'wine'} size={size} color={color}/>
-        case 'fish':
-            return <Icon name={'fish'} size={size} color={color}/>
-        case 'egg':
-            return <Icon name={'egg'} size={size} color={color}/>
-        case 'pig':
-            return <Icon name={'pig'} size={size} color={color}/>
-        case 'soy_beans':
-            return <Icon name={'soy_beans'} size={size} color={color}/>
-        case 'wheat':
-            return <Icon name={'wheat'} size={size} color={color}/>
-        case 'sesame':
-            return <Icon name={'sesame'} size={size} color={color}/>
-        case 'cashew_nut':
-            return <Icon name={'cashew_nut'} size={size} color={color}/>
-    }
+    return <Icon name={label} size={size} color={color}/>
 }
 
 export function InformationScreen() {
