@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         paddingTop: scale(20),
         paddingBottom: scale(20),
+        paddingRight: scale(20),
     },
     dividerContainer: {
         width: '100%',

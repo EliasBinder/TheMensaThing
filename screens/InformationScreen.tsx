@@ -7,37 +7,30 @@ import {List} from "../components/List";
 const createListItem = (iconName: string, text: string) => {
     return (
         <View style={styles.menuItem}>
-            <View>{getIcon({label: iconName, color: globalColors.accent, dim: {width: 29, height: 29}})}</View>
+            <View>{getIcon({label: iconName, color: globalColors.accent, size: 29})}</View>
             <Text style={styles.menuItemText}>{text}</Text>
         </View>
     )
 }
 
-const getIcon = ({label, color, dim}: {label: string, color: string, dim: {width:number, height: number}}) => {
-    switch (label) {
-        case 'leaf':
-            return <Icon name={'leaf'} size={29} color={globalColors.accent}/>
-        case 'frozen':
-            return <Icon name={'frozen'} size={29} color={globalColors.accent}/>
-        case 'celery':
-            return <Icon name={'celery'} size={29} color={globalColors.accent}/>
-        case 'milk':
-            return <Icon name={'milk'} size={29} color={globalColors.accent}/>
-        case 'wine':
-            return <Icon name={'wine'} size={29} color={globalColors.accent}/>
-        case 'mustard':
-            return <Icon name={'mustard'} size={29} color={globalColors.accent}/>
-    }
+const getIcon = ({label, color, size}: {label: string, color: string, size:number}) => {
+    return <Icon name={label} size={size} color={color}/>
 }
 
 export function InformationScreen() {
     const listItems = [
         createListItem('leaf', 'Vegan'),
         createListItem('frozen', 'Contains frozen ingredients'),
-        createListItem('celery', 'Celery'),
-        createListItem('milk', 'Contains milk'),
-        createListItem('wine', 'contains sulphur'),
-        createListItem('mustard', 'contains mustard'),
+        createListItem('celery', 'Celery and products thereof'),
+        createListItem('milk', 'Milk and products thereof'),
+        createListItem('wine', 'Sulphur dioxide and sulphites > 10mg/l'),
+        createListItem('fish', 'Fish and products thereof'),
+        createListItem('egg', 'Egg and products thereof'),
+        createListItem('pig', 'Pork and products thereof'),
+        createListItem('soy_beans', 'Soybeans and products thereof'),
+        createListItem('wheat', 'Cereals containing gluten'),
+        createListItem('sesame', 'Sesame seeds and products thereof'),
+        createListItem('cashew_nut', 'Contains nuts'),
     ];
 
     return (

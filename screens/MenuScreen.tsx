@@ -1,12 +1,10 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from "react-native";
-import {globalColors, globalStyles} from "../util/StyleUtil";
-import {styles} from "../screens/DashboardScreen";
-import {scale} from "../util/ScaleUtil";
+import {ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {globalStyles} from "../util/StyleUtil";
+import {styles} from "./DashboardScreen";
 import {Card} from "../components/Card";
-import Tune from "../assets/images/tune";
 import TuneIcon from "../assets/images/tune";
-import {OccupationBar} from "../components/DashboardScreen/OccupationBar";
+import MenuIcon from "../assets/images/menu";
 
 export function MenuScreen(){
     return (
@@ -15,7 +13,7 @@ export function MenuScreen(){
                 <View style={styles.cardRow}>
                     <Card
                         title={"Today's Menu"}
-                        icon={<Image style={menu.icon} source={require('../assets/images/fork&knife.svg')}></Image>}
+                        icon={<MenuIcon color={'#fff'}/>}
                         interaction={
                         <TouchableOpacity style={{marginLeft: 'auto'}}>
                             <TuneIcon color={"#E6E6E6"} dim={25}/>
@@ -33,11 +31,3 @@ export function MenuScreen(){
         </View>
     )
 }
-
-const menu = StyleSheet.create({
-    icon: {
-        dim: 25,
-        height: 'auto',
-    },
-});
- 
