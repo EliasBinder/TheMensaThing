@@ -8,34 +8,16 @@ import {BarOccupation} from "../components/DashboardScreen/BarOccupation";
 import {Suggestion} from "../components/DashboardScreen/Suggestion";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {LoginScreen} from "./LoginScreen";
+import {Header} from "../components/Header";
 
 const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
     const Stack = createNativeStackNavigator()
 
-    const topbarAddAnim = useRef(new Animated.Value(0)).current;
-
-    //Add animation
-    React.useEffect(() => {
-        Animated.timing(
-            topbarAddAnim,
-            {
-                useNativeDriver: false,
-                toValue: 1,
-                duration: 500,
-            }
-        ).start()
-    }, [topbarAddAnim]);
-
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={globalStyles.container}>
-                <View style={styles.title}>
-                    <Animated.Text style={[globalStyles.header1, {opacity: topbarAddAnim}]}>Dashboard</Animated.Text>
-                    <View style={styles.imgContainer}>
-                        <ProfileIcon color={'#fff'}  dim={48}/>
-                    </View>
-                </View>
+                <Header title={"Dashboard"} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
                 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                     <View style={styles.cardRow}>
                         <MensaOccupation/>
@@ -71,7 +53,6 @@ export const styles = StyleSheet.create({
     scrollViewInner: {
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingTop: scale(30),
         paddingBottom: scale(30),
         alignSelf: "stretch"
     },
@@ -113,28 +94,6 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: '100%'
-    },
-    title: {
-        paddingVertical: 10,
-        paddingHorizontal: 26,
-        marginTop: 15,
-        backgroundColor: globalColors.primary,
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "flex-start",
-        width: '100%',
-    },
-    imgContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: globalColors.secondary,
-        borderRadius: 15,
-        width: 60,
-        maxWidth: 60,
-        height: 60,
-        maxHeight: 60,
-        marginLeft: 'auto',
     }
 });
 
