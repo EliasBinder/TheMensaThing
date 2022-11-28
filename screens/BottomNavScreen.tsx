@@ -109,9 +109,13 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
     return (
         <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
             <StatusBar backgroundColor={globalColors.secondary} style={"light"}/>
-            <Tab.Navigator initialRouteName={"Dashboard"} screenOptions={{headerShown: false}} tabBar={props => <CustomTabBar {...props} />}>
-                <Tab.Screen name="Menu" component={MenuScreen} />
-                <Tab.Screen name="Information" component={InformationScreen} />
+            <Tab.Navigator
+                initialRouteName={"Dashboard"}
+                screenOptions={{headerShown: false, unmountOnBlur: true}}
+                tabBar={props => <CustomTabBar {...props} />}
+            >
+                <Tab.Screen name="Menu" component={MenuScreen}/>
+                <Tab.Screen name="Information" component={InformationScreen}/>
                 <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={route.params}/>
                 <Tab.Screen name="Map" component={MapScreen} />
                 <Tab.Screen name="Profile" component={ProfileScreen} initialParams={route.params} />
@@ -122,7 +126,7 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: globalColors.secondary,
+        backgroundColor: globalColors.primary,
         flex: 1
     },
     tabBar: {

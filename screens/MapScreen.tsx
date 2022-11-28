@@ -6,6 +6,7 @@ import TuneIcon from "../assets/images/tune";
 import { BottomSheet } from 'react-native-btr';
 import CloseIcon from "../assets/images/close";
 import {LocationSelector} from "../components/LocationSelector";
+import {Header} from "../components/Header";
 const { height, width } = Dimensions.get( 'window' );
 
 
@@ -18,26 +19,25 @@ export function MapScreen() {
 
     return (
         <View style={[globalStyles.container, styles.root]}>
-            <View style={styles.title}>
-                <Text style={globalStyles.header1}>Map</Text>
+            <Header title={'Map'} icon={
                 <TouchableOpacity style={styles.tuneContainer} onPress={() => setChangeLocationModal(true)}>
                     <TuneIcon color={'#fff'} dim={30}/>
                 </TouchableOpacity>
-                <BottomSheet
-                    visible={changeLocationModal}
-                    onBackButtonPress={() => {setChangeLocationModal(false)}}
-                    onBackdropPress={() => {setChangeLocationModal(false)}}
-                >
-                    <View style={styles.changeLocRoot}>
-                        <View style={styles.changeLocHeader}>
-                            <TouchableOpacity onPress={() => setChangeLocationModal(false)}>
-                                <CloseIcon color={'#fff'} dim={35}/>
-                            </TouchableOpacity>
-                        </View>
-                        <LocationSelector />
+            }/>
+            <BottomSheet
+                visible={changeLocationModal}
+                onBackButtonPress={() => {setChangeLocationModal(false)}}
+                onBackdropPress={() => {setChangeLocationModal(false)}}
+            >
+                <View style={styles.changeLocRoot}>
+                    <View style={styles.changeLocHeader}>
+                        <TouchableOpacity onPress={() => setChangeLocationModal(false)}>
+                            <CloseIcon color={'#fff'} dim={35}/>
+                        </TouchableOpacity>
                     </View>
-                </BottomSheet>
-            </View>
+                    <LocationSelector />
+                </View>
+            </BottomSheet>
             <View style={styles.mapContainer}>
                 <MapView style={styles.map} initialRegion={{
                     latitude: 46.498151497897666,

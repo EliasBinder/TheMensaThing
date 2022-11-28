@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React, {useEffect, useRef} from 'react';
+import {Animated, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import ProfileIcon from "../assets/images/profile";
@@ -8,6 +8,7 @@ import {BarOccupation} from "../components/DashboardScreen/BarOccupation";
 import {Suggestion} from "../components/DashboardScreen/Suggestion";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {LoginScreen} from "./LoginScreen";
+import {Header} from "../components/Header";
 
 const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
@@ -16,12 +17,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={globalStyles.container}>
-                <View style={styles.title}>
-                    <Text style={globalStyles.header1}>Dashboard</Text>
-                    <View style={styles.imgContainer}>
-                        <ProfileIcon color={'#fff'}  dim={48}/>
-                    </View>
-                </View>
+                <Header title={"Dashboard"} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
                 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                     <View style={styles.cardRow}>
                         <MensaOccupation/>
@@ -57,7 +53,6 @@ export const styles = StyleSheet.create({
     scrollViewInner: {
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingTop: scale(30),
         paddingBottom: scale(30),
         alignSelf: "stretch"
     },
@@ -99,28 +94,6 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: '100%'
-    },
-    title: {
-        paddingVertical: 10,
-        paddingHorizontal: 26,
-        marginTop: 15,
-        backgroundColor: globalColors.primary,
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "flex-start",
-        width: '100%',
-    },
-    imgContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: globalColors.secondary,
-        borderRadius: 15,
-        width: 60,
-        maxWidth: 60,
-        height: 60,
-        maxHeight: 60,
-        marginLeft: 'auto',
     }
 });
 

@@ -3,6 +3,8 @@ import React from "react";
 import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {List} from "../components/List";
+import {Header} from "../components/Header";
+import InfoIcon from "../assets/images/info";
 
 const createListItem = (iconName: string, text: string) => {
     return (
@@ -35,9 +37,7 @@ export function InformationScreen() {
 
     return (
         <View style={globalStyles.container}>
-                <View style={styles.title}>
-                    <Text style={globalStyles.header1}>Information</Text>
-                </View>
+                <Header title={'Information'}/>
                 <ScrollView style={styles.scrollView} contentContainerStyle={ {
                     alignItems: 'center',
                     justifyContent: 'center'

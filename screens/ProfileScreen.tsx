@@ -10,6 +10,7 @@ import {EatingHabitsScreen} from "./ProfileScreen/EatingHabitsScreen";
 import {LocationScreen} from "./ProfileScreen/LocationScreen";
 import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
 import {LoginScreen} from "./LoginScreen";
+import {Header} from "../components/Header";
 
 export function ProfileScreen() {
 
@@ -20,12 +21,7 @@ export function ProfileScreen() {
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
-                <View style={styles.title}>
-                    <Text style={globalStyles.header1}>Profile</Text>
-                    <View style={styles.imgContainer}>
-                        <ProfileIcon color={'#fff'}  dim={48}/>
-                    </View>
-                </View>
+                <Header title={'Profile'} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
                 {loggedIn ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn navigation={navigation} route={route}/>}
             </View>
         )

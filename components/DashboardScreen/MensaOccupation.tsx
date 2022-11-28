@@ -16,6 +16,7 @@ export function MensaOccupation() {
                 <TouchableOpacity style={{marginLeft: 'auto'}}>
                     <TuneIcon color={"#E6E6E6"} dim={25}/>
                 </TouchableOpacity>}
+            index={0}
         >
             <View style={styles.cardSection}>
                 <Text style={styles.cardText}>Occupation in Bolzano</Text>
