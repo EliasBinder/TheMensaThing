@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React, {useEffect, useRef} from 'react';
+import {Animated, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import ProfileIcon from "../assets/images/profile";
@@ -13,11 +13,25 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
 
     const Stack = createNativeStackNavigator()
 
+    const topbarAddAnim = useRef(new Animated.Value(0)).current;
+
+    //Add animation
+    React.useEffect(() => {
+        Animated.timing(
+            topbarAddAnim,
+            {
+                useNativeDriver: false,
+                toValue: 1,
+                duration: 500,
+            }
+        ).start()
+    }, [topbarAddAnim]);
+
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={globalStyles.container}>
                 <View style={styles.title}>
-                    <Text style={globalStyles.header1}>Dashboard</Text>
+                    <Animated.Text style={[globalStyles.header1, {opacity: topbarAddAnim}]}>Dashboard</Animated.Text>
                     <View style={styles.imgContainer}>
                         <ProfileIcon color={'#fff'}  dim={48}/>
                     </View>

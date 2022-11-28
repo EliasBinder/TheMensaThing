@@ -10,6 +10,16 @@ export function BigButton({text, onPress, style}: {text: string, onPress: () => 
     )
 }
 
+const calcForegroundColor = (backgroundColor: string) => {
+    const color = backgroundColor.substring(4, backgroundColor.length - 1)
+        .replace(/ /g, '')
+        .split(',');
+    const r = parseInt(color[0]);
+    const g = parseInt(color[1]);
+    const b = parseInt(color[2]);
+    return (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? "#000" : "#fff";
+}
+
 const styles = StyleSheet.create({
     button: {
         backgroundColor: globalColors.accent,
@@ -20,7 +30,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonText: {
-        color: '#FFFFFF',
+        color: calcForegroundColor(globalColors.accent),
         fontFamily: 'Poppins',
         fontSize: scale(30),
         textAlign: 'center',
