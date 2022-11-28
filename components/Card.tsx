@@ -1,10 +1,26 @@
 import {globalStyles} from "../util/StyleUtil";
-import {Text, View, StyleSheet} from "react-native";
-import React from "react";
+import {Text, View, StyleSheet, Animated} from "react-native";
+import React, {useEffect, useRef} from "react";
 
-export function Card({title, icon, interaction, children}:{title: string, icon: any, interaction?: any, children: any}) {
+export function Card({title, icon, interaction, index, children}:{title: string, icon: any, interaction?: any, index?: number, children: any}) {
+
+    const addAnim = useRef(new Animated.Value(50)).current;
+
+    //Add animation
+    useEffect(() => {
+        Animated.timing(
+            addAnim,
+            {
+                useNativeDriver: false,
+                toValue: 0,
+                duration: 400,
+                delay: index ? index * 200 : 0
+            }
+        ).start()
+    }, [addAnim])
+
     return (
-        <View style={[globalStyles.box, styles.box]}>
+        <Animated.View style={[globalStyles.box, styles.box, {marginTop: addAnim}]}>
             <View style={styles.topBar}>
                 {icon ? icon : <></>}
                 <Text style={[styles.title, {marginLeft: icon ? 20 : 0}]}>{title}</Text>
@@ -13,7 +29,7 @@ export function Card({title, icon, interaction, children}:{title: string, icon: 
             <View style={styles.content}>
                 {children}
             </View>
-        </View>
+        </Animated.View>
     )
 }
 
