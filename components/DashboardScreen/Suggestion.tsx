@@ -14,6 +14,7 @@ export function Suggestion({auth, navigation}: {auth: AuthUtilType|null, navigat
         <Card
             title={"Suggestion"}
             icon={<PinIcon color={"#E6E6E6"} dim={25}/>}
+            index={2}
         >
             <View style={styles.cardSection}>
                 { auth != null ?
