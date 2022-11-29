@@ -425,5 +425,9 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm,visualstudiocode,intellij,phpstorm,node
 
-package-lock.json
 /.idea/
+/.expo/settings.json
+
+webpack.config.js
+/android/
+/ios/

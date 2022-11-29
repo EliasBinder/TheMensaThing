@@ -1,4 +1,5 @@
 import {StatusBar, StyleSheet} from "react-native";
+import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 
 export const globalColors = {
     primary: '#040F21',
@@ -6,6 +7,12 @@ export const globalColors = {
     tertiary: '#0E3067',
     accent: '#28D5B4',
 }
+
+export const Icon = createIconSetFromIcoMoon(
+    require('../assets/icons/selection.json'),
+    'IcoMoon',
+    'icomoon.ttf'
+);
 
 export const globalStyles = StyleSheet.create({
     safeAreaView: {
