@@ -19,13 +19,7 @@ export function List({items}: {items: any[]}) {
     // });
 
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-50)).current);
-    const [itemAnimationNegativeRefs, setItemAnimationNegativeRefs] = useState(items.map(() => 50));
-    itemAnimationRefs.forEach((ref, index) => {
-        ref.addListener(({value}) => {
-            itemAnimationNegativeRefs[index] = -value;
-            setItemAnimationNegativeRefs(itemAnimationNegativeRefs);
-        })
-    })
+    const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(50)).current);
 
     const itemAnimations = items.map((item, index) => {
         return Animated.timing(
@@ -38,12 +32,21 @@ export function List({items}: {items: any[]}) {
             }
         )
     })
+    const itemNegativeAnimations = items.map((item, index) => {
+        return Animated.timing(
+            itemAnimationNegativeRefs[index],
+            {
+                useNativeDriver: false,
+                toValue: 0,
+                duration: 250,
+                delay: 100 * index,
+            }
+        )
+    })
 
     useEffect(() => {
-        itemAnimations.forEach((animation) => {
-            animation.start()
-        })
-    }, [itemAnimations])
+        Animated.parallel([...itemAnimations, ...itemNegativeAnimations]).start();
+    }, [itemAnimations, itemNegativeAnimations])
 
     return (
         <ScrollView>
