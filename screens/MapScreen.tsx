@@ -44,7 +44,7 @@ export function MapScreen() {
                     longitude: 11.350881422863015,
                     latitudeDelta: LATITUDE_DELTA,
                     longitudeDelta: LONGITUDE_DELTA
-                }} zoomEnabled={true} provider={"google"}>
+                }} zoomEnabled={false} provider={"google"}>
                 </MapView>
             </View>
         </View>
@@ -71,15 +71,8 @@ const styles = StyleSheet.create({
     },
     tuneContainer: {
         flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: globalColors.secondary,
-            borderRadius: 15,
-            width: 50,
-            maxWidth: 50,
-            height: 50,
-            maxHeight: 50,
-            marginLeft: 'auto',
+        justifyContent: "center",
+        alignItems: "center",
     },
     mapContainer: {
         flex: 1,
