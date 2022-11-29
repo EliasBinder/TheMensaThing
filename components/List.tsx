@@ -18,8 +18,8 @@ export function List({items}: {items: any[]}) {
     //     setListItemNegativeAnim(-value)
     // });
 
-    const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-50)).current);
-    const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(50)).current);
+    const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
+    const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
 
     const itemAnimations = items.map((item, index) => {
         return Animated.timing(
