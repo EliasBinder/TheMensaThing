@@ -12,9 +12,10 @@ import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
 import {LoginScreen} from "./LoginScreen";
 import {Header} from "../components/Header";
 
+
 export function ProfileScreen() {
 
-    const loggedIn = true;
+    const loggedIn = false;
 
     const Stack = createNativeStackNavigator()
 
