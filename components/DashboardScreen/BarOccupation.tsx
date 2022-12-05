@@ -33,7 +33,7 @@ export function BarOccupation() {
     )
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     cardSection: {
         width: '100%',
         flexDirection: "column",

@@ -1,33 +1,37 @@
 import React from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from "react-native";
-import {globalStyles} from "../util/StyleUtil";
-import {styles} from "./DashboardScreen";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from "react-native";
+import {globalColors, globalStyles} from "../util/StyleUtil";
+import {styles} from "../screens/DashboardScreen";
 import {Card} from "../components/Card";
-import TuneIcon from "../assets/images/tune";
-import MenuIcon from "../assets/images/menu";
+import Icon from "../assets/images/fork&knife";
+import {MenuPrimi} from "../components/MenuScreen/MenuPrimi";
+import {MenuSecondi} from "../components/MenuScreen/MenuSecondi";
 
 export function MenuScreen(){
     return (
         <View style={globalStyles.container}>
+            <View style={styles.title}>
+                <Text style={globalStyles.header1}>Today's Menu</Text>
+                <View style={styles.imgContainer}>
+                    <Icon color={'#ffffff'}/>
+                </View>
+            </View>    
+
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                 <View style={styles.cardRow}>
-                    <Card
-                        title={"Today's Menu"}
-                        icon={<MenuIcon color={'#fff'}/>}
-                        interaction={
-                        <TouchableOpacity style={{marginLeft: 'auto'}}>
-                            <TuneIcon color={"#E6E6E6"} dim={25}/>
-                        </TouchableOpacity>}
-                    >
-                        <View style={styles.cardSection}>
-                            <Text style={styles.cardText}>Main Couse</Text>
-                        </View>
-                        <View style={styles.cardSection}>
-                            <Text style={styles.cardText}>Second Course</Text>
-                        </View>
-                    </Card>
+                    <MenuPrimi/>
                 </View>
+                <View style={[styles.cardRow, {marginTop: 20}]}>
+                    <MenuSecondi/>
+                </View>         
             </ScrollView>
         </View>
     )
 }
+
+const menu = StyleSheet.create({
+    icon: {
+        dim: 25,
+        height: 'auto',
+    },
+});
