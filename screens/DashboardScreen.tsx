@@ -26,7 +26,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
                         <BarOccupation/>
                     </View>
                     <View style={[styles.cardRow, {marginTop: 20}]}>
-                        <Suggestion auth={route.params.auth} navigation={navigation}/>
+                        <Suggestion navigation={navigation}/>
                     </View>
                 </ScrollView>
             </View>

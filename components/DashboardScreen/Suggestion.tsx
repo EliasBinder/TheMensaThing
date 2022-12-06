@@ -6,10 +6,9 @@ import {Icon} from "../../util/StyleUtil";
 import {Card} from "../Card";
 import React from "react";
 import {scale} from "../../util/ScaleUtil";
-import {AuthUtilType} from "../../util/AuthUtil";
 import {BigButton} from "../BigButton";
 
-export function Suggestion({auth, navigation}: {auth: AuthUtilType|null, navigation: any}) {
+export function Suggestion({navigation}: {navigation: any}) {
     return (
         <Card
             title={"Suggestion"}
@@ -17,7 +16,7 @@ export function Suggestion({auth, navigation}: {auth: AuthUtilType|null, navigat
             index={2}
         >
             <View style={styles.cardSection}>
-                { auth != null ?
+                { 4 != null ? //TODO implement suggestion
                     (
                         <Text style={styles.cardText}>Suggestion goes here</Text>
                     ) : (

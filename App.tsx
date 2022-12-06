@@ -9,12 +9,8 @@ import DashboardScreen from "./screens/DashboardScreen";
 import BottomNavScreen from "./screens/BottomNavScreen";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 
-import {AuthUtil, AuthUtilType} from "./util/AuthUtil";
-
 
 export default function App() {
-
-  const [auth, setAuth] = React.useState(null as (AuthUtilType | null));
 
   const [loaded] = useFonts({
     Poppins_BlackItalic: require('./assets/fonts/Poppins-BlackItalic.ttf'),
@@ -47,7 +43,7 @@ export default function App() {
       <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={"Welcome"} component={WelcomeScreen} />
-            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} initialParams={{auth, setAuth}}/>
+            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} />
           </Stack.Navigator>
       </NavigationContainer>
   )
