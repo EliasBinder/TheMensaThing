@@ -1,5 +1,5 @@
-import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import React, {useState} from "react";
+import {Animated, Dimensions, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React, {useEffect, useState} from "react";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import MapView from 'react-native-maps';
 import TuneIcon from "../assets/images/tune";
@@ -7,6 +7,8 @@ import { BottomSheet } from 'react-native-btr';
 import CloseIcon from "../assets/images/close";
 import {LocationSelector} from "../components/LocationSelector";
 import {Header} from "../components/Header";
+import {LocationSelectorSheet} from "../components/LocationSelectorSheet";
+import LegacyRef = Animated.LegacyRef;
 const { height, width } = Dimensions.get( 'window' );
 
 
@@ -17,6 +19,39 @@ export function MapScreen() {
     const LATITUDE_DELTA = 0.0007;
     const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 
+    const mapRef = React.createRef<MapView>();
+
+    const [region, setRegion] = useState('BZ');
+
+    useEffect(() => {
+        let targetLongitude = 11.350881422863015;
+        let targetLatitude = 46.498151497897666;
+        let delta = 0.0007;
+        switch (region) {
+            case 'BZ':
+                targetLongitude = 11.350881422863015;
+                targetLatitude = 46.498151497897666;
+                delta = 0.0007;
+                break;
+            case 'BX':
+                targetLongitude = 11.6534885;
+                targetLatitude = 46.715127;
+                delta = 0.0014;
+                break;
+            case 'BK':
+                targetLongitude = 11.343750000000002;
+                targetLatitude = 46.49999999999999;
+                break;
+        }
+        mapRef.current?.animateToRegion({
+            latitude: targetLatitude,
+            longitude: targetLongitude,
+            latitudeDelta: delta,
+            longitudeDelta: delta * (width / height)
+        })
+        setChangeLocationModal(false)
+    }, [region]);
+
     return (
         <View style={[globalStyles.container, styles.root]}>
             <Header title={'Map'} icon={
@@ -24,27 +59,14 @@ export function MapScreen() {
                     <TuneIcon color={'#fff'} dim={30}/>
                 </TouchableOpacity>
             }/>
-            <BottomSheet
-                visible={changeLocationModal}
-                onBackButtonPress={() => {setChangeLocationModal(false)}}
-                onBackdropPress={() => {setChangeLocationModal(false)}}
-            >
-                <View style={styles.changeLocRoot}>
-                    <View style={styles.changeLocHeader}>
-                        <TouchableOpacity onPress={() => setChangeLocationModal(false)}>
-                            <CloseIcon color={'#fff'} dim={35}/>
-                        </TouchableOpacity>
-                    </View>
-                    <LocationSelector />
-                </View>
-            </BottomSheet>
+            <LocationSelectorSheet visible={changeLocationModal} setVisible={setChangeLocationModal} location={region} setLocation={setRegion}/>
             <View style={styles.mapContainer}>
                 <MapView style={styles.map} initialRegion={{
                     latitude: 46.498151497897666,
                     longitude: 11.350881422863015,
                     latitudeDelta: LATITUDE_DELTA,
                     longitudeDelta: LONGITUDE_DELTA
-                }} zoomEnabled={false} provider={"google"}>
+                }} zoomEnabled={false} provider={"google"} ref={mapRef} scrollEnabled={false}>
                 </MapView>
             </View>
         </View>
@@ -85,24 +107,6 @@ const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-        backgroundColor: globalColors.primary
-    },
-    changeLocRoot: {
-        flexDirection: 'column',
-        justifyContent: "flex-start",
-        alignItems: "center",
-        height: 350,
-        backgroundColor: globalColors.primary
-    },
-    changeLocHeader: {
-        flexDirection: 'row',
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        paddingTop: 25,
-        paddingRight: 25,
-        paddingLeft: 25,
-        paddingBottom: 5,
-        width: '100%',
         backgroundColor: globalColors.primary
     }
 });
