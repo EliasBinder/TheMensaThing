@@ -1,10 +1,10 @@
 import React, {Component, useEffect} from "react";
 import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {StatusBar} from "expo-status-bar";
 import {BigButton} from "../components/BigButton";
 import {globalColors, globalStyles} from "../util/StyleUtil";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
@@ -18,7 +18,7 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
                 AsyncStorage.setItem('isFirstTime', 'false');
                 setIsFirstTime(true);
             } else {
-                setIsFirstTime(true); //TODO set false
+                setIsFirstTime(false);
             }
         });
     });

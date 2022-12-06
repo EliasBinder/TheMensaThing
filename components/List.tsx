@@ -11,13 +11,6 @@ const createDivider = () => {
 
 export function List({items}: {items: any[]}) {
 
-    // const listItemAnim = useRef(new Animated.Value(-50)).current;
-    // const [listItemNegativeAnim, setListItemNegativeAnim] = useState(-50);
-    //
-    // listItemAnim.addListener(({value}) => {
-    //     setListItemNegativeAnim(-value)
-    // });
-
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
     const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
 
@@ -51,18 +44,18 @@ export function List({items}: {items: any[]}) {
     return (
         <ScrollView>
             <View style={styles.listContainer}>
-                {items.map((item, index) => {
+                {items.map((item, index, array) => {
                     //add key to each item
                     return (
-                        <>
-                            <Animated.View key={index} style={{
+                        <View key={index}>
+                            <Animated.View style={{
                                 marginLeft: itemAnimationRefs[index],
                                 marginRight: itemAnimationNegativeRefs[index]
                             }}>
                                 {item}
                             </Animated.View>
                             {index !== items.length - 1 && createDivider()}
-                        </>
+                        </View>
                     )
                 })}
             </View>
