@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: "flex-start",
         alignItems: "center",
-        height: 350,
+        height: 310,
         backgroundColor: globalColors.primary
     },
     changeLocHeader: {

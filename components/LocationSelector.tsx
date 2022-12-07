@@ -22,8 +22,7 @@ export function LocationSelector({location, setLocation}: {location: string, set
 
     const listItems = [
         createListItem({text: 'Bolzano', id: 'BZ', checked: location, setChecked: setLocation}),
-        createListItem({text: 'Bressanone', id: 'BX', checked: location, setChecked: setLocation}),
-        createListItem({text: 'Brunico', id: 'BK', checked: location, setChecked: setLocation}),
+        createListItem({text: 'Bressanone', id: 'BX', checked: location, setChecked: setLocation})
     ]
 
     return (

@@ -21,7 +21,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.eliasbinder.TheMensaThing",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "config": {
+        "googleMapsApiKey": "AIzaSyBxbPyWEfj8HjT9esYIyU8UbvkZYdC_5_A"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +32,12 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.eliasbinder.TheMensaThing",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCIOpTPaMRkQjwcxQYflq30rAQcejXn4Os"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

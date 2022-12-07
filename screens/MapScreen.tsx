@@ -1,7 +1,7 @@
-import {Animated, Dimensions, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Animated, Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import MapView from 'react-native-maps';
+import MapView, {PROVIDER_DEFAULT, PROVIDER_GOOGLE} from 'react-native-maps';
 import TuneIcon from "../assets/images/tune";
 import { BottomSheet } from 'react-native-btr';
 import CloseIcon from "../assets/images/close";
@@ -16,31 +16,31 @@ export function MapScreen() {
 
     const [changeLocationModal, setChangeLocationModal] = useState(false);
 
-    const LATITUDE_DELTA = 0.0007;
-    const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
+    const initialRegion = {
+        latitude: 46.4981567,
+        longitude: 11.3507305,
+        latitudeDelta: 0.0009,
+        longitudeDelta: 0.0009 * (width / height),
+    }
 
     const mapRef = React.createRef<MapView>();
 
     const [region, setRegion] = useState('BZ');
 
     useEffect(() => {
-        let targetLongitude = 11.350881422863015;
-        let targetLatitude = 46.498151497897666;
-        let delta = 0.0007;
+        let targetLongitude = 0;
+        let targetLatitude = 0;
+        let delta = 0;
         switch (region) {
             case 'BZ':
-                targetLongitude = 11.350881422863015;
-                targetLatitude = 46.498151497897666;
-                delta = 0.0007;
+                targetLongitude = initialRegion.longitude;
+                targetLatitude = initialRegion.latitude;
+                delta = initialRegion.latitudeDelta;
                 break;
             case 'BX':
                 targetLongitude = 11.6534885;
                 targetLatitude = 46.715127;
                 delta = 0.0014;
-                break;
-            case 'BK':
-                targetLongitude = 11.343750000000002;
-                targetLatitude = 46.49999999999999;
                 break;
         }
         mapRef.current?.animateToRegion({
@@ -61,12 +61,7 @@ export function MapScreen() {
             }/>
             <LocationSelectorSheet visible={changeLocationModal} setVisible={setChangeLocationModal} location={region} setLocation={setRegion}/>
             <View style={styles.mapContainer}>
-                <MapView style={styles.map} initialRegion={{
-                    latitude: 46.498151497897666,
-                    longitude: 11.350881422863015,
-                    latitudeDelta: LATITUDE_DELTA,
-                    longitudeDelta: LONGITUDE_DELTA
-                }} zoomEnabled={false} provider={"google"} ref={mapRef} scrollEnabled={false}>
+                <MapView style={styles.map} initialRegion={initialRegion} zoomEnabled={false} provider={PROVIDER_GOOGLE} ref={mapRef} scrollEnabled={false}>
                 </MapView>
             </View>
         </View>
