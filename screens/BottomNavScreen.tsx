@@ -107,26 +107,29 @@ const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => 
     const Tab = createBottomTabNavigator();
 
     return (
-        <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
-            <StatusBar backgroundColor={globalColors.secondary} style={"light"}/>
-            <Tab.Navigator
-                initialRouteName={"Dashboard"}
-                screenOptions={{headerShown: false, unmountOnBlur: true}}
-                tabBar={props => <CustomTabBar {...props} />}
-            >
-                <Tab.Screen name="Menu" component={MenuScreen}/>
-                <Tab.Screen name="Information" component={InformationScreen}/>
-                <Tab.Screen name="Dashboard" component={DashboardScreen} initialParams={route.params}/>
-                <Tab.Screen name="Map" component={MapScreen} />
-                <Tab.Screen name="Profile" component={ProfileScreen} initialParams={route.params} />
-            </Tab.Navigator>
-        </SafeAreaView>
+        <>
+            <SafeAreaView style={{backgroundColor: globalColors.primary}} />
+            <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
+                <StatusBar backgroundColor={globalColors.secondary} style={"light"}/>
+                <Tab.Navigator
+                    initialRouteName={"Dashboard"}
+                    screenOptions={{headerShown: false, unmountOnBlur: true}}
+                    tabBar={props => <CustomTabBar {...props} />}
+                >
+                    <Tab.Screen name="Menu" component={MenuScreen} />
+                    <Tab.Screen name="Information" component={InformationScreen} />
+                    <Tab.Screen name="Dashboard" component={DashboardScreen} />
+                    <Tab.Screen name="Map" component={MapScreen} />
+                    <Tab.Screen name="Profile" component={ProfileScreen} />
+                </Tab.Navigator>
+            </SafeAreaView>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: globalColors.primary,
+        backgroundColor: globalColors.secondary,
         flex: 1
     },
     tabBar: {
@@ -154,8 +157,8 @@ const styles = StyleSheet.create({
     center: {
         borderRadius: 100,
         backgroundColor: globalColors.tertiary,
-        width: 60,
-        height: 60,
+        width: 65,
+        height: 65,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',

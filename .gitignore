@@ -431,3 +431,4 @@ dist
 webpack.config.js
 /android/
 /ios/
+/macos/

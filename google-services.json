@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "149619072455",
+    "project_id": "unibz-mensapp",
+    "storage_bucket": "unibz-mensapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149619072455:android:c63635356b25fcaa1a8de2",
+        "android_client_info": {
+          "package_name": "com.eliasbinder.TheMensaThing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149619072455-02qpk9sg3h3trp5tbn67f5pg8fspn6ii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHbTwh9pw66aWoZeHn49G2XgJFKc1zSvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149619072455-02qpk9sg3h3trp5tbn67f5pg8fspn6ii.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "149619072455-u1ciq73704qeekn30sb1kg4oh1cfld77.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eliasbinder.TheMensaThing"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149619072455:android:56dc159db303ce3e1a8de2",
+        "android_client_info": {
+          "package_name": "com.themensathing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149619072455-02qpk9sg3h3trp5tbn67f5pg8fspn6ii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHbTwh9pw66aWoZeHn49G2XgJFKc1zSvM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149619072455-02qpk9sg3h3trp5tbn67f5pg8fspn6ii.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "149619072455-u1ciq73704qeekn30sb1kg4oh1cfld77.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eliasbinder.TheMensaThing"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
