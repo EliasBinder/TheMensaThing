@@ -1,11 +1,18 @@
-import {View, StyleSheet, Text, TextInput, ScrollView} from "react-native";
-import {globalColors, globalStyles} from "../util/StyleUtil";
+import {View, StyleSheet} from "react-native";
 import StackNavigationHeader from "../components/StackNavigationHeader";
 // @ts-ignore //TODO: fix this
-import {AzureLoginView} from '@shedaltd/react-native-azure-ad-2';
+import {AzureLoginView} from '../TheMensaThingAzureLogin/lib/index';
 import {AZURE_INSTANCE} from "../util/AuthUtil";
+import {useEffect} from "react";
+
+
 
 export function LoginScreen({navigation, route}:{navigation: any, route: any}) {
+
+    // @ts-ignore
+    useEffect(() => {
+
+    }, [])
 
     return (
         <>
@@ -20,7 +27,21 @@ export function LoginScreen({navigation, route}:{navigation: any, route: any}) {
                 <AzureLoginView
                     azureInstance={AZURE_INSTANCE}
                     loadingMessage="Requesting access token"
-                    onSuccess={() => navigation.goBack()}
+                    onSuccess={() => {
+                        console.log("Logged In!")
+                        AZURE_INSTANCE.getMoney().then((result: any) => {
+                            console.log("Money: " + JSON.stringify(result));
+                        }).catch((error: any) => {
+                            console.log("Error: " + JSON.stringify(error));
+                        })
+                        // AZURE_INSTANCE.getUserInfo().then((result: any) => {
+                        //     console.log("ScientificGraphAPI: " + JSON.stringify(result));
+                        //
+                        // }).catch((err: any) => {
+                        //     console.log(err);
+                        // })
+                        navigation.goBack()
+                    }}
                     onCancel={() => navigation.goBack()}
                     onError={() => console.log("Error")}
                     style={{

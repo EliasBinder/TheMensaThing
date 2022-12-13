@@ -1,11 +1,10 @@
 // @ts-ignore //TODO: fix this
-import {AzureInstance} from '@shedaltd/react-native-azure-ad-2';
+import {AzureInstance} from '../TheMensaThingAzureLogin/lib/index';
 
 const AZURE_CREDENTIALS = {
-    client_id: '6d082866-1528-4b93-a663-04de0d1e7b45',
-    client_secret: '5029e8f0-cc4e-49b5-8417-d93e1f665a12',
-    redirect_uri: 'https://login.microsoftonline.com/common/oauth2/nativeclient',
-    scope: 'User.ReadBasic.All Mail.Read offline_access'
+    tenant_id: '92513267-03e3-401a-80d4-c58ed6674e3b',
+    client_id: '9ad3f70e-413d-424e-85f3-1b463ba702f8',
+    scope: 'https://scientificnet.onmicrosoft.com/CockpitMobileTest/user_impersonation'
 }
 
 export const AZURE_INSTANCE = new AzureInstance(AZURE_CREDENTIALS);

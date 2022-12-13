@@ -20,7 +20,7 @@ import DashboardIcon from "../assets/images/dashboard";
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
         <>
-            <View style={{height: 12.5, width: 1000, backgroundColor: globalColors.primary}}></View>
+            <View style={{height: 12.5, width: '100%', backgroundColor: globalColors.primary}}></View>
             <View style={styles.tabBar}>
                 {state.routes.map((route: { key: string | number; name: any; }, index: any) => {
                     const { options } = descriptors[route.key];
