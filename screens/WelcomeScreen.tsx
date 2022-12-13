@@ -10,21 +10,15 @@ const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
 const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
-    const [isFirstTime, setIsFirstTime] = React.useState(true);
-
     useEffect(() => {
         AsyncStorage.getItem('isFirstTime').then((value: string | null) => {
             if (value === null) {
                 AsyncStorage.setItem('isFirstTime', 'false');
-                setIsFirstTime(true);
             } else {
-                setIsFirstTime(false);
+                navigation.navigate('BottomNav');
             }
         });
-    });
-
-    if (!isFirstTime)
-        navigation.navigate('BottomNav');
+    }, [navigation]);
 
     // @ts-ignore
     return (

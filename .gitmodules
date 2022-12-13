@@ -1,0 +1,3 @@
+[submodule "TheMensaThingAzureLogin"]
+	path = TheMensaThingAzureLogin
+	url = https://github.com/EliasBinder/TheMensaThingAzureLogin.git
