@@ -19,13 +19,23 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.eliasbinder.TheMensaThing"
+      "bundleIdentifier": "com.eliasbinder.TheMensaThing",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "permissions": [
+          "ACCESS_BACKGROUND_LOCATION",
+          "ACCESS_FINE_LOCATION"
+      ],
       "package": "com.eliasbinder.TheMensaThing"
     },
     "web": {

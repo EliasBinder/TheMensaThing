@@ -1,17 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import { useFonts } from 'expo-font';
-import WelcomeScreen from "./screens/WelcomeScreen";
-import React from 'react';
-import {NavigationContainer} from "@react-navigation/native";
-import createStackNavigator, {createNativeStackNavigator} from "@react-navigation/native-stack";
-import DashboardScreen from "./screens/DashboardScreen";
-import BottomNavScreen from "./screens/BottomNavScreen";
-import {createIconSetFromIcoMoon} from "@expo/vector-icons";
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {useFonts} from 'expo-font';
+import React, {useEffect, useState} from 'react';
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, User, OAuthProvider } from 'firebase/auth';
-import {AuthUtil, AuthUtilType} from "./util/AuthUtil";
+import {initializeApp} from 'firebase/app';
+import {getAuth, OAuthProvider} from 'firebase/auth';
+import {AuthUtilType} from "./util/AuthUtil";
+import * as Location from 'expo-location';
+import {GeofencingEventType, LocationGeofencingRegionState} from 'expo-location';
+import * as TaskManager from 'expo-task-manager';
+import WelcomeScreen from "./screens/WelcomeScreen";
+import BottomNavScreen from "./screens/BottomNavScreen";
+import { NavigationContainer } from '@react-navigation/native';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBfipLKf2Zo4KZ8D_6GsHdzslsaZB2gPNE",
@@ -28,10 +28,81 @@ firebaseAuthProvider.setCustomParameters({
 });
 const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAuth = getAuth();
+const LOCATION_TASK = 'location-task';
+const LOCATION_TASK_FENCING = 'geofencing-location-task';
 
+// @ts-ignore
+TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
+    if (error) {
+        console.log("error: " + error);
+        return;
+    }
+    if (eventType === GeofencingEventType.Enter) {
+        console.log("You've entered region:" + JSON.stringify(region));
+        /*fetch('https://api.github.com/users/defunkt', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({
+                user: 'test@unibz.it', //auth.username,
+                entered: true,
+                inLocation: region.identifier,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //Showing response message coming from server
+                console.warn(responseJson);
+            })
+            .catch((error) => {
+                //display error message
+                console.warn(error);
+            });*/
+    } else if (eventType === GeofencingEventType.Exit) {
+        console.log("You've left region:" + JSON.stringify(region));
+        /*fetch('https://api.github.com/users/defunkt', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({
+                user: 'test@unibz.it', //auth.username,
+                entered: false,
+                inLocation: region.identifier,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //Showing response message coming from server
+                console.warn(responseJson);
+            })
+            .catch((error) => {
+                //display error message
+                console.warn(error);
+            });*/
+    } else{
+        console.log('none of the events triggered' + JSON.stringify(region));
+    }
+});
+
+// @ts-ignore
+TaskManager.defineTask(LOCATION_TASK, ({ data: { locations }, error }) => {
+    if (error) {
+        console.log("error: " + error);
+        return;
+    }
+    if(locations){
+        console.log("New regions: " + JSON.stringify(locations));
+        console.log(locations);
+    }
+});
 
 export default function App() {
-
   const [auth, setAuth] = React.useState(null as (AuthUtilType | null));
 
   const [loaded] = useFonts({
@@ -70,4 +141,3 @@ export default function App() {
       </NavigationContainer>
   )
 }
-
