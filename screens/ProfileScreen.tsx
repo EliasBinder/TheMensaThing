@@ -11,11 +11,10 @@ import {LocationScreen} from "./ProfileScreen/LocationScreen";
 import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
 import {LoginScreen} from "./LoginScreen";
 import {Header} from "../components/Header";
+import {AZURE_INSTANCE} from "../util/AuthUtil";
 
 
 export function ProfileScreen() {
-
-    const loggedIn = false;
 
     const Stack = createNativeStackNavigator()
 
@@ -23,7 +22,7 @@ export function ProfileScreen() {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Profile'} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
-                {loggedIn ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn navigation={navigation} route={route}/>}
+                {AZURE_INSTANCE.isLoggedIn() ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn navigation={navigation} route={route}/>}
             </View>
         )
     }
