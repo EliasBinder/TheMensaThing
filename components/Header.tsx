@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
         height: 60,
         maxHeight: 60,
         marginLeft: 'auto',
+        overflow: 'hidden'
     }
 })

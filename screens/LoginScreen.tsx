@@ -9,11 +9,6 @@ import {useEffect} from "react";
 
 export function LoginScreen({navigation, route}:{navigation: any, route: any}) {
 
-    // @ts-ignore
-    useEffect(() => {
-
-    }, [])
-
     return (
         <>
             <StackNavigationHeader title={"Login"} navigation={navigation} route={route}/>
@@ -28,18 +23,6 @@ export function LoginScreen({navigation, route}:{navigation: any, route: any}) {
                     azureInstance={AZURE_INSTANCE}
                     loadingMessage="Requesting access token"
                     onSuccess={() => {
-                        console.log("Logged In!")
-                        AZURE_INSTANCE.getMoney().then((result: any) => {
-                            console.log("Money: " + JSON.stringify(result));
-                        }).catch((error: any) => {
-                            console.log("Error: " + JSON.stringify(error));
-                        })
-                        // AZURE_INSTANCE.getUserInfo().then((result: any) => {
-                        //     console.log("ScientificGraphAPI: " + JSON.stringify(result));
-                        //
-                        // }).catch((err: any) => {
-                        //     console.log(err);
-                        // })
                         navigation.goBack()
                     }}
                     onCancel={() => navigation.goBack()}
