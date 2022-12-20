@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
 import {initializeApp} from 'firebase/app';
 import {getAuth, OAuthProvider} from 'firebase/auth';
-import {AuthUtilType} from "./util/AuthUtil";
+import {AuthUtil, AuthUtilType} from "./util/AuthUtil";
 import * as Location from 'expo-location';
 import {GeofencingEventType, LocationGeofencingRegionState} from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
@@ -31,76 +31,130 @@ const firebaseAuth = getAuth();
 const LOCATION_TASK = 'location-task';
 const LOCATION_TASK_FENCING = 'geofencing-location-task';
 
-// @ts-ignore
-TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
-    if (error) {
-        console.log("error: " + error);
-        return;
-    }
-    if (eventType === GeofencingEventType.Enter) {
-        console.log("You've entered region:" + JSON.stringify(region));
-        /*fetch('https://api.github.com/users/defunkt', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
+if(TaskManager.isTaskDefined(LOCATION_TASK_FENCING)){
+    console.log("redefine task");
+    TaskManager.unregisterTaskAsync(LOCATION_TASK_FENCING).then(r => {
+        console.log("unregistered task", r);
+        // @ts-ignore
+        TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
+            if (error) {
+                console.log("error: " + error);
+                return;
+            }
+            if (eventType === GeofencingEventType.Enter) {
+                console.log("You entered region:" + JSON.stringify(region));
+                /*fetch('https://api.github.com/users/defunkt', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
 
-            body: JSON.stringify({
-                user: 'test@unibz.it', //auth.username,
-                entered: true,
-                inLocation: region.identifier,
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                //Showing response message coming from server
-                console.warn(responseJson);
+                    body: JSON.stringify({
+                        user: 'test@unibz.it', //auth.username,
+                        entered: true,
+                        inLocation: region.identifier,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        //Showing response message coming from server
+                        console.warn(responseJson);
+                    })
+                    .catch((error) => {
+                        //display error message
+                        console.warn(error);
+                    });*/
+            } else if (eventType === GeofencingEventType.Exit) {
+                console.log("You left region:" + JSON.stringify(region));
+                /*fetch('https://api.github.com/users/defunkt', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+
+                    body: JSON.stringify({
+                        user: 'test@unibz.it', //auth.username,
+                        entered: false,
+                        inLocation: region.identifier,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        //Showing response message coming from server
+                        console.warn(responseJson);
+                    })
+                    .catch((error) => {
+                        //display error message
+                        console.warn(error);
+                    });*/
+            } else{
+                console.log('none of the events triggered' + JSON.stringify(region));
+            }
+        });
+    }).catch(e => console.log("error unregistering task", e));
+}else{
+    console.log('define task');
+    // @ts-ignore
+    TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
+        if (error) {
+            console.log("error: " + error);
+            return;
+        }
+        if (eventType === GeofencingEventType.Enter) {
+            console.log("You entered region:" + JSON.stringify(region));
+            /*fetch('https://api.github.com/users/defunkt', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+
+                body: JSON.stringify({
+                    user: 'test@unibz.it', //auth.username,
+                    entered: true,
+                    inLocation: region.identifier,
+                }),
             })
-            .catch((error) => {
-                //display error message
-                console.warn(error);
-            });*/
-    } else if (eventType === GeofencingEventType.Exit) {
-        console.log("You've left region:" + JSON.stringify(region));
-        /*fetch('https://api.github.com/users/defunkt', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    //Showing response message coming from server
+                    console.warn(responseJson);
+                })
+                .catch((error) => {
+                    //display error message
+                    console.warn(error);
+                });*/
+        } else if (eventType === GeofencingEventType.Exit) {
+            console.log("You left region:" + JSON.stringify(region));
+            /*fetch('https://api.github.com/users/defunkt', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
 
-            body: JSON.stringify({
-                user: 'test@unibz.it', //auth.username,
-                entered: false,
-                inLocation: region.identifier,
-            }),
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {
-                //Showing response message coming from server
-                console.warn(responseJson);
+                body: JSON.stringify({
+                    user: 'test@unibz.it', //auth.username,
+                    entered: false,
+                    inLocation: region.identifier,
+                }),
             })
-            .catch((error) => {
-                //display error message
-                console.warn(error);
-            });*/
-    } else{
-        console.log('none of the events triggered' + JSON.stringify(region));
-    }
-});
-
-// @ts-ignore
-TaskManager.defineTask(LOCATION_TASK, ({ data: { locations }, error }) => {
-    if (error) {
-        console.log("error: " + error);
-        return;
-    }
-    if(locations){
-        console.log("New regions: " + JSON.stringify(locations));
-        console.log(locations);
-    }
-});
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    //Showing response message coming from server
+                    console.warn(responseJson);
+                })
+                .catch((error) => {
+                    //display error message
+                    console.warn(error);
+                });*/
+        } else{
+            console.log('none of the events triggered' + JSON.stringify(region));
+        }
+    });
+}
 
 export default function App() {
   const [auth, setAuth] = React.useState(null as (AuthUtilType | null));
@@ -136,7 +190,7 @@ export default function App() {
       <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={"Welcome"} component={WelcomeScreen} />
-            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} initialParams={{auth, setAuth}}/>
+            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} initialParams={{auth}}/>
           </Stack.Navigator>
       </NavigationContainer>
   )

@@ -7,38 +7,18 @@ import {BigButton} from "../components/BigButton";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import * as Location from "expo-location";
 import {LocationGeofencingRegionState} from "expo-location";
+import * as TaskManager from 'expo-task-manager';
+import {mensaLocations} from "../util/LocationUtil";
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 const LOCATION_TASK = 'location-task';
 const LOCATION_TASK_FENCING = 'geofencing-location-task';
-const regions = [
-    {
-        identifier: 'Mensa BZ',
-        latitude: 46.497816,
-        longitude: 11.349857,
-        radius: 10,
-        notifyOnEnter: true,
-        notifyOnExit: true,
-        state: LocationGeofencingRegionState.Unknown
-    },
-    {
-        identifier: 'Mensa BX',
-        latitude: 46.7150,
-        longitude: 11.6530,
-        radius: 10,
-        notifyOnEnter: true,
-        notifyOnExit: true,
-        state: LocationGeofencingRegionState.Unknown
-    },
-]
 
 const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
     const [isFirstTime, setIsFirstTime] = React.useState(true);
 
     const [location, setLocation] = useState({} as Location.LocationObject);
-    const [locationUpdate, setLocationUpdate] = useState('default');
-    const [locationUpdateFencing, setLocationUpdateFencing] = useState('default fencing');
 
     useEffect(() => {
         AsyncStorage.getItem('isFirstTime').then((value: string | null) => {
@@ -50,8 +30,15 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
             }
         });
         (async () => {
-            await Location.requestBackgroundPermissionsAsync()
-            await Location.requestForegroundPermissionsAsync()
+            const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
+            if (foregroundStatus === 'granted') {
+                const { status: backgroundStatus } = await Location.requestBackgroundPermissionsAsync();
+                if (backgroundStatus === 'granted') {
+                    startBackgroundUpdate().then(() => console.log('started background tasks')).catch(e => console.log('Error executing the background location tasks', e));
+                }
+            }
+            /*await Location.requestBackgroundPermissionsAsync()
+            await Location.requestForegroundPermissionsAsync()*/
             //startBackgroundUpdate().catch(e => console.log('Error executing the background location tasks', e));
         })();
     });
@@ -60,40 +47,32 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
         // Don't track position if permission is not granted
         const { granted } = await Location.getBackgroundPermissionsAsync()
         if (!granted) {
-            setLocationUpdate("location tracking denied")
+            console.log("location tracking denied")
             return
         }else{
-            setLocationUpdate("location tracking granted")
-            //setLocationUpdateFencing("location tracking granted")
+            console.log("location tracking granted")
         }
 
         if (await Location.hasStartedGeofencingAsync(LOCATION_TASK_FENCING)) {
-            setLocationUpdateFencing("Already started")
+            console.log("Already started geofencing")
             return
         }
 
-        await Location.startLocationUpdatesAsync(LOCATION_TASK, {
-            // For better logs, we set the accuracy to the most sensitive option
-            accuracy: Location.Accuracy.BestForNavigation,
-            // Make sure to enable this notification if you want to consistently track in the background
-            showsBackgroundLocationIndicator: true,
-            foregroundService: {
-                notificationTitle: "Location",
-                notificationBody: "Location tracking in background",
-                notificationColor: "#fff",
-            },
-        })
-
-        await Location.startGeofencingAsync(LOCATION_TASK_FENCING, regions)
-            .then(() => setLocationUpdateFencing("started geofencing"))
+        await Location.startGeofencingAsync(LOCATION_TASK_FENCING, mensaLocations)
+            .then(() => console.log("started geofencing with locations"))
     }
+
+/*    const stopBackground = () => {
+        Location.stopLocationUpdatesAsync(LOCATION_TASK).then(r => {  console.log("stopped location updates")});
+        Location.stopGeofencingAsync(LOCATION_TASK_FENCING).then(r => {  console.log("stopped geofencing")});
+        TaskManager.unregisterAllTasksAsync().then(r => {  console.log("unregistered all tasks")});
+    }*/
 
     if (!isFirstTime)
         navigation.navigate('BottomNav');
 
-    // @ts-ignore
     return (
-        /*<SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
+        <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
             <StatusBar backgroundColor={globalColors.primary} style={"light"}/>
             <View style={styles.container}>
                 <Image source={animatedGif} style={styles.image} />
@@ -111,13 +90,14 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
                     });
                 }} style={styles}/>
             </View>
-        </SafeAreaView>*/
-        <View style={styles.container}>
+        </SafeAreaView>
+        /*<View style={styles.container}>
             <Text style={styles.textbox}>{JSON.stringify(location)}</Text>
             <Text style={styles.textbox}>{locationUpdate}</Text>
             <Text style={styles.textbox}>{locationUpdateFencing}</Text>
-            <Button title={'startBackground'} onPress={() => {startBackgroundUpdate().then() }}></Button>
-        </View>
+            <Button title={'startBackground'} onPress={() => {startBackgroundUpdate().then().catch() }}></Button>
+            <Button title={'stopBackground'} onPress={() => {stopBackground() }}></Button>
+        </View>*/
     )
 }
 
