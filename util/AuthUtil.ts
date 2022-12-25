@@ -10,3 +10,4 @@ const AZURE_CREDENTIALS = {
 export const AZURE_INSTANCE = new AzureInstance(AZURE_CREDENTIALS);
 AZURE_INSTANCE.loadDataFromStorage()
 
+

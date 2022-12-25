@@ -1,14 +1,10 @@
 import {Animated, Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React, {useEffect, useState} from "react";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import MapView, {PROVIDER_DEFAULT, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import TuneIcon from "../assets/images/tune";
-import { BottomSheet } from 'react-native-btr';
-import CloseIcon from "../assets/images/close";
-import {LocationSelector} from "../components/LocationSelector";
 import {Header} from "../components/Header";
 import {LocationSelectorSheet} from "../components/LocationSelectorSheet";
-import LegacyRef = Animated.LegacyRef;
 const { height, width } = Dimensions.get( 'window' );
 
 

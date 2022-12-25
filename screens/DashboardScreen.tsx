@@ -2,7 +2,6 @@ import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Animated, ScrollView, StyleSheet, Text, View, Image} from "react-native";
 import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
-import ProfileIcon from "../assets/images/profile";
 import {MensaOccupation} from "../components/DashboardScreen/MensaOccupation";
 import {BarOccupation} from "../components/DashboardScreen/BarOccupation";
 import {Suggestion} from "../components/DashboardScreen/Suggestion";
@@ -11,7 +10,6 @@ import {LoginScreen} from "./LoginScreen";
 import {Header} from "../components/Header";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
 import {Balance} from "../components/DashboardScreen/Balance";
-import AsyncStorage from "@react-native-async-storage/async-storage/lib/typescript/AsyncStorage.native";
 
 const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
@@ -54,19 +52,23 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
                             <Image ref={imageRef} style={{height: 60, width: 60}} source={imageSource}/>
                 } />
                 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
-                    { AZURE_INSTANCE.isLoggedIn() ? <View style={[styles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
+                    { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
                         <Balance balance={balance}/>
                     </View> : <></>
                     }
-                    <View style={styles.cardRow}>
+                    <View style={globalStyles.cardRow}>
                         <MensaOccupation/>
                     </View>
-                    <View style={[styles.cardRow, {marginTop: 20}]}>
+                    <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                         <BarOccupation/>
                     </View>
-                    <View style={[styles.cardRow, {marginTop: 20}]}>
-                        <Suggestion navigation={navigation}/>
-                    </View>
+                    { AZURE_INSTANCE.isLoggedIn() ?
+                        (
+                            <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                                <Suggestion navigation={navigation}/>
+                            </View>)
+                        : <></>
+                    }
                 </ScrollView>
             </View>
         )
@@ -94,13 +96,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         paddingBottom: scale(30),
         alignSelf: "stretch"
-    },
-    cardRow: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        alignSelf: "stretch",
-        paddingHorizontal: scale(30),
     },
     cardSection: {
         width: '100%',

@@ -1,5 +1,6 @@
 import {StatusBar, StyleSheet} from "react-native";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
+import {scale} from "./ScaleUtil";
 
 export const globalColors = {
     primary: '#040F21',
@@ -62,5 +63,12 @@ export const globalStyles = StyleSheet.create({
         fontSize: 25,
         padding: 10,
         width: '100%'
+    },
+    cardRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        alignSelf: "stretch",
+        paddingHorizontal: scale(30),
     }
 });

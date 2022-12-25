@@ -4,7 +4,7 @@ import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";
 import {BigButton} from "../components/BigButton";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 

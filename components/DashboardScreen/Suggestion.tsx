@@ -16,16 +16,9 @@ export function Suggestion({navigation}: {navigation: any}) {
             index={2}
         >
             <View style={styles.cardSection}>
-                { 4 != null ? //TODO implement suggestion
-                    (
-                        <Text style={styles.cardText}>Suggestion goes here</Text>
-                    ) : (
-                        <View style={styles.notLoggedInContainer}>
-                            <Text style={[styles.cardText, {textAlign: "center"}]}>You need to be logged in to see suggestions</Text>
-                            <BigButton text={"Login"} onPress={() => {navigation.navigate('Login')}} style={loginBtnStyle}/>
-                        </View>
-                    )
-                }
+                <Text style={styles.cardText}>
+                    You can suggest new features or report bugs on our GitHub page.
+                </Text>
             </View>
         </Card>
     )

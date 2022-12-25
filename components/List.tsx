@@ -9,7 +9,7 @@ const createDivider = () => {
     </View>
 }
 
-export function List({items}: {items: any[]}) {
+export function List({items, toScroll}: {items: any[], toScroll?: boolean}) {
 
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
     const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
@@ -42,7 +42,7 @@ export function List({items}: {items: any[]}) {
     }, [itemAnimations, itemNegativeAnimations])
 
     return (
-        <ScrollView>
+        <ScrollView style={styles.listContainer} contentContainerStyle={styles.listContainerInner}>
             <View style={styles.listContainer}>
                 {items.map((item, index, array) => {
                     //add key to each item
@@ -65,9 +65,12 @@ export function List({items}: {items: any[]}) {
 
 const styles = StyleSheet.create({
     listContainer: {
-        width: scale(400),
         backgroundColor: globalColors.secondary,
         borderRadius: 15,
+        marginLeft: scale(20),
+        marginRight: scale(20),
+    },
+    listContainerInner: {
         flexDirection: 'column',
         justifyContent: "flex-start",
         paddingTop: scale(20),

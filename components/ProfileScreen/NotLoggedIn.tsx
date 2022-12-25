@@ -3,7 +3,7 @@ import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import {BigButton} from "../BigButton";
 
-export function NotLoggedIn({navigation, route}: {navigation: any, route: any}) {
+export function NotLoggedIn({navigation}: {navigation: any}) {
     return (
         <>
             <View style={[globalStyles.container, styles.container]}>

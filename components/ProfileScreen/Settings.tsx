@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, TouchableOpacity, Image} from "react-native";
+import {StyleSheet, View, Text, TouchableOpacity, Image, ScrollView} from "react-native";
 import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import StarIcon from "../../assets/images/star";
@@ -21,7 +21,7 @@ const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp
     )
 }
 
-export function Settings({navigation, route}: {navigation: any, route: any}) {
+export function Settings({navigation, setLoggedIn}: {navigation: any, setLoggedIn: Function}) {
 
     const [shareGPS, setShareGPS] = React.useState(true);
     const [imageSource, setImageSource] = React.useState({
@@ -63,11 +63,18 @@ export function Settings({navigation, route}: {navigation: any, route: any}) {
 
     return (
         <View style={globalStyles.container}>
-            <View style={styles.profileImgContainer}>
-                <Image style={{width: 100, maxWidth: 100}} source={imageSource}/>
-            </View>
-            <List items={listItems} />
-            <BigButton text={'Logout'} onPress={() => {}} style={styles}/>
+            <ScrollView style={styles.container} contentContainerStyle={globalStyles.container}>
+                <View style={styles.profileImgContainer}>
+                    <Image style={[{width: 180, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}, globalStyles.dropShadow]} source={imageSource}/>
+                    <Text style={styles.headerText}>Welcome back,</Text>
+                    <Text style={styles.nameText}>{AZURE_INSTANCE.userData.given_name} {AZURE_INSTANCE.userData.family_name}</Text>
+                </View>
+                <List items={listItems} toScroll={false}/>
+                <BigButton text={'Logout'} onPress={() => {
+                    AZURE_INSTANCE.logout();
+                    setLoggedIn(false);
+                }} style={styles}/>
+            </ScrollView>
         </View>
     )
 }
@@ -79,6 +86,7 @@ const styles = StyleSheet.create({
     },
     profileImgContainer: {
         width: '100%',
+        alignItems: 'center',
     },
     listContainer: {
         width: scale(400),
@@ -116,8 +124,23 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: scale(10),
-        marginBottom: scale(65),
         backgroundColor: globalColors.secondary,
+    },
+    headerText: {
+        color: '#FFFFFF',
+        fontFamily: 'Poppins',
+        fontSize: 13,
+        width: '100%',
+        textAlign: 'left',
+        marginTop: scale(20),
+    },
+    nameText: {
+        color: '#FFFFFF',
+        fontFamily: 'Poppins_SemiBold',
+        fontSize: 30,
+        width: '100%',
+        textAlign: 'left',
+        marginBottom: scale(30),
     }
 })
 

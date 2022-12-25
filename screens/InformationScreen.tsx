@@ -5,6 +5,7 @@ import {scale} from "../util/ScaleUtil";
 import {List} from "../components/List";
 import {Header} from "../components/Header";
 import InfoIcon from "../assets/images/info";
+import {eatingHabitsMap} from "../util/EatingHabitsUtil";
 
 const createListItem = (iconName: string, text: string) => {
     return (
@@ -20,20 +21,10 @@ const getIcon = ({label, color, size}: {label: string, color: string, size:numbe
 }
 
 export function InformationScreen() {
-    const listItems = [
-        createListItem('leaf', 'Vegan'),
-        createListItem('frozen', 'Contains frozen ingredients'),
-        createListItem('celery', 'Celery and products thereof'),
-        createListItem('milk', 'Milk and products thereof'),
-        createListItem('wine', 'Sulphur dioxide and sulphites > 10mg/l'),
-        createListItem('fish', 'Fish and products thereof'),
-        createListItem('egg', 'Egg and products thereof'),
-        createListItem('pig', 'Pork and products thereof'),
-        createListItem('soy_beans', 'Soybeans and products thereof'),
-        createListItem('wheat', 'Cereals containing gluten'),
-        createListItem('sesame', 'Sesame seeds and products thereof'),
-        createListItem('cashew_nut', 'Contains nuts'),
-    ];
+
+    let listItemComponents: any[] = Object.keys(eatingHabitsMap).map((key: any) => {
+        return createListItem(eatingHabitsMap[key], key);
+    });
 
     return (
         <View style={globalStyles.container}>
@@ -42,7 +33,7 @@ export function InformationScreen() {
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                    <List items={listItems}/>
+                    <List items={listItemComponents}/>
                 </ScrollView>
         </View>
     )

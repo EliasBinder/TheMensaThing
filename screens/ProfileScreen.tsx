@@ -18,13 +18,19 @@ export function ProfileScreen() {
 
     const Stack = createNativeStackNavigator()
 
+    const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
+
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Profile'} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
-                {AZURE_INSTANCE.isLoggedIn() ? <Settings navigation={navigation} route={route}/> : <NotLoggedIn navigation={navigation} route={route}/>}
+                {loggedIn ? <Settings navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedIn navigation={navigation}/>}
             </View>
         )
+    }
+
+    const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
+        return <LoginScreen navigation={navigation} route={route} setLoggedIn={setLoggedIn}/>
     }
 
     return (
@@ -33,7 +39,7 @@ export function ProfileScreen() {
             <Stack.Screen name={"PreferredDishes"} component={PreferredDishesScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"Location"} component={LocationScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"EatingHabits"} component={EatingHabitsScreen} options={{animation: 'slide_from_right'}} />
-            <Stack.Screen name={"Login"} component={LoginScreen} options={{animation: 'slide_from_right'}} />
+            <Stack.Screen name={"Login"} component={(LoginScreenBridge)} options={{animation: 'slide_from_right'}} />
         </Stack.Navigator>
     )
 }
