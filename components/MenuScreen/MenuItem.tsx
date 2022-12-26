@@ -11,7 +11,7 @@ export function MenuItem({iconUrl, title, eatingHabitsAttribs}: {iconUrl: string
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.eatingHabitsContainer}>
                     {
-                        eatingHabitsAttribs.map((item:number) => <Icon name={getImageOfIndex(item)} size={20} color={globalColors.accent}/>)
+                        eatingHabitsAttribs.map((item:number) => <Icon key={item} name={getImageOfIndex(item)} size={20} color={globalColors.accent}/>)
                     }
                 </View>
             </View>

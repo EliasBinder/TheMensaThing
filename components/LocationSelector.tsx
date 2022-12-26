@@ -27,7 +27,7 @@ export function LocationSelector({location, setLocation}: {location: string, set
 
     return (
         <View style={[globalStyles.container, styles.container]}>
-            <List items={listItems} />
+            <List items={listItems} toScroll={false} />
         </View>
     )
 }

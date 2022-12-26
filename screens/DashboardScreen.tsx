@@ -28,7 +28,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
                         !AZURE_INSTANCE.isLoggedIn() ?
                             <Icon name={"profile"} color={'#fff'} size={48}/>
                             :
-                            <Image style={{height: 60, width: 60}} source={imageSource}/>
+                            <Image style={{width: 48, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
                 } />
                 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                     { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
