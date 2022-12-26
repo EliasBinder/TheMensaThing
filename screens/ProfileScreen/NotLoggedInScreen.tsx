@@ -1,18 +1,16 @@
 import {View, StyleSheet, Text} from "react-native";
 import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
-import {BigButton} from "../BigButton";
+import {BigButton} from "../../components/BigButton";
 
-export function NotLoggedIn({navigation}: {navigation: any}) {
+export function NotLoggedInScreen({navigation}: {navigation: any}) {
     return (
-        <>
-            <View style={[globalStyles.container, styles.container]}>
-                <Text style={styles.message}>Please log in to use all the features of this app</Text>
-                <BigButton text={'Login'} onPress={() => {
-                    navigation.navigate('Login');
-                }} style={styles}/>
-            </View>
-        </>
+        <View style={[globalStyles.container, styles.container]}>
+            <Text style={styles.message}>Please log in to use all the features of this app</Text>
+            <BigButton text={'Login'} onPress={() => {
+                navigation.navigate('Login');
+            }} style={styles}/>
+        </View>
     )
 }
 

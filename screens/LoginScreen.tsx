@@ -7,7 +7,7 @@ import {useEffect} from "react";
 
 
 
-export function LoginScreen({navigation, route, setLoggedIn}:{navigation: any, route: any, setLoggedIn: Function}) {
+export function LoginScreen({navigation, route, setLoggedIn}:{navigation: any, route: any, setLoggedIn: Function|undefined}) {
 
     return (
         <>
@@ -23,7 +23,8 @@ export function LoginScreen({navigation, route, setLoggedIn}:{navigation: any, r
                     azureInstance={AZURE_INSTANCE}
                     loadingMessage="Requesting access token"
                     onSuccess={() => {
-                        setLoggedIn(true);
+                        if (setLoggedIn)
+                            setLoggedIn(true);
                         navigation.goBack()
                     }}
                     onCancel={() => navigation.goBack()}

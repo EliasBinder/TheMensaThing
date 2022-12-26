@@ -7,9 +7,10 @@ import PinIcon from "../../assets/images/pin";
 import ShareIcon from "../../assets/images/share";
 import React, {useEffect, useState} from "react";
 import ToggleIcon from "../../assets/images/toggle";
-import {BigButton} from "../BigButton";
-import {List} from "../List";
+import {BigButton} from "../../components/BigButton";
+import {List} from "../../components/List";
 import {AZURE_INSTANCE} from "../../util/AuthUtil";
+import {useProfileImage} from "../../hooks/useProfileImage";
 
 const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp?: any) => {
     return (
@@ -21,27 +22,10 @@ const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp
     )
 }
 
-export function Settings({navigation, setLoggedIn}: {navigation: any, setLoggedIn: Function}) {
+export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setLoggedIn: Function}) {
 
     const [shareGPS, setShareGPS] = React.useState(true);
-    const [imageSource, setImageSource] = React.useState({
-        uri: placeholder,
-        method: 'GET',
-        headers: {}
-    });
-
-    useEffect(() => {
-        AZURE_INSTANCE.getUserInfo().then((info) => {
-            setImageSource({
-                uri: info.ImageUrl,
-                method: 'GET',
-                headers: {
-                    // @ts-ignore //TODO
-                    Authorization: 'Bearer ' + AZURE_INSTANCE.getToken().accessToken
-                }
-            })
-        });
-    }, []);
+    const imageSource = useProfileImage();
 
     const Toggle = () => {
         return (
@@ -58,12 +42,12 @@ export function Settings({navigation, setLoggedIn}: {navigation: any, setLoggedI
         createMenuItem('Preferred Dishes', <StarIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('PreferredDishes')}),
         createMenuItem('Eating Habits', <LeafIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('EatingHabits')}),
         createMenuItem('Location', <PinIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('Location')}),
-        createMenuItem('Share GPS Location', <ShareIcon color={'#fff'} dim={30}/>, () => {setShareGPS(s => !s)}, <Toggle />)
+        createMenuItem('Share GPS', <ShareIcon color={'#fff'} dim={30}/>, () => {setShareGPS(s => !s)}, <Toggle />)
     ]
 
     return (
         <View style={globalStyles.container}>
-            <ScrollView style={styles.container} contentContainerStyle={globalStyles.container}>
+            <ScrollView style={styles.container} contentContainerStyle={styles.containerInner}>
                 <View style={styles.profileImgContainer}>
                     <Image style={[{width: 180, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}, globalStyles.dropShadow]} source={imageSource}/>
                     <Text style={styles.headerText}>Welcome back,</Text>
@@ -81,12 +65,18 @@ export function Settings({navigation, setLoggedIn}: {navigation: any, setLoggedI
 
 const styles = StyleSheet.create({
     container: {
-        paddingLeft: scale(20),
-        paddingRight: scale(20)
+        flexDirection: 'column',
+    },
+    containerInner: {
+        justifyContent: "flex-start",
+        backgroundColor: globalColors.primary,
+        alignItems: 'center',
+        paddingBottom: 40
     },
     profileImgContainer: {
-        width: '100%',
         alignItems: 'center',
+        paddingLeft: scale(20),
+        paddingRight: scale(20),
     },
     listContainer: {
         width: scale(400),
@@ -123,7 +113,7 @@ const styles = StyleSheet.create({
         marginBottom: scale(20),
     },
     button: {
-        marginTop: scale(10),
+        marginTop: scale(50),
         backgroundColor: globalColors.secondary,
     },
     headerText: {

@@ -1,10 +1,10 @@
 import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import DashboardScreen from "./DashboardScreen";
-import {MenuScreen} from "./MenuScreen";
-import {InformationScreen} from "./InformationScreen";
-import {MapScreen} from "./MapScreen";
-import {ProfileScreen} from "./ProfileScreen";
+import DashboardScreen from "../screens/DashboardScreen";
+import {MenuScreen} from "../screens/MenuScreen";
+import {InformationScreen} from "../screens/InformationScreen";
+import {MapScreen} from "../screens/MapScreen";
+import {ProfileScreen} from "../screens/ProfileScreen";
 import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import ProfileIcon from "../assets/images/profile";
@@ -102,7 +102,7 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
 }
 
 
-const BottomNavScreen = ({navigation, route}: {navigation: any, route: any}) => {
+const BottomNav = ({navigation, route}: {navigation: any, route: any}) => {
 
     const Tab = createBottomTabNavigator();
 
@@ -166,4 +166,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default BottomNavScreen
+export default BottomNav

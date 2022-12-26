@@ -36,7 +36,7 @@ export function MenuScreen(){
                 <View style={globalStyles.cardRow}>
                     <Card
                         title={"First courses"}
-                        icon={<Icon name={"pin"} color={"#fff"} size={48} />}
+                        icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                         index={0}
                     >
                         <MenuItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
@@ -47,7 +47,7 @@ export function MenuScreen(){
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <Card
                         title={"Main courses"}
-                        icon={<Icon name={"pin"} color={"#fff"} size={48} />}
+                        icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                         index={0}
                     >
                     </Card>
@@ -55,7 +55,7 @@ export function MenuScreen(){
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <Card
                         title={"Pizza"}
-                        icon={<Icon name={"pin"} color={"#fff"} size={48} />}
+                        icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                         index={0}
                     >
                     </Card>

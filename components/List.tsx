@@ -9,7 +9,7 @@ const createDivider = () => {
     </View>
 }
 
-export function List({items, toScroll}: {items: any[], toScroll?: boolean}) {
+export function List({items, toScroll=true}: {items: any[], toScroll?: boolean}) {
 
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
     const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
@@ -41,10 +41,18 @@ export function List({items, toScroll}: {items: any[], toScroll?: boolean}) {
         Animated.parallel([...itemAnimations, ...itemNegativeAnimations]).start();
     }, [itemAnimations, itemNegativeAnimations])
 
+    const ParentComponent = ({children}: {children: any}) => {
+        if (toScroll){
+            return <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContainerInner} children={children} />
+        } else {
+            return <View style={styles.noScrollContainer} children={children}/>
+        }
+    }
+
     return (
-        <ScrollView style={styles.listContainer} contentContainerStyle={styles.listContainerInner}>
-            <View style={styles.listContainer}>
-                {items.map((item, index, array) => {
+        <ParentComponent>
+            <View style={styles.scrollContainer}>
+                {items.map((item, index) => {
                     //add key to each item
                     return (
                         <View key={index}>
@@ -59,23 +67,36 @@ export function List({items, toScroll}: {items: any[], toScroll?: boolean}) {
                     )
                 })}
             </View>
-        </ScrollView>
+        </ParentComponent>
     )
 }
 
 const styles = StyleSheet.create({
-    listContainer: {
+    scrollContainer: {
         backgroundColor: globalColors.secondary,
         borderRadius: 15,
         marginLeft: scale(20),
         marginRight: scale(20),
+        overflow: 'hidden',
     },
-    listContainerInner: {
+    scrollContainerInner: {
         flexDirection: 'column',
         justifyContent: "flex-start",
         paddingTop: scale(20),
         paddingBottom: scale(20),
         paddingRight: scale(20),
+        overflow: 'hidden',
+    },
+    noScrollContainer: {
+        backgroundColor: globalColors.secondary,
+        borderRadius: 15,
+        marginLeft: scale(20),
+        marginRight: scale(20),
+        paddingTop: scale(20),
+        paddingBottom: scale(20),
+        flexDirection: 'column',
+        justifyContent: "flex-start",
+        overflow: 'hidden',
     },
     dividerContainer: {
         width: '100%',

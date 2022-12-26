@@ -6,7 +6,7 @@ import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import createStackNavigator, {createNativeStackNavigator} from "@react-navigation/native-stack";
 import DashboardScreen from "./screens/DashboardScreen";
-import BottomNavScreen from "./screens/BottomNavScreen";
+import BottomNav from "./components/BottomNav";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 
 
@@ -43,7 +43,7 @@ export default function App() {
       <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name={"Welcome"} component={WelcomeScreen} />
-            <Stack.Screen name={"BottomNav"} component={BottomNavScreen} />
+            <Stack.Screen name={"BottomNav"} component={BottomNav} />
           </Stack.Navigator>
       </NavigationContainer>
   )

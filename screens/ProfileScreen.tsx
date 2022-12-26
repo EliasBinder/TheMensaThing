@@ -3,8 +3,8 @@ import React from "react";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import ProfileIcon from "../assets/images/profile";
 import {scale} from "../util/ScaleUtil";
-import {NotLoggedIn} from "../components/ProfileScreen/NotLoggedIn";
-import {Settings} from "../components/ProfileScreen/Settings";
+import {NotLoggedInScreen} from "./ProfileScreen/NotLoggedInScreen";
+import {SettingsScreen} from "./ProfileScreen/SettingsScreen";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {EatingHabitsScreen} from "./ProfileScreen/EatingHabitsScreen";
 import {LocationScreen} from "./ProfileScreen/LocationScreen";
@@ -24,7 +24,7 @@ export function ProfileScreen() {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Profile'} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
-                {loggedIn ? <Settings navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedIn navigation={navigation}/>}
+                {loggedIn ? <SettingsScreen navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedInScreen navigation={navigation}/>}
             </View>
         )
     }
