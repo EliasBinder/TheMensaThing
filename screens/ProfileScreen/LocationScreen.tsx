@@ -1,19 +1,16 @@
 import React from "react";
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import StackNavigationHeader from "../../components/StackNavigationHeader";
-import {globalStyles} from "../../util/StyleUtil";
-import {List} from "../../components/List";
-import {scale} from "../../util/ScaleUtil";
-import RadioboxMarked from "../../assets/images/radioboxMarked";
-import Radiobox from "../../assets/images/radiobox";
 import {LocationSelector} from "../../components/LocationSelector";
+import {usePreferredLocation} from "../../hooks/usePreferredLocation";
 
 export function LocationScreen({navigation, route}: {navigation: any, route: any}) {
+
+    const [preferredLocation, setPreferredLocation] = usePreferredLocation();
 
     return (
         <>
             <StackNavigationHeader title={'Location'} navigation={navigation} route={route} />
-            <LocationSelector />
+            <LocationSelector location={preferredLocation} setLocation={setPreferredLocation}/>
         </>
     )
 

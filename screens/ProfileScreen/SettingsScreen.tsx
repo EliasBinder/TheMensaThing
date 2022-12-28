@@ -11,6 +11,7 @@ import {BigButton} from "../../components/BigButton";
 import {List} from "../../components/List";
 import {AZURE_INSTANCE} from "../../util/AuthUtil";
 import {useProfileImage} from "../../hooks/useProfileImage";
+import {useShareGPS} from "../../hooks/useShareGPS";
 
 const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp?: any) => {
     return (
@@ -24,12 +25,12 @@ const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp
 
 export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setLoggedIn: Function}) {
 
-    const [shareGPS, setShareGPS] = React.useState(true);
+    const [shareGPS, toggleShareGPS] = useShareGPS();
     const imageSource = useProfileImage();
 
     const Toggle = () => {
         return (
-            <TouchableOpacity onPress={() => setShareGPS(s => !s)}>
+            <TouchableOpacity onPress={() => toggleShareGPS()}>
                 {shareGPS ?
                     (<ToggleIcon color={'#3AF90A'} dim={30} orient={90} />) :
                     (<ToggleIcon color={'#F93A3A'} dim={30} orient={270} />)
@@ -42,7 +43,7 @@ export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setL
         createMenuItem('Preferred Dishes', <StarIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('PreferredDishes')}),
         createMenuItem('Eating Habits', <LeafIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('EatingHabits')}),
         createMenuItem('Location', <PinIcon color={'#fff'} dim={30}/>, () => {navigation.navigate('Location')}),
-        createMenuItem('Share GPS', <ShareIcon color={'#fff'} dim={30}/>, () => {setShareGPS(s => !s)}, <Toggle />)
+        createMenuItem('Share GPS', <ShareIcon color={'#fff'} dim={30}/>, () => {toggleShareGPS()}, <Toggle />)
     ]
 
     return (

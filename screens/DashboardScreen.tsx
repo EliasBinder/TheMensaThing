@@ -11,7 +11,7 @@ import {Header} from "../components/Header";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
 import {Balance} from "../components/DashboardScreen/Balance";
 import {useProfileImage} from "../hooks/useProfileImage";
-import {useBalance} from "../hooks/useBallance";
+import {useBalance} from "../hooks/useBalance";
 
 const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
 
@@ -28,7 +28,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
                         !AZURE_INSTANCE.isLoggedIn() ?
                             <Icon name={"profile"} color={'#fff'} size={48}/>
                             :
-                            <Image style={{width: 48, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
+                            <Image style={{width: 60, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
                 } />
                 <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                     { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>

@@ -6,12 +6,19 @@ import {scale} from "../../util/ScaleUtil";
 import Checkbox from "../../assets/images/checkbox";
 import React from "react";
 import CheckboxMarked from "../../assets/images/checkboxMarked";
+import {useEatingHabits} from "../../hooks/useEatingHabits";
+import {eatingHabitsMap} from "../../util/EatingHabitsUtil";
 
-const createListItem = ({text}: {text: string}) => {
-    const [checked, setChecked] = React.useState(true);
+const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string, id: number, eatingHabits: number[], setEatingHabits: Function}) => {
     return (
-        <TouchableOpacity style={styles.menuItem} onPress={() => setChecked(s => !s)}>
-            {checked ? <CheckboxMarked color={'#fff'} dim={30}/> : <Checkbox color={'#fff'} dim={30}/>}
+        <TouchableOpacity style={styles.menuItem} onPress={() => {
+            if (eatingHabits.includes(id)) {
+                setEatingHabits(eatingHabits.filter((item) => item != id));
+            } else {
+                setEatingHabits([...eatingHabits, id].sort());
+            }
+        }}>
+            {eatingHabits.includes(id) ? <CheckboxMarked color={'#fff'} dim={30}/> : <Checkbox color={'#fff'} dim={30}/>}
             <Text style={styles.menuItemText}>{text}</Text>
         </TouchableOpacity>
     )
@@ -19,17 +26,11 @@ const createListItem = ({text}: {text: string}) => {
 
 export function EatingHabitsScreen({navigation, route}: {navigation: any, route: any}) {
 
-    const listItems = [
-        createListItem({text: 'Vegetarian'}),
-        createListItem({text: 'Vegan'}),
-        createListItem({text: 'Gluten Free'}),
-        createListItem({text: 'Lactose Free'}),
-        createListItem({text: 'Pescatarian'}),
-        createListItem({text: 'Ketogenic'}),
-        createListItem({text: 'Paleo'}),
-        createListItem({text: 'Whole30'})
-    ]
+    const [eatingHabits, setEatingHabits] = useEatingHabits();
 
+    const listItems: any[] = Object.keys(eatingHabitsMap).map((key, index) => {
+        return createListItem({text: key, id: index, eatingHabits: eatingHabits, setEatingHabits: setEatingHabits})
+    });
 
     return (
         <>
