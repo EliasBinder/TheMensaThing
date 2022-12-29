@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     name: {
-        fontSize: scale(30),
+        fontSize: scale(35),
         fontFamily: 'Poppins_SemiBold',
         color: '#fff',
         textAlign: 'left',
@@ -60,13 +60,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     menuItemEntryText: {
-        fontSize: scale(15),
+        fontSize: scale(20),
         fontFamily: 'Poppins',
         color: '#fff',
         marginLeft: 10
     },
     price: {
-        fontSize: scale(20),
+        fontSize: scale(25),
         fontFamily: 'Poppins_Bold',
         color: globalColors.accent,
         alignSelf: 'flex-end',
