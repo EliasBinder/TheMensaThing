@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import {globalColors, globalStyles, Icon} from "../../util/StyleUtil";
 import {getImageOfIndex} from "../../util/EatingHabitsUtil";
 
-export function MenuItem({iconUrl, title, eatingHabitsAttribs}: {iconUrl: string, title: string, eatingHabitsAttribs: number[]}) {
+export function DishItem({iconUrl, title, eatingHabitsAttribs}: {iconUrl: string, title: string, eatingHabitsAttribs: number[]}) {
     return (
         <View style={styles.container}>
             <Image source={{uri: iconUrl}} style={styles.image}/>

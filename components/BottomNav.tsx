@@ -3,7 +3,6 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import DashboardScreen from "../screens/DashboardScreen";
 import {MenuScreen} from "../screens/MenuScreen";
 import {InformationScreen} from "../screens/InformationScreen";
-import {MapScreen} from "../screens/MapScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
 import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet} from "react-native";
 import {scale} from "../util/ScaleUtil";
@@ -16,6 +15,7 @@ import React, {Component} from "react";
 import {StatusBar} from "expo-status-bar";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import DashboardIcon from "../assets/images/dashboard";
+import {PricesScreen} from "../screens/PricesScreen";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -62,14 +62,14 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                                 return <MenuIcon color={iconColor} />
                             case 'Information':
                                 return <InfoIcon color={iconColor} />
-                            case 'Map':
+                            case 'Prices':
                                 return <MapIcon color={iconColor} />
                             case 'Profile':
                                 return <ProfileIcon color={iconColor} dim={38} />
                         }
                     }
 
-                    const getTouchable = ({inner, key}: {inner: any, key: string|undefined}) => {
+                    const getTouchableIcon = ({inner, key}: {inner: any, key: string|undefined}) => {
                         return (
                             <TouchableOpacity
                                 accessibilityRole="button"
@@ -89,11 +89,11 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                     return label == 'Dashboard' ? (
                             <View key={index} style={styles.buttonContainer}>
                                 <View style={styles.centerOutline}>
-                                    {getTouchable({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
+                                    {getTouchableIcon({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
                                 </View>
                             </View>
                         ): (
-                            getTouchable({inner: getIcon(), key: index})
+                            getTouchableIcon({inner: getIcon(), key: index})
                         )
                 })}
             </View>
@@ -119,7 +119,7 @@ const BottomNav = ({navigation, route}: {navigation: any, route: any}) => {
                     <Tab.Screen name="Menu" component={MenuScreen} />
                     <Tab.Screen name="Information" component={InformationScreen} />
                     <Tab.Screen name="Dashboard" component={DashboardScreen} />
-                    <Tab.Screen name="Map" component={MapScreen} />
+                    <Tab.Screen name="Prices" component={PricesScreen} />
                     <Tab.Screen name="Profile" component={ProfileScreen} />
                 </Tab.Navigator>
             </SafeAreaView>

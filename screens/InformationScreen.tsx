@@ -31,7 +31,7 @@ export function InformationScreen() {
                 <Header title={'Information'}/>
                 <ScrollView style={styles.scrollView} contentContainerStyle={ {
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}>
                     <List items={listItemComponents}/>
                 </ScrollView>
@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     scrollView: {
         backgroundColor: globalColors.primary,
         flex: 1,
+        width: '100%',
+        paddingLeft: scale(20),
+        paddingRight: scale(20),
     },
     title: {
         paddingVertical: 35,

@@ -8,6 +8,8 @@ export const usePreferredLocation = () => {
         AsyncStorage.getItem('preferredLocation').then((value) => {
             if (value !== null) {
                 setPreferredLocation(value);
+            }else{
+                _setPreferredLocation('BZ');
             }
         });
     }, []);

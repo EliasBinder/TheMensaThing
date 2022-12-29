@@ -51,22 +51,20 @@ export function List({items, toScroll=true}: {items: any[], toScroll?: boolean})
 
     return (
         <ParentComponent>
-            <View style={styles.scrollContainer}>
-                {items.map((item, index) => {
-                    //add key to each item
-                    return (
-                        <View key={index}>
-                            <Animated.View style={{
-                                marginLeft: itemAnimationRefs[index],
-                                marginRight: itemAnimationNegativeRefs[index]
-                            }}>
-                                {item}
-                            </Animated.View>
-                            {index !== items.length - 1 && createDivider()}
-                        </View>
-                    )
-                })}
-            </View>
+            {items.map((item, index) => {
+                //add key to each item
+                return (
+                    <View key={index}>
+                        <Animated.View style={{
+                            marginLeft: itemAnimationRefs[index],
+                            marginRight: itemAnimationNegativeRefs[index]
+                        }}>
+                            {item}
+                        </Animated.View>
+                        {index !== items.length - 1 && createDivider()}
+                    </View>
+                )
+            })}
         </ParentComponent>
     )
 }
@@ -90,8 +88,6 @@ const styles = StyleSheet.create({
     noScrollContainer: {
         backgroundColor: globalColors.secondary,
         borderRadius: 15,
-        marginLeft: scale(20),
-        marginRight: scale(20),
         paddingTop: scale(20),
         paddingBottom: scale(20),
         flexDirection: 'column',

@@ -22,7 +22,8 @@ export function LocationSelector({location, setLocation}: {location: string, set
 
     const listItems = [
         createListItem({text: 'Bolzano', id: 'BZ', checked: location, setChecked: setLocation}),
-        createListItem({text: 'Bressanone', id: 'BX', checked: location, setChecked: setLocation})
+        createListItem({text: 'Bressanone', id: 'BX', checked: location, setChecked: setLocation}),
+        createListItem({text: 'Bruneck', id: 'BK', checked: location, setChecked: setLocation})
     ]
 
     return (
@@ -36,6 +37,8 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: scale(40),
         paddingBottom: scale(40),
+        paddingLeft: scale(20),
+        paddingRight: scale(20),
     },
     menuItem: {
         flexDirection: 'row',

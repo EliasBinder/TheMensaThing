@@ -68,10 +68,6 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
 }
 
 export const styles = StyleSheet.create({
-    container: {
-        backgroundColor: globalColors.primary,
-        flex: 1
-    },
     scrollView: {
         backgroundColor: globalColors.primary,
         flex: 1
@@ -81,38 +77,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         paddingBottom: scale(30),
         alignSelf: "stretch"
-    },
-    cardSection: {
-        width: '100%',
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        alignSelf: "stretch"
-    },
-    cardText: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins_SemiBold"
-    },
-    occupationBar1: {
-    },
-    occupationContainer: {
-        width: 'auto',
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: scale(15),
-    },
-    occupationNum: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins_SemiBold",
-        marginLeft: 20
-    },
-    detailsContainer: {
-        marginTop: 20,
-        flexDirection: "row",
-        width: '100%'
     }
 });
 

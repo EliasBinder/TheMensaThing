@@ -8,6 +8,7 @@ import createStackNavigator, {createNativeStackNavigator} from "@react-navigatio
 import DashboardScreen from "./screens/DashboardScreen";
 import BottomNav from "./components/BottomNav";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
+import DropDownPicker from "react-native-dropdown-picker";
 
 
 export default function App() {
@@ -38,6 +39,10 @@ export default function App() {
   }
 
   const Stack = createNativeStackNavigator();
+
+  const dropdownTheme = require('./libraryThemes/dropdownCustomTheme')
+  DropDownPicker.addTheme("Custom", dropdownTheme);
+  DropDownPicker.setTheme('Custom');
 
   return (
       <NavigationContainer>

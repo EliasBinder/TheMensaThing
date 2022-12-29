@@ -5,7 +5,7 @@ import {Header} from "../components/Header";
 import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {ENDPOINTS} from "../util/APIUtil";
-import {MenuItem} from "../components/MenuScreen/MenuItem";
+import {DishItem} from "../components/MenuScreen/DishItem";
 
 export function MenuScreen(){
 
@@ -39,9 +39,9 @@ export function MenuScreen(){
                         icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                         index={0}
                     >
-                        <MenuItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
-                        <MenuItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
-                        <MenuItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
                     </Card>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>

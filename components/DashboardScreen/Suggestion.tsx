@@ -7,7 +7,7 @@ import {Card} from "../Card";
 import React from "react";
 import {scale} from "../../util/ScaleUtil";
 import {BigButton} from "../BigButton";
-import {MenuItem} from "../MenuScreen/MenuItem";
+import {DishItem} from "../MenuScreen/DishItem";
 
 export function Suggestion({navigation}: {navigation: any}) {
     return (
@@ -18,7 +18,7 @@ export function Suggestion({navigation}: {navigation: any}) {
         >
             <View style={styles.cardSection}>
                 <Text style={styles.cardText}>
-                    <MenuItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>
+                    <DishItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>
                 </Text>
             </View>
         </Card>

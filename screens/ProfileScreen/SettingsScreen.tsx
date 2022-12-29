@@ -67,6 +67,7 @@ export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setL
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
+        marginHorizontal: scale(20),
     },
     containerInner: {
         justifyContent: "flex-start",

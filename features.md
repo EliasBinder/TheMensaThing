@@ -1,6 +1,6 @@
 # Features List
 
-- View Mensa Menu
+- View Mensa MenuItem
 - Make suggestions on what to eat
 - Book a pizza and get it shouted across the mensa when it's ready
 - view occupancy
