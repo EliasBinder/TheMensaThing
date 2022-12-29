@@ -27,7 +27,7 @@ export const globalStyles = StyleSheet.create({
     },
     header1: {
         color: '#fff',
-        fontSize: 40,
+        fontSize: 35,
         fontFamily: 'Poppins_SemiBold',
     },
     dropShadow: {

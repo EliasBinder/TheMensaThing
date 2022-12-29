@@ -3,6 +3,7 @@ import {globalColors, globalStyles} from "../util/StyleUtil";
 import ProfileIcon from "../assets/images/profile";
 import React, {useRef} from "react";
 import {scale} from "../util/ScaleUtil";
+import {StatusBar} from "expo-status-bar";
 
 export function Header({title, icon}: {title: string, icon?: any}) {
 
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
     title: {
         paddingVertical: 15,
         paddingHorizontal: 26,
-        marginBottom: 10,
         backgroundColor: globalColors.primary,
         flexDirection: 'row',
         justifyContent: "center",

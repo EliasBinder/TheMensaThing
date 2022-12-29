@@ -2,7 +2,6 @@ import {Text, View, StyleSheet} from "react-native";
 import React from "react";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import ProfileIcon from "../assets/images/profile";
-import {scale} from "../util/ScaleUtil";
 import {NotLoggedInScreen} from "./ProfileScreen/NotLoggedInScreen";
 import {SettingsScreen} from "./ProfileScreen/SettingsScreen";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -23,7 +22,7 @@ export function ProfileScreen() {
     const Router = ({navigation, route}: {navigation: any, route: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
-                <Header title={'Profile'} icon={<ProfileIcon color={'#fff'} dim={48}/>} />
+                <Header title={'Profile'}/>
                 {loggedIn ? <SettingsScreen navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedInScreen navigation={navigation}/>}
             </View>
         )

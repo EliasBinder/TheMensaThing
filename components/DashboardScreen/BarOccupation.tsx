@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     cardText: {
         color: "#fff",
         fontSize: 15,
-        fontFamily: "Poppins_SemiBold"
+        fontFamily: "Poppins"
     },
     occupationContainer: {
         width: 'auto',
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     occupationNum: {
         color: "#fff",
         fontSize: 15,
-        fontFamily: "Poppins_SemiBold",
+        fontFamily: "Poppins",
         marginLeft: 20
     },
     detailsContainer: {

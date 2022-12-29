@@ -17,9 +17,7 @@ export function Suggestion({navigation}: {navigation: any}) {
             index={2}
         >
             <View style={styles.cardSection}>
-                <Text style={styles.cardText}>
-                    <DishItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>
-                </Text>
+                <DishItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>
             </View>
         </Card>
     )
@@ -36,37 +34,6 @@ const styles = StyleSheet.create({
     cardText: {
         color: "#fff",
         fontSize: 15,
-        fontFamily: "Poppins_SemiBold"
-    },
-    occupationContainer: {
-        width: 'auto',
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: scale(15),
-    },
-    occupationNum: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins_SemiBold",
-        marginLeft: 20
-    },
-    detailsContainer: {
-        marginTop: 20,
-        flexDirection: "row",
-        width: '100%'
-    },
-    notLoggedInContainer: {
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        alignSelf: "stretch",
-        width: '100%'
-    }
-});
-
-const loginBtnStyle = StyleSheet.create({
-    button: {
-        marginTop: 20,
+        fontFamily: "Poppins"
     }
 });

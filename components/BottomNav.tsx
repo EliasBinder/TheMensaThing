@@ -110,7 +110,7 @@ const BottomNav = ({navigation, route}: {navigation: any, route: any}) => {
         <>
             <SafeAreaView style={{backgroundColor: globalColors.primary}} />
             <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
-                <StatusBar backgroundColor={globalColors.secondary} style={"light"}/>
+                <StatusBar backgroundColor={globalColors.primary} style={"light"}/>
                 <Tab.Navigator
                     initialRouteName={"Dashboard"}
                     screenOptions={{headerShown: false, unmountOnBlur: true}}

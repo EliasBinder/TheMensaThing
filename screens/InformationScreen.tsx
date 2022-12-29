@@ -64,9 +64,10 @@ const styles = StyleSheet.create({
     },
     menuItemText: {
         color: '#FFFFFF',
-        fontFamily: 'Poppins_SemiBold',
+        fontFamily: 'Poppins',
         fontSize: 20,
         marginLeft: scale(18),
         marginRight: scale(25)
     }
 })
+//Ae

@@ -48,7 +48,7 @@ export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setL
 
     return (
         <View style={globalStyles.container}>
-            <ScrollView style={styles.container} contentContainerStyle={styles.containerInner}>
+            <ScrollView style={styles.container} contentContainerStyle={styles.containerInner} showsVerticalScrollIndicator={false}>
                 <View style={styles.profileImgContainer}>
                     <Image style={[{width: 180, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}, globalStyles.dropShadow]} source={imageSource}/>
                     <Text style={styles.headerText}>Welcome back,</Text>

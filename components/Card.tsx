@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         fontFamily: "Poppins_SemiBold"
     },
     content: {
-        marginTop: 30,
+        marginTop: 20,
         alignSelf: "stretch"
     }
 });

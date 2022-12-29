@@ -32,6 +32,6 @@ export const styles = StyleSheet.create({
     cardText: {
         color: "#fff",
         fontSize: 28,
-        fontFamily: "Poppins_SemiBold"
+        fontFamily: "Poppins"
     }
 });
