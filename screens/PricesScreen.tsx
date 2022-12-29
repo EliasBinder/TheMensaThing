@@ -35,7 +35,6 @@ export function PricesScreen() {
         <View style={globalStyles.container}>
             <Header
                 title={'Prices'}
-                icon={<Icon name={"profile"} color={'#fff'} size={48}/>}
             />
             <View style={styles.menuSelectorContainer}>
                 <DropDownPicker
@@ -66,25 +65,22 @@ export function PricesScreen() {
 
 const styles = StyleSheet.create({
     menuSelectorContainer: {
-        minWidth: 180,
+        maxWidth: 180,
         paddingBottom: scale(20),
         alignSelf: 'flex-start',
         marginLeft: scale(30),
-        marginRight: scale(30),
         minHeight: 'auto',
         zIndex: 999,
     },
     scrollView: {
         backgroundColor: globalColors.primary,
         flex: 1,
-        marginLeft: scale(30),
-        marginRight: scale(30),
+        marginBottom: 20
     },
     scrollViewInner: {
         justifyContent: "flex-start",
         alignItems: "center",
         paddingBottom: scale(30),
         alignSelf: "stretch",
-        paddingVertical: scale(30),
     }
 })
