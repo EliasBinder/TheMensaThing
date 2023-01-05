@@ -49,27 +49,5 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: "flex-start",
         alignItems: "center",
-    },
-    title: {
-        paddingVertical: 35,
-        paddingHorizontal: 26,
-        marginTop: 30,
-        backgroundColor: globalColors.primary,
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "flex-start",
-        width: '100%',
-    },
-    imgContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: globalColors.secondary,
-        borderRadius: 15,
-        width: 60,
-        maxWidth: 60,
-        height: 60,
-        maxHeight: 60,
-        marginLeft: 'auto',
     }
 })

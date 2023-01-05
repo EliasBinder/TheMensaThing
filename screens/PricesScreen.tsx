@@ -10,77 +10,48 @@ import {menus} from "../model/menus";
 import {menuItem} from "../model/menuItem";
 import {MenuItem} from "../components/PricesScreen/MenuItem";
 import {usePreferredLocation} from "../hooks/usePreferredLocation";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {AZURE_INSTANCE} from "../util/AuthUtil";
+import {SettingsScreen} from "./ProfileScreen/SettingsScreen";
+import {NotLoggedInScreen} from "./ProfileScreen/NotLoggedInScreen";
+import {LoginScreen} from "./LoginScreen";
+import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
+import {LocationScreen} from "./ProfileScreen/LocationScreen";
+import {EatingHabitsScreen} from "./ProfileScreen/EatingHabitsScreen";
+import {PriceInformationScreen} from "./PricesScreen/PriceInformationScreen";
 
 export function PricesScreen() {
 
-    const menus: menus|undefined = usePricesList();
+    const Stack = createNativeStackNavigator()
 
-    const [preferredLocation, setPreferredLocation] = usePreferredLocation();
+    const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
 
-    const [dropdownOpen, setDropdownOpen] = React.useState(false);
-    const [selectedItem, setSelectedItem] = React.useState(null as any);
-    const [items, setItems] = React.useState([] as ItemType<string>[]);
+    const Router = ({navigation, route}: {navigation: any, route: any}) => {
+        return (
+            <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
+                <Header title={'Prices'}/>
+                {loggedIn ? <PriceInformationScreen navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedInScreen navigation={navigation}/>}
+            </View>
+        )
+    }
 
-    React.useEffect(() => {
-        if (menus) {
-            const newItems = menus.getMenuNames().map((menuName: string) => {
-                return {label: menuName, value: menuName}
-            })
-            setItems(newItems);
-            setSelectedItem(newItems[0].value);
-        }
-    }, [menus, preferredLocation])
+    const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
+        return <LoginScreen navigation={navigation} route={route} setLoggedIn={setLoggedIn}/>
+    }
 
     return (
-        <View style={globalStyles.container}>
-            <Header
-                title={'Prices'}
-            />
-            <View style={styles.menuSelectorContainer}>
-                <DropDownPicker
-                    open={dropdownOpen}
-                    setOpen={setDropdownOpen}
-                    value={selectedItem}
-                    setValue={setSelectedItem}
-                    items={items}
-                    zIndex={1000}
-                />
-            </View>
-            <FlatList
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-                showsVerticalScrollIndicator={false}
-                data={menus?.menus[selectedItem]?.menuItems.filter((menuItem) => menuItem.locations.includes(preferredLocation)) || []}
-                style={styles.scrollView}
-                decelerationRate={0.85}
-                snapToInterval={270}
-                snapToAlignment={"center"}
-                renderItem={({item, index}: {item: menuItem, index: number}) => (
-                    <MenuItem key={index} name={item.name} price={item.price} itemEntries={item.menuItemEntries}/>
-                )}
-            />
-        </View>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name={"Router"} component={Router} options={{animation: 'slide_from_left'}} />
+            <Stack.Screen name={"Login"} component={(LoginScreenBridge)} options={{animation: 'slide_from_right'}} />
+        </Stack.Navigator>
     )
 }
 
 const styles = StyleSheet.create({
-    menuSelectorContainer: {
-        maxWidth: 180,
-        paddingBottom: scale(20),
-        alignSelf: 'flex-start',
-        marginLeft: scale(30),
-        minHeight: 'auto',
-        zIndex: 999,
-    },
-    scrollView: {
-        backgroundColor: globalColors.primary,
+    root: {
         flex: 1,
-        marginBottom: 20
-    },
-    scrollViewInner: {
+        flexDirection: 'column',
         justifyContent: "flex-start",
         alignItems: "center",
-        paddingBottom: scale(30),
-        alignSelf: "stretch",
     }
 })

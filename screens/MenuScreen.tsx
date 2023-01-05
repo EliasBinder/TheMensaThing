@@ -6,10 +6,9 @@ import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {ENDPOINTS} from "../util/APIUtil";
 import {DishItem} from "../components/MenuScreen/DishItem";
+import {BigButton} from "../components/BigButton";
 
 export function MenuScreen(){
-
-
 
     useEffect(() => {
         fetch(ENDPOINTS.menu + '/BZ', {
@@ -42,6 +41,7 @@ export function MenuScreen(){
                         <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
                         <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
                         <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
+                        <BigButton text={'Show more'} onPress={() => {}} style={showMoreBtnStyles}/>
                     </Card>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
@@ -50,6 +50,10 @@ export function MenuScreen(){
                         icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                         index={0}
                     >
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
+                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
+                        <BigButton text={'Show more'} onPress={() => {}} style={showMoreBtnStyles}/>
                     </Card>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
@@ -118,5 +122,19 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: '100%'
+    }
+});
+
+const showMoreBtnStyles = StyleSheet.create({
+    button: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 30,
+        width: scale(230),
+        height: scale(45),
+        backgroundColor: globalColors.tertiary,
+    },
+    buttonText: {
+        fontSize: 20
     }
 });
