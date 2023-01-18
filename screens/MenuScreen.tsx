@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from "react-native";
 import {Card} from "../components/Card";
 import {Header} from "../components/Header";
-import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {ENDPOINTS} from "../util/APIUtil";
 import {DishItem} from "../components/MenuScreen/DishItem";
 import {BigButton} from "../components/BigButton";
+import {Icon} from "../components/Icon";
 
 export function MenuScreen(){
 

@@ -1,9 +1,9 @@
-import {globalColors, Icon} from "../util/StyleUtil";
+import {globalColors} from "../util/StyleUtil";
 import {TouchableOpacity, View, StyleSheet} from "react-native";
-import CloseIcon from "../assets/images/close";
 import {LocationSelector} from "./LocationSelector";
 import {BottomSheet} from "react-native-btr";
 import React from "react";
+import {Icon} from "./Icon";
 
 
 export function LocationSelectorSheet({visible, setVisible, location, setLocation}: {visible: boolean, setVisible: Function, location: string, setLocation: Function}) {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: "flex-start",
         alignItems: "center",
-        height: 270,
+        height: 290,
         backgroundColor: globalColors.primary
     },
     changeLocHeader: {

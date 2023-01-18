@@ -9,7 +9,7 @@ export function BarOccupation() {
     return (
         <Card
             title={"UniBar"}
-            icon={<Icon name={"pin"} color={"#E6E6E6"} size={25}/>}
+            icon={<Icon name={"cafe"} color={"#E6E6E6"} size={25}/>}
             interaction={
                 <TouchableOpacity style={{marginLeft: 'auto'}}>
                     <Icon name={"tune"} color={"#E6E6E6"} size={25}/>

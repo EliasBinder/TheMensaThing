@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from "react-native";
-import {globalColors, globalStyles, Icon} from "../../util/StyleUtil";
+import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {getImageOfIndex} from "../../util/EatingHabitsUtil";
+import {Icon} from "../Icon";
 
 export function DishItem({iconUrl, title, eatingHabitsAttribs}: {iconUrl: string, title: string, eatingHabitsAttribs: number[]}) {
     return (

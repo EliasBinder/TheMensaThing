@@ -1,11 +1,11 @@
 import {ScrollView, StyleSheet, Text, View} from "react-native";
 import React from "react";
-import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {List} from "../components/List";
 import {Header} from "../components/Header";
-import InfoIcon from "../assets/images/info";
 import {eatingHabitsMap} from "../util/EatingHabitsUtil";
+import {Icon} from "../components/Icon";
 
 const createListItem = (iconName: string, text: string) => {
     return (
