@@ -9,11 +9,14 @@ export const globalColors = {
     accent: '#28D5B4',
 }
 
-export const Icon = createIconSetFromIcoMoon(
-    require('../assets/icons/selection.json'),
-    'IcoMoon',
-    'icomoon.ttf'
-);
+let _iconMap: any = {};
+export const importIconFont = () => {
+    const infoIconFont = require('../assets/fonts/info.json')
+    Object.keys(infoIconFont).forEach((icon) => {
+        _iconMap[icon] = unescape('%u' + infoIconFont[icon]['encodedCode'].replace('\\', ''));
+    });
+}
+export const iconMap = _iconMap;
 
 export const globalStyles = StyleSheet.create({
     safeAreaView: {

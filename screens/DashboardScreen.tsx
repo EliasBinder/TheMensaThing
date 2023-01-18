@@ -1,6 +1,6 @@
 import React, {createRef, useEffect, useRef, useState} from 'react';
 import {Animated, ScrollView, StyleSheet, Text, View, Image} from "react-native";
-import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
+import {globalColors, globalStyles} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {MensaOccupation} from "../components/DashboardScreen/MensaOccupation";
 import {BarOccupation} from "../components/DashboardScreen/BarOccupation";
@@ -12,6 +12,7 @@ import {AZURE_INSTANCE} from "../util/AuthUtil";
 import {Balance} from "../components/DashboardScreen/Balance";
 import {useProfileImage} from "../hooks/useProfileImage";
 import {useBalance} from "../hooks/useBalance";
+import {Icon} from "../components/Icon";
 
 const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
 

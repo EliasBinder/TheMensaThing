@@ -2,9 +2,8 @@ import {globalStyles} from "../util/StyleUtil";
 import {List} from "./List";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
-import RadioboxMarked from "../assets/images/radioboxMarked";
-import Radiobox from "../assets/images/radiobox";
 import {scale} from "../util/ScaleUtil";
+import {Icon} from "./Icon";
 
 const createListItem = ({text, id, checked, setChecked}: {text: string, id: string, checked: string, setChecked: Function}) => {
     return (
@@ -12,7 +11,7 @@ const createListItem = ({text, id, checked, setChecked}: {text: string, id: stri
             setChecked(id);
 
         }}>
-            {checked == id ? <RadioboxMarked color={'#fff'} dim={30}/> : <Radiobox color={'#fff'} dim={30}/>}
+            {checked == id ? <Icon name={"radiobox_blank"} color={'#fff'} size={30}/> : <Icon name={"radiobox_marked"} color={'#fff'} size={30}/>}
             <Text style={styles.menuItemText}>{text}</Text>
         </TouchableOpacity>
     )

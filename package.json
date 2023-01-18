@@ -11,7 +11,13 @@
     "buildAndroidOnMacM1": "export JAVA_HOME=`/usr/libexec/java_home -v 11` && arch -x86_64 expo run:android",
     "buildIosOnMacM1": "expo run:ios && cp -r ./iosM1VenturaFix/Podfile ./ios/Podfile && cp -r ./iosM1VenturaFix/Pods/RTC-Folly/folly/portability/Time.h ./ios/Pods/RTC-Folly/folly/portability/Time.h && expo run:ios",
     "distAndroidOnMacM1": "export JAVA_HOME=`/usr/libexec/java_home -v 11` && arch -x86_64 eas build --profile production --platform android --local",
-    "distIosOnMacM1": "eas build --profile preview --platform ios --local"
+    "distIosOnMacM1": "eas build --profile preview --platform ios --local",
+    "compileFont": "svgtofont --sources ./assets/icons --output ./assets/fonts --fontName themensathing"
+  },
+  "svgtofont": {
+    "fontName": "svgtofont",
+    "css": true,
+    "generateInfoData": true
   },
   "dependencies": {
     "@expo/ngrok": "^4.1.0",
@@ -52,6 +58,7 @@
     "react-native-svg": "12.3.0",
     "react-native-web": "~0.18.7",
     "react-native-webview": "11.23.0",
+    "svgtofont": "^3.22.0",
     "xmlbuilder": "^15.1.1"
   },
   "devDependencies": {

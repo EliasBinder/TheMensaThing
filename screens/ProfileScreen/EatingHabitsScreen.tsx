@@ -3,11 +3,10 @@ import StackNavigationHeader from "../../components/StackNavigationHeader";
 import {globalStyles} from "../../util/StyleUtil";
 import {List} from "../../components/List";
 import {scale} from "../../util/ScaleUtil";
-import Checkbox from "../../assets/images/checkbox";
 import React from "react";
-import CheckboxMarked from "../../assets/images/checkboxMarked";
 import {useEatingHabits} from "../../hooks/useEatingHabits";
 import {eatingHabitsMap} from "../../util/EatingHabitsUtil";
+import {Icon} from "../../components/Icon";
 
 const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string, id: number, eatingHabits: number[], setEatingHabits: Function}) => {
     return (
@@ -18,7 +17,7 @@ const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string
                 setEatingHabits([...eatingHabits, id].sort());
             }
         }}>
-            {eatingHabits.includes(id) ? <CheckboxMarked color={'#fff'} dim={30}/> : <Checkbox color={'#fff'} dim={30}/>}
+            {eatingHabits.includes(id) ? <Icon name={"checkbox_checked"} color={'#fff'} size={30}/> : <Icon name={"checkbox"} color={'#fff'} size={30}/>}
             <Text style={styles.menuItemText}>{text}</Text>
         </TouchableOpacity>
     )

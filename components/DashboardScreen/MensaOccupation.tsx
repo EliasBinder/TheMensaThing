@@ -1,15 +1,11 @@
-import PinIcon from "../../assets/images/pin";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import TuneIcon from "../../assets/images/tune";
 import {OccupationBar} from "./OccupationBar";
-import {globalColors, Icon} from "../../util/StyleUtil";
+import {globalColors} from "../../util/StyleUtil";
 import {Card} from "../Card";
 import React from "react";
 import {scale} from "../../util/ScaleUtil";
-import CloseIcon from "../../assets/images/close";
-import {LocationSelector} from "../LocationSelector";
-import {BottomSheet} from "react-native-btr";
 import {LocationSelectorSheet} from "../LocationSelectorSheet";
+import {Icon} from "../Icon";
 
 export function MensaOccupation() {
 
@@ -20,10 +16,10 @@ export function MensaOccupation() {
     return (
         <Card
             title={"Mensa"}
-            icon={<PinIcon color={"#E6E6E6"} dim={25}/>}
+            icon={<Icon name={"pin"} color={"#E6E6E6"} size={25}/>}
             interaction={
                 <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => setChangeLocationModal(true)}>
-                    <TuneIcon color={"#E6E6E6"} dim={25}/>
+                    <Icon name={"tune"} color={"#E6E6E6"} size={25}/>
                 </TouchableOpacity>}
             index={0}
         >

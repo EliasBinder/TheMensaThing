@@ -9,6 +9,7 @@ import DashboardScreen from "./screens/DashboardScreen";
 import BottomNav from "./components/BottomNav";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
+import {importIconFont} from "./util/StyleUtil";
 
 
 export default function App() {
@@ -31,12 +32,14 @@ export default function App() {
     Poppins_SemiBold: require('./assets/fonts/Poppins-SemiBold.ttf'),
     Poppins_ThinItalic: require('./assets/fonts/Poppins-ThinItalic.ttf'),
     Poppins_Thin: require('./assets/fonts/Poppins-Thin.ttf'),
-    IcoMoon: require('./assets/icons/icomoon.ttf'),
+    IcoMoon: require('./assets/fonts/svgfont.ttf'),
   });
 
   if (!loaded) {
     return null;
   }
+
+  importIconFont();
 
   const Stack = createNativeStackNavigator();
 

@@ -6,16 +6,11 @@ import {InformationScreen} from "../screens/InformationScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
 import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet} from "react-native";
 import {scale} from "../util/ScaleUtil";
-import ProfileIcon from "../assets/images/profile";
-import MenuIcon from "../assets/images/menu";
-import InfoIcon from "../assets/images/info";
-import MapIcon from "../assets/images/map";
-import RocketIcon from "../assets/images/dashboard";
 import React, {Component} from "react";
 import {StatusBar} from "expo-status-bar";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import DashboardIcon from "../assets/images/dashboard";
 import {PricesScreen} from "../screens/PricesScreen";
+import {Icon} from "./Icon";
 
 const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
     return (
@@ -57,15 +52,15 @@ const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors:
                     const getIcon = () => {
                         switch (label) {
                             case 'Dashboard':
-                                return <DashboardIcon color={iconColor} dim={38}/>
+                                return <Icon name={"dashboard"} color={iconColor} size={38}/>
                             case 'Menu':
-                                return <MenuIcon color={iconColor} />
+                                return <Icon name={"menu"} color={iconColor} size={38}/>
                             case 'Information':
-                                return <InfoIcon color={iconColor} />
+                                return <Icon name={"info"} color={iconColor} size={38}/>
                             case 'Prices':
-                                return <MapIcon color={iconColor} />
+                                return <Icon name={"price"} color={iconColor}  size={38}/>
                             case 'Profile':
-                                return <ProfileIcon color={iconColor} dim={38} />
+                                return <Icon name={"profile"} color={iconColor} size={38}/>
                         }
                     }
 

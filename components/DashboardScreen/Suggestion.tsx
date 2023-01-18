@@ -1,19 +1,15 @@
-import PinIcon from "../../assets/images/pin";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import TuneIcon from "../../assets/images/tune";
 import {OccupationBar} from "./OccupationBar";
-import {Icon} from "../../util/StyleUtil";
 import {Card} from "../Card";
 import React from "react";
-import {scale} from "../../util/ScaleUtil";
-import {BigButton} from "../BigButton";
 import {DishItem} from "../MenuScreen/DishItem";
+import {Icon} from "../Icon";
 
 export function Suggestion({navigation}: {navigation: any}) {
     return (
         <Card
             title={"Suggestion"}
-            icon={<PinIcon color={"#E6E6E6"} dim={25}/>}
+            icon={<Icon name={"pin"} color={"#E6E6E6"} size={25}/>}
             index={2}
         >
             <View style={styles.cardSection}>

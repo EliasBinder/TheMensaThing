@@ -1,12 +1,12 @@
 import {Pressable, StyleSheet, Text, View} from "react-native";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import ArrowLeft from "../assets/images/arrowLeft";
+import {Icon} from "./Icon";
 
 export function StackNavigationHeader({title, navigation, route}: {title: string, navigation: any, route: any}) {
     return (
         <View style={[globalStyles.container, styles.container]}>
             <Pressable onPress={() => navigation.goBack()}>
-                <ArrowLeft color={'#fff'} dim={50} />
+                <Icon name={"arrow_left"} color={'#fff'} size={50} />
             </Pressable>
             <Text style={styles.title}>
                 {title}
