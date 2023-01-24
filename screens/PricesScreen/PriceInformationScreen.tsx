@@ -6,8 +6,8 @@ import {StyleSheet, Text} from "react-native";
 import {scale} from "../../util/ScaleUtil";
 import {usePricesList} from "../../hooks/usePricesList";
 import DropDownPicker, {ItemType, ValueType} from 'react-native-dropdown-picker';
-import {menus} from "../../model/menus";
-import {menuItem} from "../../model/menuItem";
+import {menus} from "../../model/prices/menus";
+import {menuItem} from "../../model/prices/menuItem";
 import {MenuItem} from "../../components/PricesScreen/MenuItem";
 import {usePreferredLocation} from "../../hooks/usePreferredLocation";
 

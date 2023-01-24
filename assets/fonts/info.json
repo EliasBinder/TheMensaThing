@@ -5,208 +5,214 @@
     "className": "svgtofont-arrow_back",
     "unicode": "&#59905;"
   },
-  "burger": {
+  "arrow_left": {
     "encodedCode": "\\ea02",
     "prefix": "svgtofont",
-    "className": "svgtofont-burger",
+    "className": "svgtofont-arrow_left",
     "unicode": "&#59906;"
   },
-  "cafe": {
+  "burger": {
     "encodedCode": "\\ea03",
     "prefix": "svgtofont",
-    "className": "svgtofont-cafe",
+    "className": "svgtofont-burger",
     "unicode": "&#59907;"
   },
-  "cashew_nut": {
+  "cafe": {
     "encodedCode": "\\ea04",
     "prefix": "svgtofont",
-    "className": "svgtofont-cashew_nut",
+    "className": "svgtofont-cafe",
     "unicode": "&#59908;"
   },
-  "celery": {
+  "cashew_nut": {
     "encodedCode": "\\ea05",
     "prefix": "svgtofont",
-    "className": "svgtofont-celery",
+    "className": "svgtofont-cashew_nut",
     "unicode": "&#59909;"
   },
-  "checkbox_blank": {
+  "celery": {
     "encodedCode": "\\ea06",
     "prefix": "svgtofont",
-    "className": "svgtofont-checkbox_blank",
+    "className": "svgtofont-celery",
     "unicode": "&#59910;"
   },
-  "checkbox_marked": {
+  "checkbox_blank": {
     "encodedCode": "\\ea07",
     "prefix": "svgtofont",
-    "className": "svgtofont-checkbox_marked",
+    "className": "svgtofont-checkbox_blank",
     "unicode": "&#59911;"
   },
-  "close": {
+  "checkbox_marked": {
     "encodedCode": "\\ea08",
     "prefix": "svgtofont",
-    "className": "svgtofont-close",
+    "className": "svgtofont-checkbox_marked",
     "unicode": "&#59912;"
   },
-  "dashboard": {
+  "close": {
     "encodedCode": "\\ea09",
     "prefix": "svgtofont",
-    "className": "svgtofont-dashboard",
+    "className": "svgtofont-close",
     "unicode": "&#59913;"
   },
-  "egg": {
+  "dashboard": {
     "encodedCode": "\\ea0a",
     "prefix": "svgtofont",
-    "className": "svgtofont-egg",
+    "className": "svgtofont-dashboard",
     "unicode": "&#59914;"
   },
-  "fish": {
+  "egg": {
     "encodedCode": "\\ea0b",
     "prefix": "svgtofont",
-    "className": "svgtofont-fish",
+    "className": "svgtofont-egg",
     "unicode": "&#59915;"
   },
-  "frozen": {
+  "fish": {
     "encodedCode": "\\ea0c",
     "prefix": "svgtofont",
-    "className": "svgtofont-frozen",
+    "className": "svgtofont-fish",
     "unicode": "&#59916;"
   },
-  "info": {
+  "frozen": {
     "encodedCode": "\\ea0d",
     "prefix": "svgtofont",
-    "className": "svgtofont-info",
+    "className": "svgtofont-frozen",
     "unicode": "&#59917;"
   },
-  "leaf": {
+  "info": {
     "encodedCode": "\\ea0e",
     "prefix": "svgtofont",
-    "className": "svgtofont-leaf",
+    "className": "svgtofont-info",
     "unicode": "&#59918;"
   },
-  "map": {
+  "leaf": {
     "encodedCode": "\\ea0f",
     "prefix": "svgtofont",
-    "className": "svgtofont-map",
+    "className": "svgtofont-leaf",
     "unicode": "&#59919;"
   },
-  "menu": {
+  "map": {
     "encodedCode": "\\ea10",
     "prefix": "svgtofont",
-    "className": "svgtofont-menu",
+    "className": "svgtofont-map",
     "unicode": "&#59920;"
   },
-  "milk": {
+  "menu": {
     "encodedCode": "\\ea11",
     "prefix": "svgtofont",
-    "className": "svgtofont-milk",
+    "className": "svgtofont-menu",
     "unicode": "&#59921;"
   },
-  "mustard": {
+  "milk": {
     "encodedCode": "\\ea12",
     "prefix": "svgtofont",
-    "className": "svgtofont-mustard",
+    "className": "svgtofont-milk",
     "unicode": "&#59922;"
   },
-  "pig": {
+  "mustard": {
     "encodedCode": "\\ea13",
     "prefix": "svgtofont",
-    "className": "svgtofont-pig",
+    "className": "svgtofont-mustard",
     "unicode": "&#59923;"
   },
-  "pin": {
+  "pig": {
     "encodedCode": "\\ea14",
     "prefix": "svgtofont",
-    "className": "svgtofont-pin",
+    "className": "svgtofont-pig",
     "unicode": "&#59924;"
   },
-  "price": {
+  "pin": {
     "encodedCode": "\\ea15",
     "prefix": "svgtofont",
-    "className": "svgtofont-price",
+    "className": "svgtofont-pin",
     "unicode": "&#59925;"
   },
-  "profile": {
+  "price": {
     "encodedCode": "\\ea16",
     "prefix": "svgtofont",
-    "className": "svgtofont-profile",
+    "className": "svgtofont-price",
     "unicode": "&#59926;"
   },
-  "radiobox_blank": {
+  "profile": {
     "encodedCode": "\\ea17",
     "prefix": "svgtofont",
-    "className": "svgtofont-radiobox_blank",
+    "className": "svgtofont-profile",
     "unicode": "&#59927;"
   },
-  "radiobox_marked": {
+  "radiobox_blank": {
     "encodedCode": "\\ea18",
     "prefix": "svgtofont",
-    "className": "svgtofont-radiobox_marked",
+    "className": "svgtofont-radiobox_blank",
     "unicode": "&#59928;"
   },
-  "sesame": {
+  "radiobox_marked": {
     "encodedCode": "\\ea19",
     "prefix": "svgtofont",
-    "className": "svgtofont-sesame",
+    "className": "svgtofont-radiobox_marked",
     "unicode": "&#59929;"
   },
-  "share": {
+  "sesame": {
     "encodedCode": "\\ea1a",
     "prefix": "svgtofont",
-    "className": "svgtofont-share",
+    "className": "svgtofont-sesame",
     "unicode": "&#59930;"
   },
-  "soy_beans": {
+  "share": {
     "encodedCode": "\\ea1b",
     "prefix": "svgtofont",
-    "className": "svgtofont-soy_beans",
+    "className": "svgtofont-share",
     "unicode": "&#59931;"
   },
-  "star": {
+  "soy_beans": {
     "encodedCode": "\\ea1c",
     "prefix": "svgtofont",
-    "className": "svgtofont-star",
+    "className": "svgtofont-soy_beans",
     "unicode": "&#59932;"
   },
-  "toggle_off": {
+  "star": {
     "encodedCode": "\\ea1d",
     "prefix": "svgtofont",
-    "className": "svgtofont-toggle_off",
+    "className": "svgtofont-star",
     "unicode": "&#59933;"
   },
-  "toggle_on": {
+  "toggle_off": {
     "encodedCode": "\\ea1e",
     "prefix": "svgtofont",
-    "className": "svgtofont-toggle_on",
+    "className": "svgtofont-toggle_off",
     "unicode": "&#59934;"
   },
-  "trending_down": {
+  "toggle_on": {
     "encodedCode": "\\ea1f",
     "prefix": "svgtofont",
-    "className": "svgtofont-trending_down",
+    "className": "svgtofont-toggle_on",
     "unicode": "&#59935;"
   },
-  "trending_up": {
+  "trending_down": {
     "encodedCode": "\\ea20",
     "prefix": "svgtofont",
-    "className": "svgtofont-trending_up",
+    "className": "svgtofont-trending_down",
     "unicode": "&#59936;"
   },
-  "tune": {
+  "trending_up": {
     "encodedCode": "\\ea21",
     "prefix": "svgtofont",
-    "className": "svgtofont-tune",
+    "className": "svgtofont-trending_up",
     "unicode": "&#59937;"
   },
-  "wheat": {
+  "tune": {
     "encodedCode": "\\ea22",
     "prefix": "svgtofont",
-    "className": "svgtofont-wheat",
+    "className": "svgtofont-tune",
     "unicode": "&#59938;"
   },
-  "wine": {
+  "wheat": {
     "encodedCode": "\\ea23",
     "prefix": "svgtofont",
-    "className": "svgtofont-wine",
+    "className": "svgtofont-wheat",
     "unicode": "&#59939;"
+  },
+  "wine": {
+    "encodedCode": "\\ea24",
+    "prefix": "svgtofont",
+    "className": "svgtofont-wine",
+    "unicode": "&#59940;"
   }
 }

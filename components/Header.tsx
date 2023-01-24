@@ -1,6 +1,5 @@
 import {Animated, View, StyleSheet} from "react-native";
 import {globalColors, globalStyles} from "../util/StyleUtil";
-import ProfileIcon from "../assets/images/profile";
 import React, {useRef} from "react";
 import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";

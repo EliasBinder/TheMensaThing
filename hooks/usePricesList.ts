@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
-import {menus} from "../model/menus";
+import {menus} from "../model/prices/menus";
 
 export const usePricesList = () => {
     const [pricesList, setPricesList] = useState(undefined as menus|undefined)

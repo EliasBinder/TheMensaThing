@@ -17,7 +17,7 @@ const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string
                 setEatingHabits([...eatingHabits, id].sort());
             }
         }}>
-            {eatingHabits.includes(id) ? <Icon name={"checkbox_checked"} color={'#fff'} size={30}/> : <Icon name={"checkbox"} color={'#fff'} size={30}/>}
+            {eatingHabits.includes(id) ? <Icon name={"checkbox_marked"} color={'#fff'} size={30}/> : <Icon name={"checkbox_blank"} color={'#fff'} size={30}/>}
             <Text style={styles.menuItemText}>{text}</Text>
         </TouchableOpacity>
     )
