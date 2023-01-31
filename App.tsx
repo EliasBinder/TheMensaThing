@@ -10,7 +10,136 @@ import BottomNav from "./components/BottomNav";
 import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import {importIconFont} from "./util/StyleUtil";
+import * as Location from 'expo-location';
+import {GeofencingEventType, LocationGeofencingRegionState} from 'expo-location';
+import * as TaskManager from 'expo-task-manager';
 
+const LOCATION_TASK = 'location-task';
+const LOCATION_TASK_FENCING = 'geofencing-location-task';
+
+if(TaskManager.isTaskDefined(LOCATION_TASK_FENCING)){
+  console.log("redefine task");
+  TaskManager.unregisterTaskAsync(LOCATION_TASK_FENCING).then(r => {
+    console.log("unregistered task", r);
+    // @ts-ignore
+    TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
+      if (error) {
+        console.log("error: " + error);
+        return;
+      }
+      if (eventType === GeofencingEventType.Enter) {
+        console.log("You entered region:" + JSON.stringify(region));
+        /*fetch('https://api.github.com/users/defunkt', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({
+                user: 'test@unibz.it', //auth.username,
+                entered: true,
+                inLocation: region.identifier,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //Showing response message coming from server
+                console.warn(responseJson);
+            })
+            .catch((error) => {
+                //display error message
+                console.warn(error);
+            });*/
+      } else if (eventType === GeofencingEventType.Exit) {
+        console.log("You left region:" + JSON.stringify(region));
+        /*fetch('https://api.github.com/users/defunkt', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({
+                user: 'test@unibz.it', //auth.username,
+                entered: false,
+                inLocation: region.identifier,
+            }),
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //Showing response message coming from server
+                console.warn(responseJson);
+            })
+            .catch((error) => {
+                //display error message
+                console.warn(error);
+            });*/
+      } else{
+        console.log('none of the events triggered' + JSON.stringify(region));
+      }
+    });
+  }).catch(e => console.log("error unregistering task", e));
+}else{
+  console.log('define task');
+  // @ts-ignore
+  TaskManager.defineTask(LOCATION_TASK_FENCING, ({ data: {eventType, region}, error }) => {
+    if (error) {
+      console.log("error: " + error);
+      return;
+    }
+    if (eventType === GeofencingEventType.Enter) {
+      console.log("You entered region:" + JSON.stringify(region));
+      /*fetch('https://api.github.com/users/defunkt', {
+          method: 'POST',
+          headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              user: 'test@unibz.it', //auth.username,
+              entered: true,
+              inLocation: region.identifier,
+          }),
+      })
+          .then((response) => response.json())
+          .then((responseJson) => {
+              //Showing response message coming from server
+              console.warn(responseJson);
+          })
+          .catch((error) => {
+              //display error message
+              console.warn(error);
+          });*/
+        } else if (eventType === GeofencingEventType.Exit) {
+            console.log("You left region:" + JSON.stringify(region));
+            /*fetch('https://api.github.com/users/defunkt', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+
+                body: JSON.stringify({
+                    user: 'test@unibz.it', //auth.username,
+                    entered: false,
+                    inLocation: region.identifier,
+                }),
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    //Showing response message coming from server
+                    console.warn(responseJson);
+                })
+                .catch((error) => {
+                    //display error message
+                    console.warn(error);
+                });*/
+        } else{
+            console.log('none of the events triggered' + JSON.stringify(region));
+        }
+    });
+}
 
 export default function App() {
 

@@ -24,6 +24,12 @@
       "googleServicesFile": "./GoogleService-Info.plist",
       "config": {
         "googleMapsApiKey": "AIzaSyBxbPyWEfj8HjT9esYIyU8UbvkZYdC_5_A"
+      },
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
       }
     },
     "android": {
@@ -37,7 +43,11 @@
         "googleMaps": {
           "apiKey": "AIzaSyCIOpTPaMRkQjwcxQYflq30rAQcejXn4Os"
         }
-      }
+      },
+      "permissions": [
+        "ACCESS_BACKGROUND_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

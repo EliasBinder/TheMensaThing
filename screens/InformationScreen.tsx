@@ -9,7 +9,7 @@ import {Icon} from "../components/Icon";
 
 const createListItem = (iconName: string, text: string) => {
     return (
-        <View style={styles.menuItem}>
+        <View style={styles.menuItem} key={iconName}>
             <View>{getIcon({label: iconName, color: globalColors.accent, size: 29})}</View>
             <Text style={styles.menuItemText}>{text}</Text>
         </View>
