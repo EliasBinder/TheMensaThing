@@ -2,7 +2,7 @@ import {globalStyles} from "../util/StyleUtil";
 import {Text, View, StyleSheet, Animated} from "react-native";
 import React, {ReactNode, useEffect, useRef} from "react";
 
-export function Card({title, icon, interaction, index, children}:{title: string, icon: ReactNode, interaction?: ReactNode, index?: number, children: ReactNode[]}) {
+export function Card({title, icon, interaction, index, children}:{title: string, icon: ReactNode, interaction?: ReactNode, index?: number, children: ReactNode|ReactNode[]}) {
 
     const addAnim = useRef(new Animated.Value(50)).current;
 
