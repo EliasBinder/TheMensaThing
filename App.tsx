@@ -1,28 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import { useFonts } from 'expo-font';
 import WelcomeScreen from "./screens/WelcomeScreen";
 import React from 'react';
 import {NavigationContainer} from "@react-navigation/native";
-import createStackNavigator, {createNativeStackNavigator} from "@react-navigation/native-stack";
-import DashboardScreen from "./screens/DashboardScreen";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import BottomNav from "./components/BottomNav";
-import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import {importIconFont} from "./util/StyleUtil";
-import * as Location from 'expo-location';
-import {GeofencingEventType, LocationGeofencingRegionState} from 'expo-location';
+import {GeofencingEventType} from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
 
-const LOCATION_TASK = 'location-task';
 const LOCATION_TASK_FENCING = 'geofencing-location-task';
 
 //redefine the task if it is already defined, otherwise it will not be executed correctly
 if(TaskManager.isTaskDefined(LOCATION_TASK_FENCING)){
   console.log("redefine task");
-  TaskManager.unregisterTaskAsync(LOCATION_TASK_FENCING).then(r => {
+  /*TaskManager.unregisterTaskAsync(LOCATION_TASK_FENCING).then(r => {
     console.log("unregistered task", r);
-  }).catch(e => console.log("error unregistering task", e));
+  }).catch(e => console.log("error unregistering task", e));*/
 }
 
 // @ts-ignore

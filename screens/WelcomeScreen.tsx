@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";
@@ -6,17 +6,13 @@ import {BigButton} from "../components/BigButton";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from "expo-location";
-import {LocationGeofencingRegionState} from "expo-location";
-import * as TaskManager from 'expo-task-manager';
 import {mensaLocations} from "../util/LocationUtil";
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
-const LOCATION_TASK = 'location-task';
 const LOCATION_TASK_FENCING = 'geofencing-location-task';
 
 const WelcomeScreen = ({navigation}: {navigation: any}) => {
 
-    const [location, setLocation] = useState({} as Location.LocationObject);
 
     useEffect(() => {
         AsyncStorage.getItem('isFirstTime').then((value: string | null) => {
@@ -34,9 +30,6 @@ const WelcomeScreen = ({navigation}: {navigation: any}) => {
                     startBackgroundUpdate().then(() => console.log('started background tasks')).catch(e => console.log('Error executing the background location tasks', e));
                 }
             }
-            /*await Location.requestBackgroundPermissionsAsync()
-            await Location.requestForegroundPermissionsAsync()*/
-            //startBackgroundUpdate().catch(e => console.log('Error executing the background location tasks', e));
         })();
     }, [navigation]);
 
@@ -59,12 +52,6 @@ const WelcomeScreen = ({navigation}: {navigation: any}) => {
             .then(() => console.log("started geofencing with locations"))
     }
 
-    /*    const stopBackground = () => {
-        Location.stopLocationUpdatesAsync(LOCATION_TASK).then(r => {  console.log("stopped location updates")});
-        Location.stopGeofencingAsync(LOCATION_TASK_FENCING).then(r => {  console.log("stopped geofencing")});
-        TaskManager.unregisterAllTasksAsync().then(r => {  console.log("unregistered all tasks")});
-    }*/
-
     // @ts-ignore
     return (
         <SafeAreaView style={[styles.container, globalStyles.safeAreaView]}>
@@ -86,13 +73,6 @@ const WelcomeScreen = ({navigation}: {navigation: any}) => {
                 }} style={styles}/>
             </View>
         </SafeAreaView>
-        /*<View style={styles.container}>
-            <Text>{JSON.stringify(location)}</Text>
-            <Text>{locationUpdate}</Text>
-            <Text>{locationUpdateFencing}</Text>
-            <Button title={'startBackground'} onPress={() => {startBackgroundUpdate().then().catch() }}></Button>
-            <Button title={'stopBackground'} onPress={() => {stopBackground() }}></Button>
-        </View>*/
     )
 }
 
