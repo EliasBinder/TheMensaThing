@@ -6,7 +6,7 @@ export function StackNavigationHeader({title, navigation, route}: {title: string
     return (
         <View style={[globalStyles.container, styles.container]}>
             <Pressable onPress={() => navigation.goBack()}>
-                <Icon name={"arrow_left"} color={'#fff'} size={50} />
+                <Icon name={"arrow_back"} color={'#fff'} size={50} />
             </Pressable>
             <Text style={styles.title}>
                 {title}
