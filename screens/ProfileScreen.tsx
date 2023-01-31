@@ -18,7 +18,7 @@ export function ProfileScreen() {
 
     const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
 
-    const Router = ({navigation}: {navigation: any}) => {
+    const ProfileScreenRoot = ({navigation}: {navigation: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Profile'}/>
@@ -27,13 +27,13 @@ export function ProfileScreen() {
         )
     }
 
-    const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
+    const LoginScreenBridge = ({navigation}: {navigation: any}) => {
         return <LoginScreen navigation={navigation} setLoggedIn={setLoggedIn}/>
     }
 
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name={"Router"} component={Router} options={{animation: 'slide_from_left'}} />
+            <Stack.Screen name={"Router"} component={ProfileScreenRoot} options={{animation: 'slide_from_left'}} />
             <Stack.Screen name={"PreferredDishes"} component={PreferredDishesScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"Location"} component={LocationScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"EatingHabits"} component={EatingHabitsScreen} options={{animation: 'slide_from_right'}} />

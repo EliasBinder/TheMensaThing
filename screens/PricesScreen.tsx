@@ -15,7 +15,7 @@ export function PricesScreen() {
 
     const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
 
-    const Router = ({navigation}: {navigation: any}) => {
+    const PricesScreenRoot = ({navigation}: {navigation: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Prices'}/>
@@ -30,7 +30,7 @@ export function PricesScreen() {
 
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name={"Router"} component={Router} options={{animation: 'slide_from_left'}} />
+            <Stack.Screen name={"Router"} component={PricesScreenRoot} options={{animation: 'slide_from_left'}} />
             <Stack.Screen name={"Login"} component={(LoginScreenBridge)} options={{animation: 'slide_from_right'}} />
         </Stack.Navigator>
     )

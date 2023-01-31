@@ -14,57 +14,40 @@ import {useProfileImage} from "../hooks/useProfileImage";
 import {useBalance} from "../hooks/useBalance";
 import {Icon} from "../components/Icon";
 
-const DashboardScreen = ({route}: {route: any}) => {
-
-    const Stack = createNativeStackNavigator()
+const DashboardScreen = () => {
 
     const imageSource = useProfileImage();
-    let balanceRef = createRef<Text>()
+    const balanceRef = createRef<Text>()
     const balance = useBalance();
 
-    const Router = () => {
-        return (
-            <View style={globalStyles.container}>
-                <Header title={"Dashboard"} icon={
-                        !AZURE_INSTANCE.isLoggedIn() ?
-                            <Icon name={"profile"} color={'#fff'} size={48}/>
-                            :
-                            <Image style={{width: 60, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
-                } />
-                <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
-                    { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
-                        <Balance balance={balance}/>
-                    </View> : <></>
-                    }
-                    <View style={globalStyles.cardRow}>
-                        <MensaOccupation/>
-                    </View>
-                    <View style={[globalStyles.cardRow, {marginTop: 20}]}>
-                        <BarOccupation/>
-                    </View>
-                    { AZURE_INSTANCE.isLoggedIn() ?
-                        (
-                            <View style={[globalStyles.cardRow, {marginTop: 20}]}>
-                                <Suggestion/>
-                            </View>)
-                        : <></>
-                    }
-                </ScrollView>
-            </View>
-        )
-    }
-
-    const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
-        return (
-            <LoginScreen navigation={navigation} route={route} setLoggedIn={undefined}/>
-        )
-    }
-
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name={"Router"} component={Router} options={{animation: 'slide_from_left'}} initialParams={route.params}/>
-            <Stack.Screen name={"Login"} component={LoginScreenBridge} options={{animation: 'slide_from_right'}} initialParams={route.params}/>
-        </Stack.Navigator>
+        <View style={globalStyles.container}>
+            <Header title={"Dashboard"} icon={
+                    !AZURE_INSTANCE.isLoggedIn() ?
+                        <Icon name={"profile"} color={'#fff'} size={48}/>
+                        :
+                        <Image style={{width: 60, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
+            } />
+            <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
+                { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
+                    <Balance balance={balance}/>
+                </View> : <></>
+                }
+                <View style={globalStyles.cardRow}>
+                    <MensaOccupation/>
+                </View>
+                <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                    <BarOccupation/>
+                </View>
+                { AZURE_INSTANCE.isLoggedIn() ?
+                    (
+                        <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                            <Suggestion/>
+                        </View>)
+                    : <></>
+                }
+            </ScrollView>
+        </View>
     )
 }
 
