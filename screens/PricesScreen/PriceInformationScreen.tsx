@@ -51,8 +51,8 @@ export function PriceInformationScreen() {
                 decelerationRate={0.85}
                 snapToInterval={270}
                 snapToAlignment={"center"}
-                renderItem={({item, index}: {item: menuItem, index: number}) => (
-                    <MenuItem key={index} name={item.name} price={item.price} itemEntries={item.menuItemEntries}/>
+                renderItem={({item}: {item: menuItem}) => (
+                    <MenuItem name={item.name} price={item.price} itemEntries={item.menuItemEntries}/>
                 )}
             />
         </>

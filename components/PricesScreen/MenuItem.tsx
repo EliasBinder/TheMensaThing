@@ -13,11 +13,11 @@ const createMenuItem = (title: string, key: number) => {
     )
 }
 
-export function MenuItem({key, name, price, itemEntries}: {key: number, name: string, price: number, itemEntries: menuItemEnty[]}) {
+export function MenuItem({name, price, itemEntries}: {name: string, price: number, itemEntries: menuItemEnty[]}) {
     const listItems = itemEntries.map((item, index) => createMenuItem(item.name, index))
 
     return (
-        <View key={key} style={[styles.container, globalStyles.dropShadow]}>
+        <View style={[styles.container, globalStyles.dropShadow]}>
             <Text style={styles.name}>{name}</Text>
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
                 <List items={listItems} toScroll={false}/>
