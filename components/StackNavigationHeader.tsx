@@ -6,7 +6,7 @@ export function StackNavigationHeader({title, navigation}: {title: string, navig
     return (
         <View style={[globalStyles.container, styles.container]}>
             <Pressable onPress={() => navigation.goBack()}>
-                <Icon name={"arrow_back"} color={'#fff'} size={50} />
+                <Icon name={"arrow_back"} color={'#fff'} size={45}/>
             </Pressable>
             <Text style={styles.title}>
                 {title}
@@ -20,8 +20,8 @@ export default StackNavigationHeader;
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        paddingLeft: 5,
-        paddingRight: 5,
+        paddingLeft: 10,
+        paddingRight: 10,
         justifyContent: "flex-start",
         maxHeight: 80,
         backgroundColor: globalColors.secondary

@@ -3,99 +3,14 @@ import DashboardScreen from "../screens/DashboardScreen";
 import {MenuScreen} from "../screens/MenuScreen";
 import {InformationScreen} from "../screens/InformationScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
-import {TouchableOpacity, View, SafeAreaView, StyleSheet} from "react-native";
+import {SafeAreaView, StyleSheet} from "react-native";
 import React from "react";
 import {StatusBar} from "expo-status-bar";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import {PricesScreen} from "../screens/PricesScreen";
-import {Icon} from "./Icon";
+import {CustomTabBar} from "./CustomTabBar";
 
-const CustomTabBar = ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) => {
-    return (
-        <>
-            <View style={{height: 12.5, width: '100%', backgroundColor: globalColors.primary}}></View>
-            <View style={styles.tabBar}>
-                {state.routes.map((route: { key: string | number; name: any; }, index: any) => {
-                    const { options } = descriptors[route.key];
-                    const label =
-                        options.tabBarLabel !== undefined
-                            ? options.tabBarLabel
-                            : options.title !== undefined
-                                ? options.title
-                                : route.name;
-
-                    const isFocused = state.index === index;
-
-                    const iconColor = isFocused ? '#fff' : '#787878';
-
-                    const onPress = () => {
-                        const event = navigation.emit({
-                            type: 'tabPress',
-                            target: route.key,
-                            canPreventDefault: true,
-                        });
-
-                        if (!isFocused && !event.defaultPrevented) {
-                            navigation.navigate({ name: route.name, merge: true });
-                        }
-                    };
-
-                    const onLongPress = () => {
-                        navigation.emit({
-                            type: 'tabLongPress',
-                            target: route.key,
-                        });
-                    };
-
-                    const getIcon = () => {
-                        switch (label) {
-                            case 'Dashboard':
-                                return <Icon name={"dashboard"} color={iconColor} size={38}/>
-                            case 'Menu':
-                                return <Icon name={"menu"} color={iconColor} size={38}/>
-                            case 'Information':
-                                return <Icon name={"info"} color={iconColor} size={38}/>
-                            case 'Prices':
-                                return <Icon name={"price"} color={iconColor}  size={38}/>
-                            case 'Profile':
-                                return <Icon name={"profile"} color={iconColor} size={38}/>
-                        }
-                    }
-
-                    const getTouchableIcon = ({inner, key}: {inner: any, key: string|undefined}) => {
-                        return (
-                            <TouchableOpacity
-                                accessibilityRole="button"
-                                accessibilityState={isFocused ? { selected: true } : {}}
-                                accessibilityLabel={options.tabBarAccessibilityLabel}
-                                testID={options.tabBarTestID}
-                                onPress={onPress}
-                                onLongPress={onLongPress}
-                                style={styles.buttonContainer}
-                                key={key}
-                            >
-                                {inner}
-                            </TouchableOpacity>
-                        )
-                    }
-
-                    return label == 'Dashboard' ? (
-                            <View key={index} style={styles.buttonContainer}>
-                                <View style={styles.centerOutline}>
-                                    {getTouchableIcon({inner: (<View style={styles.center}>{getIcon()}</View>), key: undefined})}
-                                </View>
-                            </View>
-                        ): (
-                            getTouchableIcon({inner: getIcon(), key: index})
-                        )
-                })}
-            </View>
-        </>
-    );
-}
-
-
-const BottomNav = ({navigation, route}: {navigation: any, route: any}) => {
+const BottomNav = () => {
 
     const Tab = createBottomTabNavigator();
 
@@ -124,28 +39,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: globalColors.secondary,
         flex: 1
-    },
-    tabBar: {
-        flexDirection: 'row',
-        height: 60,
-        backgroundColor: globalColors.secondary,
-        overflow: 'visible'
-    },
-    buttonContainer: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    centerOutline: {
-        borderRadius: 100,
-        backgroundColor: globalColors.primary,
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: 85,
-        height: 85,
-        top: -30,
-        position: 'absolute',
     },
     center: {
         borderRadius: 100,
