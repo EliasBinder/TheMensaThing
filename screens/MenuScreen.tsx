@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View, Image} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import {Card} from "../components/Card";
 import {Header} from "../components/Header";
 import {globalColors, globalStyles} from "../util/StyleUtil";
@@ -91,38 +91,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignSelf: "stretch",
         paddingHorizontal: scale(30),
-    },
-    cardSection: {
-        width: '100%',
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-        alignSelf: "stretch"
-    },
-    cardText: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins_SemiBold"
-    },
-    occupationBar1: {
-    },
-    occupationContainer: {
-        width: 'auto',
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: scale(15),
-    },
-    occupationNum: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins_SemiBold",
-        marginLeft: 20
-    },
-    detailsContainer: {
-        marginTop: 20,
-        flexDirection: "row",
-        width: '100%'
     }
 });
 

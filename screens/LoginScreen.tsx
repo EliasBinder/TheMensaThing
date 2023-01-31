@@ -3,15 +3,14 @@ import StackNavigationHeader from "../components/StackNavigationHeader";
 // @ts-ignore //TODO: fix this
 import {AzureLoginView} from '../TheMensaThingAzureLogin/lib/index';
 import {AZURE_INSTANCE} from "../util/AuthUtil";
-import {useEffect} from "react";
 
 
 
-export function LoginScreen({navigation, route, setLoggedIn}:{navigation: any, route: any, setLoggedIn: Function|undefined}) {
+export function LoginScreen({navigation, setLoggedIn}:{navigation: any, setLoggedIn: Function|undefined}) {
 
     return (
         <>
-            <StackNavigationHeader title={"Login"} navigation={navigation} route={route}/>
+            <StackNavigationHeader title={"Login"} navigation={navigation}/>
             <View style={{
                 flex: 1,
                 backgroundColor: '#33ff41',

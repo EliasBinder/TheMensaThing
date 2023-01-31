@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, View} from "react-native";
-import {globalColors, globalStyles} from "../../util/StyleUtil";
+import {globalColors} from "../../util/StyleUtil";
 import {getImageOfIndex} from "../../util/EatingHabitsUtil";
 import {Icon} from "../Icon";
 

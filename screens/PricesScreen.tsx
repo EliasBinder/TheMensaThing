@@ -1,23 +1,12 @@
-import {globalColors, globalStyles, Icon} from "../util/StyleUtil";
+import {globalStyles} from "../util/StyleUtil";
 import {Header} from "../components/Header";
-import {FlatList, ScrollView, View} from "react-native";
+import {View} from "react-native";
 import React from "react";
-import {StyleSheet, Text} from "react-native";
-import {scale} from "../util/ScaleUtil";
-import {usePricesList} from "../hooks/usePricesList";
-import DropDownPicker, {ItemType, ValueType} from 'react-native-dropdown-picker';
-import {menus} from "../model/prices/menus";
-import {menuItem} from "../model/prices/menuItem";
-import {MenuItem} from "../components/PricesScreen/MenuItem";
-import {usePreferredLocation} from "../hooks/usePreferredLocation";
+import {StyleSheet} from "react-native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
-import {SettingsScreen} from "./ProfileScreen/SettingsScreen";
 import {NotLoggedInScreen} from "./ProfileScreen/NotLoggedInScreen";
 import {LoginScreen} from "./LoginScreen";
-import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
-import {LocationScreen} from "./ProfileScreen/LocationScreen";
-import {EatingHabitsScreen} from "./ProfileScreen/EatingHabitsScreen";
 import {PriceInformationScreen} from "./PricesScreen/PriceInformationScreen";
 
 export function PricesScreen() {
@@ -26,17 +15,17 @@ export function PricesScreen() {
 
     const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
 
-    const Router = ({navigation, route}: {navigation: any, route: any}) => {
+    const Router = ({navigation}: {navigation: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Prices'}/>
-                {loggedIn ? <PriceInformationScreen navigation={navigation} setLoggedIn={setLoggedIn}/> : <NotLoggedInScreen navigation={navigation}/>}
+                {loggedIn ? <PriceInformationScreen /> : <NotLoggedInScreen navigation={navigation}/>}
             </View>
         )
     }
 
-    const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
-        return <LoginScreen navigation={navigation} route={route} setLoggedIn={setLoggedIn}/>
+    const LoginScreenBridge = ({navigation}: {navigation: any}) => {
+        return <LoginScreen navigation={navigation} setLoggedIn={setLoggedIn}/>
     }
 
     return (

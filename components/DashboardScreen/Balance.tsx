@@ -1,8 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {OccupationBar} from "./OccupationBar";
 import {Card} from "../Card";
 import React from "react";
-import {scale} from "../../util/ScaleUtil";
 import {Icon} from "../Icon";
 
 export function Balance({balance}: {balance: string}) {

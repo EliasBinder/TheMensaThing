@@ -47,16 +47,6 @@ const styles = StyleSheet.create({
         paddingLeft: scale(20),
         paddingRight: scale(20),
     },
-    title: {
-        paddingVertical: 35,
-        paddingHorizontal: 26,
-        marginTop: 30,
-        backgroundColor: globalColors.primary,
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "flex-start",
-        width: '100%',
-    },
     menuItem: {
         flexDirection: 'row',
         paddingLeft: scale(25),

@@ -1,5 +1,5 @@
 import {globalColors, globalStyles} from "../../util/StyleUtil";
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
 import React from "react";
 import {scale} from "../../util/ScaleUtil";
 import {menuItemEnty} from "../../model/prices/menuItemEntry";

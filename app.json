@@ -21,9 +21,6 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.eliasbinder.TheMensaThing",
-      "config": {
-        "googleMapsApiKey": "AIzaSyBxbPyWEfj8HjT9esYIyU8UbvkZYdC_5_A"
-      },
       "infoPlist": {
         "UIBackgroundModes": [
           "location",
@@ -37,11 +34,6 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.eliasbinder.TheMensaThing",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyCIOpTPaMRkQjwcxQYflq30rAQcejXn4Os"
-        }
-      },
       "permissions": [
         "ACCESS_BACKGROUND_LOCATION",
         "ACCESS_FINE_LOCATION"

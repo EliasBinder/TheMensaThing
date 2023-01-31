@@ -1,5 +1,5 @@
-import React, {Component, useEffect, useState} from "react";
-import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-native";
+import React, {useEffect} from "react";
+import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";
 import {BigButton} from "../components/BigButton";
@@ -14,7 +14,7 @@ const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 const LOCATION_TASK = 'location-task';
 const LOCATION_TASK_FENCING = 'geofencing-location-task';
 
-const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
+const WelcomeScreen = ({navigation}: {navigation: any}) => {
 
     const [location, setLocation] = useState({} as Location.LocationObject);
 
@@ -87,9 +87,9 @@ const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
             </View>
         </SafeAreaView>
         /*<View style={styles.container}>
-            <Text style={styles.textbox}>{JSON.stringify(location)}</Text>
-            <Text style={styles.textbox}>{locationUpdate}</Text>
-            <Text style={styles.textbox}>{locationUpdateFencing}</Text>
+            <Text>{JSON.stringify(location)}</Text>
+            <Text>{locationUpdate}</Text>
+            <Text>{locationUpdateFencing}</Text>
             <Button title={'startBackground'} onPress={() => {startBackgroundUpdate().then().catch() }}></Button>
             <Button title={'stopBackground'} onPress={() => {stopBackground() }}></Button>
         </View>*/
@@ -102,14 +102,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
-    },
-    textbox: {
-        borderColor: 'gray',
-        color: 'white',
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 10,
-        margin: 10,
     },
     titleView: {
         flexDirection: 'row',
