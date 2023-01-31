@@ -2,7 +2,7 @@ import {StyleSheet, View, Text, TouchableOpacity, Image, ScrollView} from "react
 import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
 import React, {ReactNode} from "react";
-import {BigButton} from "../../components/BigButton";
+import {Button} from "../../components/Button";
 import {List} from "../../components/List";
 import {AZURE_INSTANCE} from "../../util/AuthUtil";
 import {useProfileImage} from "../../hooks/useProfileImage";
@@ -51,10 +51,10 @@ export function SettingsScreen({navigation, setLoggedIn}: {navigation: any, setL
                     <Text style={styles.nameText}>{AZURE_INSTANCE.userData.given_name} {AZURE_INSTANCE.userData.family_name}</Text>
                 </View>
                 <List items={listItems} toScroll={false}/>
-                <BigButton text={'Logout'} onPress={() => {
+                <Button text={'Logout'} onPress={() => {
                     AZURE_INSTANCE.logout();
                     setLoggedIn(false);
-                }} style={styles}/>
+                }} style={styles.button}/>
             </ScrollView>
         </View>
     )

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";
-import {BigButton} from "../components/BigButton";
+import {Button} from "../components/Button";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Location from "expo-location";
@@ -64,13 +64,13 @@ const WelcomeScreen = ({navigation}: {navigation: any}) => {
                     <Text style={[styles.title, styles.titleWhite]}>Thing</Text>
                 </View>
                 <Text style={styles.subtitle}>provides you a more pleasant stay at our UniMensa and UniBar</Text>
-                <BigButton text={'Get Started'} onPress={() => {
+                <Button text={'Get Started'} onPress={() => {
                     navigation.navigate('BottomNav');
                     navigation.reset({
                         index: 0,
                         routes: [{name: 'BottomNav'}],
                     });
-                }} style={styles}/>
+                }} style={styles.button}/>
             </View>
         </SafeAreaView>
     )
