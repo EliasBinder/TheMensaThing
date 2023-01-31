@@ -4,8 +4,6 @@ import React from "react";
 import {scale} from "../../util/ScaleUtil";
 import {menuItemEnty} from "../../model/prices/menuItemEntry";
 import {List} from "../List";
-import CheckboxMarked from "../../assets/images/checkboxMarked";
-import ForkKnife from "../../assets/images/fork&knife";
 
 const createMenuItem = (title: string, key: number) => {
     return (
