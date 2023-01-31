@@ -20,24 +20,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.eliasbinder.TheMensaThing",
-      "googleServicesFile": "./GoogleService-Info.plist",
-      "config": {
-        "googleMapsApiKey": "AIzaSyBxbPyWEfj8HjT9esYIyU8UbvkZYdC_5_A"
-      }
+      "bundleIdentifier": "com.eliasbinder.TheMensaThing"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.eliasbinder.TheMensaThing",
-      "googleServicesFile": "./google-services.json",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyCIOpTPaMRkQjwcxQYflq30rAQcejXn4Os"
-        }
-      }
+      "package": "com.eliasbinder.TheMensaThing"
     },
     "web": {
       "favicon": "./assets/favicon.png"

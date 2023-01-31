@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, View, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, View, Text, TouchableOpacity} from "react-native";
 import StackNavigationHeader from "../../components/StackNavigationHeader";
 import {globalStyles} from "../../util/StyleUtil";
 import {List} from "../../components/List";
@@ -8,7 +8,7 @@ import {useEatingHabits} from "../../hooks/useEatingHabits";
 import {eatingHabitsMap} from "../../util/EatingHabitsUtil";
 import {Icon} from "../../components/Icon";
 
-const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string, id: number, eatingHabits: number[], setEatingHabits: Function}) => {
+const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string, id: number, eatingHabits: number[], setEatingHabits: (eatingHabits: number[]) => void}) => {
     return (
         <TouchableOpacity style={styles.menuItem} onPress={() => {
             if (eatingHabits.includes(id)) {
@@ -23,7 +23,7 @@ const createListItem = ({text, id, eatingHabits, setEatingHabits}: {text: string
     )
 }
 
-export function EatingHabitsScreen({navigation, route}: {navigation: any, route: any}) {
+export function EatingHabitsScreen({navigation}: {navigation: any}) {
 
     const [eatingHabits, setEatingHabits] = useEatingHabits();
 
@@ -33,7 +33,7 @@ export function EatingHabitsScreen({navigation, route}: {navigation: any, route:
 
     return (
         <>
-            <StackNavigationHeader title={'Eating Habits'} navigation={navigation} route={route} />
+            <StackNavigationHeader title={'Eating Habits'} navigation={navigation} />
             <View style={[globalStyles.container, styles.container]}>
                 <List items={listItems} />
             </View>

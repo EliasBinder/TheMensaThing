@@ -1,7 +1,6 @@
-import {Text, View, StyleSheet} from "react-native";
+import {View, StyleSheet} from "react-native";
 import React from "react";
-import {globalColors, globalStyles} from "../util/StyleUtil";
-import ProfileIcon from "../assets/images/profile";
+import {globalStyles} from "../util/StyleUtil";
 import {NotLoggedInScreen} from "./ProfileScreen/NotLoggedInScreen";
 import {SettingsScreen} from "./ProfileScreen/SettingsScreen";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -19,7 +18,7 @@ export function ProfileScreen() {
 
     const [loggedIn, setLoggedIn] = React.useState(AZURE_INSTANCE.isLoggedIn())
 
-    const Router = ({navigation, route}: {navigation: any, route: any}) => {
+    const Router = ({navigation}: {navigation: any}) => {
         return (
             <View style={[globalStyles.container, globalStyles.dropShadow, styles.root]}>
                 <Header title={'Profile'}/>
@@ -29,7 +28,7 @@ export function ProfileScreen() {
     }
 
     const LoginScreenBridge = ({navigation, route}: {navigation: any, route: any}) => {
-        return <LoginScreen navigation={navigation} route={route} setLoggedIn={setLoggedIn}/>
+        return <LoginScreen navigation={navigation} setLoggedIn={setLoggedIn}/>
     }
 
     return (

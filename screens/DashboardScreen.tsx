@@ -1,5 +1,5 @@
-import React, {createRef, useEffect, useRef, useState} from 'react';
-import {Animated, ScrollView, StyleSheet, Text, View, Image} from "react-native";
+import React, {createRef} from 'react';
+import {ScrollView, StyleSheet, Text, View, Image} from "react-native";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
 import {MensaOccupation} from "../components/DashboardScreen/MensaOccupation";
@@ -14,7 +14,7 @@ import {useProfileImage} from "../hooks/useProfileImage";
 import {useBalance} from "../hooks/useBalance";
 import {Icon} from "../components/Icon";
 
-const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => {
+const DashboardScreen = ({route}: {route: any}) => {
 
     const Stack = createNativeStackNavigator()
 
@@ -22,7 +22,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
     let balanceRef = createRef<Text>()
     const balance = useBalance();
 
-    const Router = ({navigation, route}: {navigation: any, route: any}) => {
+    const Router = () => {
         return (
             <View style={globalStyles.container}>
                 <Header title={"Dashboard"} icon={
@@ -45,7 +45,7 @@ const DashboardScreen = ({navigation, route}: {navigation: any, route: any}) => 
                     { AZURE_INSTANCE.isLoggedIn() ?
                         (
                             <View style={[globalStyles.cardRow, {marginTop: 20}]}>
-                                <Suggestion navigation={navigation}/>
+                                <Suggestion/>
                             </View>)
                         : <></>
                     }

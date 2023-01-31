@@ -1,12 +1,10 @@
-import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import DashboardScreen from "../screens/DashboardScreen";
 import {MenuScreen} from "../screens/MenuScreen";
 import {InformationScreen} from "../screens/InformationScreen";
 import {ProfileScreen} from "../screens/ProfileScreen";
-import {TouchableOpacity, View, Text, SafeAreaView, StyleSheet} from "react-native";
-import {scale} from "../util/ScaleUtil";
-import React, {Component} from "react";
+import {TouchableOpacity, View, SafeAreaView, StyleSheet} from "react-native";
+import React from "react";
 import {StatusBar} from "expo-status-bar";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import {PricesScreen} from "../screens/PricesScreen";

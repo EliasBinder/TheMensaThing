@@ -1,7 +1,7 @@
 import {StyleSheet, View, Text, TouchableOpacity, Image, ScrollView} from "react-native";
 import {globalColors, globalStyles} from "../../util/StyleUtil";
 import {scale} from "../../util/ScaleUtil";
-import React, {useEffect, useState} from "react";
+import React, {ReactNode} from "react";
 import {BigButton} from "../../components/BigButton";
 import {List} from "../../components/List";
 import {AZURE_INSTANCE} from "../../util/AuthUtil";
@@ -9,7 +9,7 @@ import {useProfileImage} from "../../hooks/useProfileImage";
 import {useShareGPS} from "../../hooks/useShareGPS";
 import {Icon} from "../../components/Icon";
 
-const createMenuItem = (title: string, icon: any, onPress: () => void, rightComp?: any) => {
+const createMenuItem = (title: string, icon: ReactNode, onPress: () => void, rightComp?: ReactNode) => {
     return (
         <TouchableOpacity style={styles.menuItem} onPress={onPress}>
             {icon}

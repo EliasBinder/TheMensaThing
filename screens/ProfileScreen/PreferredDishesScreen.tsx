@@ -4,10 +4,10 @@ import {globalStyles} from "../../util/StyleUtil";
 import React from "react";
 import {scale} from "../../util/ScaleUtil";
 
-export function PreferredDishesScreen({navigation, route}: {navigation: any, route: any}) {
+export function PreferredDishesScreen({navigation}: {navigation: any}) {
     return (
         <>
-            <StackNavigationHeader title={'Preferred Dishes'} navigation={navigation} route={route} />
+            <StackNavigationHeader title={'Preferred Dishes'} navigation={navigation} />
             <View style={[globalStyles.container, styles.container]}>
                 <Text style={{color: '#fff'}}>This is the preferred dishes screen</Text>
             </View>

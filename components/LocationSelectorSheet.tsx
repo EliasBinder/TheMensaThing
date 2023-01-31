@@ -6,7 +6,7 @@ import React from "react";
 import {Icon} from "./Icon";
 
 
-export function LocationSelectorSheet({visible, setVisible, location, setLocation}: {visible: boolean, setVisible: Function, location: string, setLocation: Function}) {
+export function LocationSelectorSheet({visible, setVisible, location, setLocation}: {visible: boolean, setVisible: React.Dispatch<React.SetStateAction<boolean>>, location: string, setLocation: React.Dispatch<React.SetStateAction<string>>}) {
     return (
         <BottomSheet
             visible={visible}

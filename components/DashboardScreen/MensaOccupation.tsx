@@ -69,24 +69,6 @@ const styles = StyleSheet.create({
         marginTop: 20,
         flexDirection: "row",
         width: '100%'
-    },
-    changeLocRoot: {
-        flexDirection: 'column',
-        justifyContent: "flex-start",
-        alignItems: "center",
-        height: 350,
-        backgroundColor: globalColors.primary
-    },
-    changeLocHeader: {
-        flexDirection: 'row',
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        paddingTop: 25,
-        paddingRight: 25,
-        paddingLeft: 25,
-        paddingBottom: 5,
-        width: '100%',
-        backgroundColor: globalColors.primary
     }
 });
 

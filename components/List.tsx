@@ -1,5 +1,5 @@
 import {View, StyleSheet, ScrollView, Animated} from "react-native";
-import React, {useEffect, useRef, useState} from "react";
+import React, {ReactNode, useEffect, useRef} from "react";
 import {scale} from "../util/ScaleUtil";
 import {globalColors} from "../util/StyleUtil";
 
@@ -9,7 +9,7 @@ const createDivider = () => {
     </View>
 }
 
-export function List({items, toScroll=true}: {items: any[], toScroll?: boolean}) {
+export function List({items, toScroll=true}: {items: ReactNode[], toScroll?: boolean}) {
 
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
     const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
@@ -41,7 +41,7 @@ export function List({items, toScroll=true}: {items: any[], toScroll?: boolean})
         Animated.parallel([...itemAnimations, ...itemNegativeAnimations]).start();
     }, [itemAnimations, itemNegativeAnimations])
 
-    const ParentComponent = ({children}: {children: any}) => {
+    const ParentComponent = ({children}: {children: ReactNode[]}) => {
         if (toScroll){
             return <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContainerInner} children={children} />
         } else {

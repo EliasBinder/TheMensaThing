@@ -5,19 +5,18 @@ import React from "react";
 import {scale} from "../util/ScaleUtil";
 import {Icon} from "./Icon";
 
-const createListItem = ({text, id, checked, setChecked}: {text: string, id: string, checked: string, setChecked: Function}) => {
+const createListItem = ({text, id, checked, setChecked}: {text: string, id: string, checked: string, setChecked: (loc: string) => void}) => {
     return (
         <TouchableOpacity style={styles.menuItem} onPress={() => {
             setChecked(id);
-
         }}>
-            {checked == id ? <Icon name={"radiobox_blank"} color={'#fff'} size={30}/> : <Icon name={"radiobox_marked"} color={'#fff'} size={30}/>}
+            {checked == id ? <Icon name={"radiobox_marked"} color={'#fff'} size={30}/> : <Icon name={"radiobox_blank"} color={'#fff'} size={30}/>}
             <Text style={styles.menuItemText}>{text}</Text>
         </TouchableOpacity>
     )
 }
 
-export function LocationSelector({location, setLocation}: {location: string, setLocation: Function}) {
+export function LocationSelector({location, setLocation}: {location: string, setLocation: (loc: string) => void}) {
 
     const listItems = [
         createListItem({text: 'Bolzano', id: 'BZ', checked: location, setChecked: setLocation}),

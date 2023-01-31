@@ -1,5 +1,5 @@
-import React, {Component, useEffect} from "react";
-import {Image, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-native";
+import React, {useEffect} from "react";
+import {Image, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import {StatusBar} from "expo-status-bar";
 import {BigButton} from "../components/BigButton";
@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const animatedGif = require('../assets/images/welcomeScreenAnimation.gif');
 
-const WelcomeScreen = ({navigation, route}: {navigation: any, route: any}) => {
+const WelcomeScreen = ({navigation}: {navigation: any}) => {
 
     useEffect(() => {
         AsyncStorage.getItem('isFirstTime').then((value: string | null) => {

@@ -5,7 +5,7 @@ import React from "react";
 import {DishItem} from "../MenuScreen/DishItem";
 import {Icon} from "../Icon";
 
-export function Suggestion({navigation}: {navigation: any}) {
+export function Suggestion() {
     return (
         <Card
             title={"Suggestion"}
@@ -26,10 +26,5 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "flex-start",
         alignSelf: "stretch"
-    },
-    cardText: {
-        color: "#fff",
-        fontSize: 15,
-        fontFamily: "Poppins"
     }
 });

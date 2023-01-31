@@ -1,21 +1,20 @@
-import {globalColors, globalStyles, Icon} from "../../util/StyleUtil";
-import {Header} from "../../components/Header";
-import {FlatList, ScrollView, View} from "react-native";
+import {globalColors} from "../../util/StyleUtil";
+import {FlatList, View} from "react-native";
 import React from "react";
-import {StyleSheet, Text} from "react-native";
+import {StyleSheet} from "react-native";
 import {scale} from "../../util/ScaleUtil";
 import {usePricesList} from "../../hooks/usePricesList";
-import DropDownPicker, {ItemType, ValueType} from 'react-native-dropdown-picker';
+import DropDownPicker, {ItemType} from 'react-native-dropdown-picker';
 import {menus} from "../../model/prices/menus";
 import {menuItem} from "../../model/prices/menuItem";
 import {MenuItem} from "../../components/PricesScreen/MenuItem";
 import {usePreferredLocation} from "../../hooks/usePreferredLocation";
 
-export function PriceInformationScreen({navigation, setLoggedIn}: {navigation: any, setLoggedIn: Function}) {
+export function PriceInformationScreen() {
 
     const menus: menus|undefined = usePricesList();
 
-    const [preferredLocation, setPreferredLocation] = usePreferredLocation();
+    const [preferredLocation] = usePreferredLocation();
 
     const [dropdownOpen, setDropdownOpen] = React.useState(false);
     const [selectedItem, setSelectedItem] = React.useState(null as any);
@@ -73,11 +72,5 @@ const styles = StyleSheet.create({
         backgroundColor: globalColors.primary,
         flex: 1,
         marginBottom: 20
-    },
-    scrollViewInner: {
-        justifyContent: "flex-start",
-        alignItems: "center",
-        paddingBottom: scale(30),
-        alignSelf: "stretch",
     }
 })
