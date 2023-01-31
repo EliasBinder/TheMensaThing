@@ -10,6 +10,7 @@ import {PreferredDishesScreen} from "./ProfileScreen/PreferredDishesScreen";
 import {LoginScreen} from "./LoginScreen";
 import {Header} from "../components/Header";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
+import {ShareGPSScreen} from "./ProfileScreen/ShareGPSScreen";
 
 
 export function ProfileScreen() {
@@ -37,6 +38,7 @@ export function ProfileScreen() {
             <Stack.Screen name={"PreferredDishes"} component={PreferredDishesScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"Location"} component={LocationScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"EatingHabits"} component={EatingHabitsScreen} options={{animation: 'slide_from_right'}} />
+            <Stack.Screen name={"ShareGPS"} component={ShareGPSScreen} options={{animation: 'slide_from_right'}} />
             <Stack.Screen name={"Login"} component={(LoginScreenBridge)} options={{animation: 'slide_from_right'}} />
         </Stack.Navigator>
     )
