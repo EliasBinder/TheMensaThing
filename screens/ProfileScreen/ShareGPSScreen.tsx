@@ -1,7 +1,7 @@
 import React from "react";
 import StackNavigationHeader from "../../components/StackNavigationHeader";
-import {globalStyles} from "../../util/StyleUtil";
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {globalColors, globalStyles} from "../../util/StyleUtil";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useShareGPS} from "../../hooks/useShareGPS";
 import {Icon} from "../../components/Icon";
 import {scale} from "../../util/ScaleUtil";
@@ -24,11 +24,16 @@ export function ShareGPSScreen({navigation}: {navigation: any}) {
     return (
         <>
             <StackNavigationHeader title={'Share GPS'} navigation={navigation}/>
-            <View style={[globalStyles.container, styles.container]}>
-                <Text style={styles.text}>
-                    We use your GPS data to find the best restaurants for you.
-                </Text>
-                <Toggle/>
+            <View style={styles.backgroundView}>
+                <View style={styles.textView}>
+                    <Text style={styles.text}>
+                        We use your location in order to estimate the occupation of the mensa. The data is stored anonymously,
+                        we only store that a person has entered or left the mensa at a certain time. The more people share
+                        their location, the more accurate the data is. If you don't want to share your location, you can
+                        disable it here.
+                    </Text>
+                    <Toggle/>
+                </View>
             </View>
         </>
     )
@@ -41,5 +46,22 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#fff',
-    }
+        fontSize: scale(20),
+        padding: scale(30),
+    },
+    backgroundView: {
+        backgroundColor: globalColors.primary,
+        padding: scale(10),
+        flex: 1,
+    },
+    textView: {
+        flexDirection: "column",
+        paddingHorizontal: scale(10),
+        justifyContent: "flex-start",
+        alignItems: "center",
+        alignSelf: "center",
+        marginTop: scale(50),
+        borderRadius: scale(20),
+        backgroundColor: globalColors.secondary,
+    },
 });
