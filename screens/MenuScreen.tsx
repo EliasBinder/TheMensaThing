@@ -1,30 +1,22 @@
 import React, {useEffect} from 'react';
-import {ScrollView, StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, TouchableOpacity, View, Text} from "react-native";
 import {Card} from "../components/Card";
 import {Header} from "../components/Header";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import {scale} from "../util/ScaleUtil";
-import {ENDPOINTS} from "../util/APIUtil";
 import {DishItem} from "../components/MenuScreen/DishItem";
-import {Button} from "../components/Button";
 import {Icon} from "../components/Icon";
+import {useMenu} from "../hooks/useMenu";
+import {usePreferredLocation} from "../hooks/usePreferredLocation";
 
 export function MenuScreen(){
 
-    useEffect(() => {
-        fetch(ENDPOINTS.menu + '/BZ', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then((response) => response.json())
-        .then((json) => {
+    const [location, setLocation] = usePreferredLocation();
+    const [menu, setMenu] = useMenu("BZ");
 
-        }).catch((error) => {
-            console.error(error);
-        });
-    }, []);
+    useEffect(() => {
+        setMenu(location)
+    }, [location]);
 
     return (
         <View style={globalStyles.container}>
@@ -36,25 +28,41 @@ export function MenuScreen(){
                 <View style={globalStyles.cardRow}>
                     <Card
                         title={"First courses"}
-                        icon={<Icon name={"pin"} color={"#fff"} size={25} />}
+                        icon={<Icon name={"menu"} color={"#fff"} size={25} />}
                         index={0}
+                        interaction={
+                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => console.log("TODO")/* TODO */}>
+                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
+                            </TouchableOpacity>}
                     >
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
-                        <Button text={'Show more'} onPress={() => {}} style={showMoreBtnStyles}/>
+                        {
+                            menu ?
+                                menu.firstCourses.slice(0, 3).map((item, index) => {
+                                    return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                                })
+                            :
+                                <Text>Loading...</Text>
+                        }
                     </Card>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <Card
                         title={"Main courses"}
-                        icon={<Icon name={"pin"} color={"#fff"} size={25} />}
+                        icon={<Icon name={"menu"} color={"#fff"} size={25} />}
                         index={0}
+                        interaction={
+                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => console.log("TODO")/* TODO */}>
+                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
+                            </TouchableOpacity>}
                     >
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[2,4]} />
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1]} />
-                        <DishItem iconUrl={'https://picsum.photos/400/300'} title={"Some good food"} eatingHabitsAttribs={[1,4,5]} />
-                        <Button text={'Show more'} onPress={() => {}} style={showMoreBtnStyles}/>
+                        {
+                            menu ?
+                                menu.mainCourses.slice(0, 3).map((item, index) => {
+                                    return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                                })
+                            :
+                                <Text>Loading...</Text>
+                        }
                     </Card>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>

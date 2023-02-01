@@ -18,7 +18,7 @@ export function DishItem({iconUrl, title, eatingHabitsAttribs}: propType) {
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.eatingHabitsContainer}>
                     {
-                        eatingHabitsAttribs.map((item:number) => <Icon key={item} name={getImageOfIndex(item)} size={20} color={globalColors.accent}/>)
+                        eatingHabitsAttribs.map((item:number, index:number) => <Icon key={index} style={{marginLeft: index!=0?3:0}} name={getImageOfIndex(item)} size={20} color={globalColors.accent}/>)
                     }
                 </View>
             </View>
@@ -37,13 +37,14 @@ const styles = StyleSheet.create({
         height: '100%',
         aspectRatio: 1,
         marginRight: 15,
-        borderRadius: 15,
-        overflow: 'hidden'
+        borderRadius: 10,
+        overflow: 'hidden',
+        width: 60,
     },
     title: {
         color: '#FFFFFF',
         fontFamily: 'Poppins',
-        fontSize: 20,
+        fontSize: 15,
         textAlign: 'left',
     },
     infoContainer: {

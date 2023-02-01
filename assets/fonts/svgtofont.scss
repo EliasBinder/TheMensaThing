@@ -1,10 +1,10 @@
 @font-face {font-family: "svgtofont";
-  src: url('svgtofont.eot?t=1675265757446'); /* IE9*/
-  src: url('svgtofont.eot?t=1675265757446#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("svgtofont.woff2?t=1675265757446") format("woff2"),
-  url("svgtofont.woff?t=1675265757446") format("woff"),
-  url('svgtofont.ttf?t=1675265757446') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('svgtofont.svg?t=1675265757446#svgtofont') format('svg'); /* iOS 4.1- */
+  src: url('svgtofont.eot?t=1675277120034'); /* IE9*/
+  src: url('svgtofont.eot?t=1675277120034#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("svgtofont.woff2?t=1675277120034") format("woff2"),
+  url("svgtofont.woff?t=1675277120034") format("woff"),
+  url('svgtofont.ttf?t=1675277120034') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('svgtofont.svg?t=1675277120034#svgtofont') format('svg'); /* iOS 4.1- */
 }
 
 [class^="svgtofont-"], [class*=" svgtofont-"] {
@@ -16,76 +16,80 @@
 }
 
 .svgtofont-arrow_back:before { content: "\ea01"; }
-.svgtofont-burger:before { content: "\ea02"; }
-.svgtofont-cafe:before { content: "\ea03"; }
-.svgtofont-cashew_nut:before { content: "\ea04"; }
-.svgtofont-celery:before { content: "\ea05"; }
-.svgtofont-checkbox_blank:before { content: "\ea06"; }
-.svgtofont-checkbox_marked:before { content: "\ea07"; }
-.svgtofont-close:before { content: "\ea08"; }
-.svgtofont-dashboard:before { content: "\ea09"; }
-.svgtofont-egg:before { content: "\ea0a"; }
-.svgtofont-fish:before { content: "\ea0b"; }
-.svgtofont-frozen:before { content: "\ea0c"; }
-.svgtofont-info:before { content: "\ea0d"; }
-.svgtofont-leaf:before { content: "\ea0e"; }
-.svgtofont-map:before { content: "\ea0f"; }
-.svgtofont-menu:before { content: "\ea10"; }
-.svgtofont-milk:before { content: "\ea11"; }
-.svgtofont-mustard:before { content: "\ea12"; }
-.svgtofont-opening_hours:before { content: "\ea13"; }
-.svgtofont-pig:before { content: "\ea14"; }
-.svgtofont-pin:before { content: "\ea15"; }
-.svgtofont-price:before { content: "\ea16"; }
-.svgtofont-profile:before { content: "\ea17"; }
-.svgtofont-radiobox_blank:before { content: "\ea18"; }
-.svgtofont-radiobox_marked:before { content: "\ea19"; }
-.svgtofont-sesame:before { content: "\ea1a"; }
-.svgtofont-share:before { content: "\ea1b"; }
-.svgtofont-soy_beans:before { content: "\ea1c"; }
-.svgtofont-star:before { content: "\ea1d"; }
-.svgtofont-toggle_off:before { content: "\ea1e"; }
-.svgtofont-toggle_on:before { content: "\ea1f"; }
-.svgtofont-trending_down:before { content: "\ea20"; }
-.svgtofont-trending_up:before { content: "\ea21"; }
-.svgtofont-tune:before { content: "\ea22"; }
-.svgtofont-wheat:before { content: "\ea23"; }
-.svgtofont-wine:before { content: "\ea24"; }
+.svgtofont-arrow_right:before { content: "\ea02"; }
+.svgtofont-burger:before { content: "\ea03"; }
+.svgtofont-cafe:before { content: "\ea04"; }
+.svgtofont-cashew_nut:before { content: "\ea05"; }
+.svgtofont-celery:before { content: "\ea06"; }
+.svgtofont-checkbox_blank:before { content: "\ea07"; }
+.svgtofont-checkbox_marked:before { content: "\ea08"; }
+.svgtofont-close:before { content: "\ea09"; }
+.svgtofont-dashboard:before { content: "\ea0a"; }
+.svgtofont-egg:before { content: "\ea0b"; }
+.svgtofont-fish:before { content: "\ea0c"; }
+.svgtofont-frozen:before { content: "\ea0d"; }
+.svgtofont-info:before { content: "\ea0e"; }
+.svgtofont-leaf:before { content: "\ea0f"; }
+.svgtofont-map:before { content: "\ea10"; }
+.svgtofont-menu:before { content: "\ea11"; }
+.svgtofont-milk:before { content: "\ea12"; }
+.svgtofont-mustard:before { content: "\ea13"; }
+.svgtofont-opening_hours:before { content: "\ea14"; }
+.svgtofont-pig:before { content: "\ea15"; }
+.svgtofont-pin:before { content: "\ea16"; }
+.svgtofont-price:before { content: "\ea17"; }
+.svgtofont-profile:before { content: "\ea18"; }
+.svgtofont-radiobox_blank:before { content: "\ea19"; }
+.svgtofont-radiobox_marked:before { content: "\ea1a"; }
+.svgtofont-sesame:before { content: "\ea1b"; }
+.svgtofont-share:before { content: "\ea1c"; }
+.svgtofont-soy_beans:before { content: "\ea1d"; }
+.svgtofont-star:before { content: "\ea1e"; }
+.svgtofont-suggestion:before { content: "\ea1f"; }
+.svgtofont-toggle_off:before { content: "\ea20"; }
+.svgtofont-toggle_on:before { content: "\ea21"; }
+.svgtofont-trending_down:before { content: "\ea22"; }
+.svgtofont-trending_up:before { content: "\ea23"; }
+.svgtofont-tune:before { content: "\ea24"; }
+.svgtofont-wheat:before { content: "\ea25"; }
+.svgtofont-wine:before { content: "\ea26"; }
 
 $svgtofont-arrow_back: "\ea01";
-$svgtofont-burger: "\ea02";
-$svgtofont-cafe: "\ea03";
-$svgtofont-cashew_nut: "\ea04";
-$svgtofont-celery: "\ea05";
-$svgtofont-checkbox_blank: "\ea06";
-$svgtofont-checkbox_marked: "\ea07";
-$svgtofont-close: "\ea08";
-$svgtofont-dashboard: "\ea09";
-$svgtofont-egg: "\ea0a";
-$svgtofont-fish: "\ea0b";
-$svgtofont-frozen: "\ea0c";
-$svgtofont-info: "\ea0d";
-$svgtofont-leaf: "\ea0e";
-$svgtofont-map: "\ea0f";
-$svgtofont-menu: "\ea10";
-$svgtofont-milk: "\ea11";
-$svgtofont-mustard: "\ea12";
-$svgtofont-opening_hours: "\ea13";
-$svgtofont-pig: "\ea14";
-$svgtofont-pin: "\ea15";
-$svgtofont-price: "\ea16";
-$svgtofont-profile: "\ea17";
-$svgtofont-radiobox_blank: "\ea18";
-$svgtofont-radiobox_marked: "\ea19";
-$svgtofont-sesame: "\ea1a";
-$svgtofont-share: "\ea1b";
-$svgtofont-soy_beans: "\ea1c";
-$svgtofont-star: "\ea1d";
-$svgtofont-toggle_off: "\ea1e";
-$svgtofont-toggle_on: "\ea1f";
-$svgtofont-trending_down: "\ea20";
-$svgtofont-trending_up: "\ea21";
-$svgtofont-tune: "\ea22";
-$svgtofont-wheat: "\ea23";
-$svgtofont-wine: "\ea24";
+$svgtofont-arrow_right: "\ea02";
+$svgtofont-burger: "\ea03";
+$svgtofont-cafe: "\ea04";
+$svgtofont-cashew_nut: "\ea05";
+$svgtofont-celery: "\ea06";
+$svgtofont-checkbox_blank: "\ea07";
+$svgtofont-checkbox_marked: "\ea08";
+$svgtofont-close: "\ea09";
+$svgtofont-dashboard: "\ea0a";
+$svgtofont-egg: "\ea0b";
+$svgtofont-fish: "\ea0c";
+$svgtofont-frozen: "\ea0d";
+$svgtofont-info: "\ea0e";
+$svgtofont-leaf: "\ea0f";
+$svgtofont-map: "\ea10";
+$svgtofont-menu: "\ea11";
+$svgtofont-milk: "\ea12";
+$svgtofont-mustard: "\ea13";
+$svgtofont-opening_hours: "\ea14";
+$svgtofont-pig: "\ea15";
+$svgtofont-pin: "\ea16";
+$svgtofont-price: "\ea17";
+$svgtofont-profile: "\ea18";
+$svgtofont-radiobox_blank: "\ea19";
+$svgtofont-radiobox_marked: "\ea1a";
+$svgtofont-sesame: "\ea1b";
+$svgtofont-share: "\ea1c";
+$svgtofont-soy_beans: "\ea1d";
+$svgtofont-star: "\ea1e";
+$svgtofont-suggestion: "\ea1f";
+$svgtofont-toggle_off: "\ea20";
+$svgtofont-toggle_on: "\ea21";
+$svgtofont-trending_down: "\ea22";
+$svgtofont-trending_up: "\ea23";
+$svgtofont-tune: "\ea24";
+$svgtofont-wheat: "\ea25";
+$svgtofont-wine: "\ea26";
 

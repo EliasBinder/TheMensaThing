@@ -44,7 +44,7 @@ export function Card({title, icon, interaction, index, children}: propType) {
 const styles = StyleSheet.create({
     box: {
         paddingVertical: 15,
-        paddingHorizontal: 30,
+        paddingHorizontal: 20,
         flexDirection: "column",
         width: '100%',
         justifyContent: "flex-start",

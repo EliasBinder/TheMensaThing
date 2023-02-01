@@ -9,7 +9,7 @@ export function Suggestion() {
     return (
         <Card
             title={"Suggestion"}
-            icon={<Icon name={"pin"} color={"#E6E6E6"} size={25}/>}
+            icon={<Icon name={"suggestion"} color={"#E6E6E6"} size={25}/>}
             index={2}
         >
             <View style={styles.cardSection}>

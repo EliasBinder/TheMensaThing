@@ -1,4 +1,5 @@
 export * from './ArrowBack';
+export * from './ArrowRight';
 export * from './Burger';
 export * from './Cafe';
 export * from './CashewNut';
@@ -27,6 +28,7 @@ export * from './Sesame';
 export * from './Share';
 export * from './SoyBeans';
 export * from './Star';
+export * from './Suggestion';
 export * from './ToggleOff';
 export * from './ToggleOn';
 export * from './TrendingDown';

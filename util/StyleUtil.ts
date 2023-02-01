@@ -14,7 +14,6 @@ export const importIconFont = () => {
     Object.keys(infoIconFont).forEach((icon) => {
         _iconMap[icon] = unescape('%u' + infoIconFont[icon]['encodedCode'].replace('\\', ''));
     });
-    console.log(JSON.stringify(_iconMap));
 }
 export const iconMap = _iconMap;
 
