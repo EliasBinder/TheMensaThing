@@ -13,12 +13,15 @@ import {Balance} from "../components/DashboardScreen/Balance";
 import {useProfileImage} from "../hooks/useProfileImage";
 import {useBalance} from "../hooks/useBalance";
 import {Icon} from "../components/Icon";
+import {useOpeningHours} from "../hooks/useOpeningHours";
+import {OpeningHours} from "../components/DashboardScreen/OpeningHours";
 
 const DashboardScreen = () => {
 
     const imageSource = useProfileImage();
     const balanceRef = createRef<Text>()
     const balance = useBalance();
+    const openingHours = useOpeningHours();
 
     return (
         <View style={globalStyles.container}>
@@ -34,6 +37,9 @@ const DashboardScreen = () => {
                 </View> : <></>
                 }
                 <View style={globalStyles.cardRow}>
+                    <OpeningHours/>
+                </View>
+                <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <MensaOccupation/>
                 </View>
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
