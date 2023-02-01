@@ -2,7 +2,12 @@ import {Pressable, StyleSheet, Text, View} from "react-native";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import {Icon} from "./Icon";
 
-export function StackNavigationHeader({title, navigation}: {title: string, navigation: any}) {
+interface propType {
+    title: string,
+    navigation: any
+}
+
+export function StackNavigationHeader({title, navigation}: propType) {
     return (
         <View style={[globalStyles.container, styles.container]}>
             <Pressable onPress={() => navigation.goBack()}>

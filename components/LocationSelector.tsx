@@ -16,7 +16,12 @@ const createListItem = ({text, id, checked, setChecked}: {text: string, id: stri
     )
 }
 
-export function LocationSelector({location, setLocation}: {location: string, setLocation: (loc: string) => void}) {
+interface propType {
+    location: string,
+    setLocation: (loc: string) => void
+}
+
+export function LocationSelector({location, setLocation}: propType) {
 
     const listItems = [
         createListItem({text: 'Bolzano', id: 'BZ', checked: location, setChecked: setLocation}),

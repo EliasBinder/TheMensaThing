@@ -4,7 +4,13 @@ import {Icon} from "./Icon";
 import React from "react";
 import {StyleSheet} from "react-native";
 
-export function CustomTabBar ({state, descriptors, navigation}: {state:any, descriptors: any, navigation:any}) {
+interface propType { //did not find any exact types for each of the props in documentation, so using any
+    state: any,
+    descriptors: any,
+    navigation: any
+}
+
+export function CustomTabBar ({state, descriptors, navigation}: propType) {
     return (
         <>
             <View style={{height: 12.5, width: '100%', backgroundColor: globalColors.primary}}></View>

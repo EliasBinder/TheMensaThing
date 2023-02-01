@@ -3,7 +3,11 @@ import {Card} from "../Card";
 import React from "react";
 import {Icon} from "../Icon";
 
-export function Balance({balance}: {balance: string}) {
+interface propType {
+    balance: string
+}
+
+export function Balance({balance}: propType) {
     return (
         <Card
             title={"Card Balance"}

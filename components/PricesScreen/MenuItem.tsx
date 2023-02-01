@@ -5,6 +5,7 @@ import {scale} from "../../util/ScaleUtil";
 import {menuItemEnty} from "../../model/prices/menuItemEntry";
 import {List} from "../List";
 
+
 const createMenuItem = (title: string, key: number) => {
     return (
         <View key={key} style={styles.menuItemEntry}>
@@ -13,7 +14,13 @@ const createMenuItem = (title: string, key: number) => {
     )
 }
 
-export function MenuItem({name, price, itemEntries}: {name: string, price: number, itemEntries: menuItemEnty[]}) {
+interface propType {
+    name: string,
+    price: number,
+    itemEntries: menuItemEnty[]
+}
+
+export function MenuItem({name, price, itemEntries}: propType) {
     const listItems = itemEntries.map((item, index) => createMenuItem(item.name, index))
 
     return (
