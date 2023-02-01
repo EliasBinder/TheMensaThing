@@ -432,3 +432,5 @@ webpack.config.js
 /android/
 /ios/
 /macos/
+/.expo/web/
+/assets/fonts/react/
