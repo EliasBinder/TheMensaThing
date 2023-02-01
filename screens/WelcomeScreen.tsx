@@ -23,9 +23,9 @@ const WelcomeScreen = ({navigation}: {navigation: any}) => {
             }
         });
         (async () => {
-            const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
+            const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync().catch();
             if (foregroundStatus === 'granted') {
-                const { status: backgroundStatus } = await Location.requestBackgroundPermissionsAsync();
+                const { status: backgroundStatus } = await Location.requestBackgroundPermissionsAsync().catch();
                 if (backgroundStatus === 'granted') {
                     startBackgroundUpdate().then(() => console.log('started background tasks')).catch(e => console.log('Error executing the background location tasks', e));
                 }
