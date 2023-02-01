@@ -1,7 +1,14 @@
 import {iconMap} from "../util/StyleUtil";
 import {Text} from "react-native";
 
-export function Icon({name, color, size, style}: {name: string, color: string, size: number, style?: any}) {
+interface propType {
+    name: string,
+    color: string,
+    size: number,
+    style?: any
+}
+
+export function Icon({name, color, size, style}: propType) {
     return (
         <Text style={[{
             fontFamily: 'IcoMoon',

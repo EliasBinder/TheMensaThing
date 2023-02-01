@@ -5,8 +5,14 @@ import {BottomSheet} from "react-native-btr";
 import React from "react";
 import {Icon} from "./Icon";
 
+interface propType {
+    visible: boolean,
+    setVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    location: string,
+    setLocation: React.Dispatch<React.SetStateAction<string>>
+}
 
-export function LocationSelectorSheet({visible, setVisible, location, setLocation}: {visible: boolean, setVisible: React.Dispatch<React.SetStateAction<boolean>>, location: string, setLocation: React.Dispatch<React.SetStateAction<string>>}) {
+export function LocationSelectorSheet({visible, setVisible, location, setLocation}: propType) {
     return (
         <BottomSheet
             visible={visible}

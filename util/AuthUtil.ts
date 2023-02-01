@@ -1,4 +1,4 @@
-// @ts-ignore //TODO: fix this
+// @ts-ignore
 import {AzureInstance} from '../TheMensaThingAzureLogin/lib/index';
 
 const AZURE_CREDENTIALS = {
@@ -9,5 +9,3 @@ const AZURE_CREDENTIALS = {
 
 export const AZURE_INSTANCE = new AzureInstance(AZURE_CREDENTIALS);
 AZURE_INSTANCE.loadDataFromStorage()
-
-

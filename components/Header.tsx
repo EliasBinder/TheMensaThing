@@ -2,7 +2,12 @@ import {Animated, View, StyleSheet} from "react-native";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 import React, {ReactNode, useRef} from "react";
 
-export function Header({title, icon}: {title: string, icon?: ReactNode}) {
+interface propType {
+    title: string,
+    icon?: ReactNode
+}
+
+export function Header({title, icon}: propType) {
 
     const topbarAddAnim = useRef(new Animated.Value(0)).current;
 

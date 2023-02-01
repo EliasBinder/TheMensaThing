@@ -16,7 +16,7 @@ export function MensaOccupation() {
     return (
         <Card
             title={"Mensa"}
-            icon={<Icon name={"pin"} color={"#E6E6E6"} size={25}/>}
+            icon={<Icon name={"menu"} color={"#E6E6E6"} size={25}/>}
             interaction={
                 <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => setChangeLocationModal(true)}>
                     <Icon name={"tune"} color={"#E6E6E6"} size={25}/>

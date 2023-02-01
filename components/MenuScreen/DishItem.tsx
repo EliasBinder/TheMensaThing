@@ -4,7 +4,13 @@ import {globalColors} from "../../util/StyleUtil";
 import {getImageOfIndex} from "../../util/EatingHabitsUtil";
 import {Icon} from "../Icon";
 
-export function DishItem({iconUrl, title, eatingHabitsAttribs}: {iconUrl: string, title: string, eatingHabitsAttribs: number[]}) {
+interface propType {
+    iconUrl: string,
+    title: string,
+    eatingHabitsAttribs: number[]
+}
+
+export function DishItem({iconUrl, title, eatingHabitsAttribs}: propType) {
     return (
         <View style={styles.container}>
             <Image source={{uri: iconUrl}} style={styles.image}/>

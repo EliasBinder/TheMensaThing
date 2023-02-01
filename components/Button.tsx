@@ -2,7 +2,13 @@ import {Text, StyleSheet, TouchableOpacity} from "react-native";
 import {scale} from "../util/ScaleUtil";
 import {globalColors, globalStyles} from "../util/StyleUtil";
 
-export function Button({text, onPress, style}: {text: string, onPress: () => void, style?: any}) {
+interface propType {
+    text: string,
+    onPress: () => void,
+    style?: any
+}
+
+export function Button({text, onPress, style}: propType) {
     const [buttonContainerStyle, buttonTextStyle] = buildStyles(style)
 
     return (

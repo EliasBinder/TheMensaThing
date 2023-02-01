@@ -9,7 +9,12 @@ const createDivider = () => {
     </View>
 }
 
-export function List({items, toScroll=true}: {items: ReactNode[], toScroll?: boolean}) {
+interface propType {
+    items: ReactNode[],
+    toScroll?: boolean
+}
+
+export function List({items, toScroll=true}: propType) {
 
     const itemAnimationRefs = items.map(() => useRef(new Animated.Value(-60)).current);
     const itemAnimationNegativeRefs = items.map(() => useRef(new Animated.Value(60)).current);
@@ -41,6 +46,7 @@ export function List({items, toScroll=true}: {items: ReactNode[], toScroll?: boo
         Animated.parallel([...itemAnimations, ...itemNegativeAnimations]).start();
     }, [itemAnimations, itemNegativeAnimations])
 
+    //defining separate parent component here to avoid having to write the children in the return part twice
     const ParentComponent = ({children}: {children: ReactNode[]}) => {
         if (toScroll){
             return <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.scrollContainerInner} children={children} />
