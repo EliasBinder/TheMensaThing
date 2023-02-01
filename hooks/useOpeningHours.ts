@@ -1,144 +1,32 @@
 import {useEffect, useState} from "react";
 import {AZURE_INSTANCE} from "../util/AuthUtil";
 
-export const useOpeningHours = () => {
+export const useOpeningHours = (location: "BZ"|"BX"|"BK") => {
+
     const [openingHours, setOpeningHours] = useState({
-        BZ: {
-            monday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '18:30',
-                close_evening: '20:30'
-            },
-            tuesday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '18:30',
-                close_evening: '20:30'
-            },
-            wednesday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '18:30',
-                close_evening: '20:30'
-            },
-            thursday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '18:30',
-                close_evening: '20:30'
-            },
-            friday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '18:30',
-                close_evening: '20:30'
-            },
-            saturday: {
-                open_noon: '11:30',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            sunday: {
-                open_noon: '-',
-                close_noon: '-',
-                open_evening: '-',
-                close_evening: '-'
-            }
-        },
-        BX: {
-            monday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            tuesday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            wednesday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            thursday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            friday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            saturday: {
-                open_noon: '11:45',
-                close_noon: '14:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            sunday: {
-                open_noon: '-',
-                close_noon: '-',
-                open_evening: '-',
-                close_evening: '-'
-            }
-        },
-        BK: {
-            monday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            tuesday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            wednesday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            thursday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            friday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            saturday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            },
-            sunday: {
-                open_noon: '11:30',
-                close_noon: '12:30',
-                open_evening: '-',
-                close_evening: '-'
-            }
+        isCurrentlyOpen: false,
+        openingHours: '',
+    });
+
+    const fetchOpeningHours = (location3: "BZ"|"BX"|"BK") => {
+        if (AZURE_INSTANCE.isLoggedIn()) {
+            AZURE_INSTANCE.getOpeningHours(location3).then((openingHours) => {
+                console.log("Opening hours: ", openingHours);
+                setOpeningHours({
+                    isCurrentlyOpen: openingHours.IsCurrentlyOpen,
+                    openingHours: openingHours.LiteralDescription.trimEnd().replaceAll("\n", " and "),
+                });
+            });
         }
-    })
+    }
 
     useEffect(() => {
+        fetchOpeningHours(location)
     }, []);
 
-    return openingHours;
+    const _setOpeningHours = (location2: "BZ"|"BX"|"BK") => {
+        fetchOpeningHours(location2)
+    }
+
+    return [openingHours, _setOpeningHours] as [typeof openingHours, (location: "BZ"|"BX"|"BK") => void];
 }

@@ -97,7 +97,7 @@ export default function App() {
     Poppins_SemiBold: require('./assets/fonts/Poppins-SemiBold.ttf'),
     Poppins_ThinItalic: require('./assets/fonts/Poppins-ThinItalic.ttf'),
     Poppins_Thin: require('./assets/fonts/Poppins-Thin.ttf'),
-    IcoMoon: require('./assets/fonts/svgfont.ttf'),
+    IcoMoon: require('./assets/fonts/svgtofont.ttf'),
   });
 
   if (!loaded) {

@@ -2,19 +2,28 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {OccupationBar} from "./OccupationBar";
 import {globalColors} from "../../util/StyleUtil";
 import {Card} from "../Card";
-import React from "react";
+import React, {useEffect} from "react";
 import {scale} from "../../util/ScaleUtil";
 import {LocationSelectorSheet} from "../LocationSelectorSheet";
 import {Icon} from "../Icon";
 import {useOpeningHours} from "../../hooks/useOpeningHours";
+import {usePreferredLocation} from "../../hooks/usePreferredLocation";
+import {setUpTests} from "react-native-reanimated/lib/types/lib/reanimated2/jestUtils";
 
 export function OpeningHours() {
 
     const [changeLocationModal, setChangeLocationModal] = React.useState(false);
 
-    const [location, setLocation] = React.useState('BZ');
+    const [location, setLocation] = usePreferredLocation()
 
-    const openingHours = useOpeningHours();
+    const [openingHours, setOpeningHours] = useOpeningHours(location);
+
+    const [locationText, setLocationText] = React.useState("Loading...");
+
+    useEffect(() => {
+        setLocationText(location == "BZ" ? "Bolzano" : location == "BX" ? "Bressanone" : "Bruneck");
+        setOpeningHours(location);
+    }, [location]);
 
     return (
         <Card
@@ -27,13 +36,10 @@ export function OpeningHours() {
             index={0}
         >
             <View style={styles.cardSection}>
-                <Text style={styles.cardText}>Opening hours in {location}</Text>
+                <Text style={styles.cardText}>{locationText}</Text>
                 <View style={styles.detailsContainer}>
                     <Text style={styles.detailText}>
-                        {openingHours['BZ'].wednesday.open_noon} - {openingHours.BZ.wednesday.close_noon}
-                    </Text>
-                    <Text style={styles.detailText}>
-                        {openingHours.BZ.wednesday.open_evening} - {openingHours.BZ.wednesday.close_evening}
+                        {openingHours.openingHours}
                     </Text>
                 </View>
             </View>
@@ -52,13 +58,14 @@ const styles = StyleSheet.create({
     },
     cardText: {
         color: "#fff",
-        fontSize: 15,
+        fontSize: 18,
         fontFamily: "Poppins"
     },
     detailText: {
         color: "#fff",
-        fontSize: 20,
-        fontFamily: "Poppins"
+        fontSize: 15,
+        fontFamily: "Poppins",
+        textAlign: "center"
     },
     occupationContainer: {
         width: 'auto',

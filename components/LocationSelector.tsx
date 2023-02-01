@@ -5,7 +5,7 @@ import React from "react";
 import {scale} from "../util/ScaleUtil";
 import {Icon} from "./Icon";
 
-const createListItem = ({text, id, checked, setChecked}: {text: string, id: string, checked: string, setChecked: (loc: string) => void}) => {
+const createListItem = ({text, id, checked, setChecked}: {text: string, id: "BZ"|"BX"|"BK", checked: string, setChecked: (loc: "BZ"|"BX"|"BK") => void}) => {
     return (
         <TouchableOpacity style={styles.menuItem} onPress={() => {
             setChecked(id);
@@ -18,7 +18,7 @@ const createListItem = ({text, id, checked, setChecked}: {text: string, id: stri
 
 interface propType {
     location: string,
-    setLocation: (loc: string) => void
+    setLocation: (loc: "BZ"|"BX"|"BK") => void
 }
 
 export function LocationSelector({location, setLocation}: propType) {

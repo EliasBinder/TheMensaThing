@@ -9,7 +9,7 @@ interface propType {
     visible: boolean,
     setVisible: React.Dispatch<React.SetStateAction<boolean>>,
     location: string,
-    setLocation: React.Dispatch<React.SetStateAction<string>>
+    setLocation: (React.Dispatch<React.SetStateAction<"BZ"|"BX"|"BK">>) | ((loc: "BZ"|"BX"|"BK") => void)
 }
 
 export function LocationSelectorSheet({visible, setVisible, location, setLocation}: propType) {
