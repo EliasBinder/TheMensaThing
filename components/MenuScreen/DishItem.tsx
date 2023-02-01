@@ -7,12 +7,13 @@ import {Icon} from "../Icon";
 interface propType {
     iconUrl: string,
     title: string,
-    eatingHabitsAttribs: number[]
+    eatingHabitsAttribs: number[],
+    style?: any
 }
 
-export function DishItem({iconUrl, title, eatingHabitsAttribs}: propType) {
+export function DishItem({iconUrl, title, eatingHabitsAttribs, style = {}}: propType) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]}>
             <Image source={{uri: iconUrl}} style={styles.image}/>
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>{title}</Text>

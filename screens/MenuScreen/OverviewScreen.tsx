@@ -1,0 +1,120 @@
+import {usePreferredLocation} from "../../hooks/usePreferredLocation";
+import {useMenu} from "../../hooks/useMenu";
+import React, {useEffect} from "react";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {globalColors, globalStyles} from "../../util/StyleUtil";
+import {Icon} from "../../components/Icon";
+import {Card} from "../../components/Card";
+import {DishItem} from "../../components/MenuScreen/DishItem";
+import {scale} from "../../util/ScaleUtil";
+
+export function OverviewScreen({navigation}: {navigation: any}) {
+
+    const [location, setLocation] = usePreferredLocation();
+    const [menu, setMenu] = useMenu("BZ");
+
+    useEffect(() => {
+        setMenu(location)
+    }, [location]);
+
+    return (
+        <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
+            <View style={globalStyles.cardRow}>
+                <Card
+                    title={"First courses"}
+                    icon={<Icon name={"menu"} color={"#fff"} size={25} />}
+                    index={0}
+                    interaction={
+                        menu ?
+                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
+                                title: "First courses",
+                                menuList: menu.firstCourses
+                            })}>
+                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
+                            </TouchableOpacity>
+                        : <></>}
+                >
+                    {
+                        menu ?
+                            menu.firstCourses.slice(0, 3).map((item, index) => {
+                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                            })
+                            :
+                            <Text>Loading...</Text>
+                    }
+                </Card>
+            </View>
+            <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                <Card
+                    title={"Main courses"}
+                    icon={<Icon name={"menu"} color={"#fff"} size={25} />}
+                    index={0}
+                    interaction={
+                        menu ?
+                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
+                                title: "Main courses",
+                                menuList: menu.mainCourses
+                            })}>
+                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
+                            </TouchableOpacity>
+                            : <></>}
+                >
+                    {
+                        menu ?
+                            menu.mainCourses.slice(0, 3).map((item, index) => {
+                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                            })
+                            :
+                            <Text>Loading...</Text>
+                    }
+                </Card>
+            </View>
+            <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                <Card
+                    title={"Pizza"}
+                    icon={<Icon name={"pin"} color={"#fff"} size={25} />}
+                    index={0}
+                >
+                </Card>
+            </View>
+        </ScrollView>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: globalColors.primary,
+        flex: 1
+    },
+    scrollView: {
+        backgroundColor: globalColors.primary,
+        flex: 1
+    },
+    scrollViewInner: {
+        justifyContent: "flex-start",
+        alignItems: "center",
+        paddingBottom: scale(30),
+        alignSelf: "stretch"
+    },
+    cardRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        alignSelf: "stretch",
+        paddingHorizontal: scale(30),
+    }
+});
+
+const showMoreBtnStyles = StyleSheet.create({
+    button: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 30,
+        width: scale(230),
+        height: scale(45),
+        backgroundColor: globalColors.tertiary,
+    },
+    buttonText: {
+        fontSize: 20
+    }
+});
