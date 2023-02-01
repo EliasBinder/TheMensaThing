@@ -14,7 +14,7 @@ export const useOpeningHours = (location: "BZ"|"BX"|"BK") => {
                 console.log("Opening hours: ", openingHours);
                 setOpeningHours({
                     isCurrentlyOpen: openingHours.IsCurrentlyOpen,
-                    openingHours: openingHours.LiteralDescription.trimEnd().replaceAll("\n", " and "),
+                    openingHours: openingHours.LiteralDescription.trimEnd().replace("\n", " and "),
                 });
             });
         }
