@@ -1,5 +1,4 @@
 import {StatusBar, StyleSheet} from "react-native";
-import {createIconSetFromIcoMoon} from "@expo/vector-icons";
 import {scale} from "./ScaleUtil";
 
 export const globalColors = {
