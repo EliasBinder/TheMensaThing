@@ -14,6 +14,7 @@ export function OverviewScreen({navigation}: {navigation: any}) {
     const [menu, setMenu] = useMenu("BZ");
 
     useEffect(() => {
+        if (location == '') return;
         setMenu(location)
     }, [location]);
 
@@ -25,19 +26,21 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     icon={<Icon name={"menu"} color={"#fff"} size={25} />}
                     index={0}
                     interaction={
-                        menu ?
-                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
-                                title: "First courses",
-                                menuList: menu.firstCourses
-                            })}>
-                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
-                            </TouchableOpacity>
-                        : <></>}
+                        <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
+                            title: "First courses"
+                        })}>
+                            {
+                                menu ?
+                                    <Icon name={"arrow_right"} color={"#fff"} size={22}/>
+                                : <></>
+                            }
+                        </TouchableOpacity>
+                    }
                 >
                     {
                         menu ?
                             menu.firstCourses.slice(0, 3).map((item, index) => {
-                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
                             })
                             :
                             <Text>Loading...</Text>
@@ -50,19 +53,21 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     icon={<Icon name={"menu"} color={"#fff"} size={25} />}
                     index={0}
                     interaction={
-                        menu ?
-                            <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
-                                title: "Main courses",
-                                menuList: menu.mainCourses
-                            })}>
-                                <Icon name={"arrow_right"} color={"#fff"} size={22} />
-                            </TouchableOpacity>
-                            : <></>}
+                        <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
+                            title: "Main courses"
+                        })}>
+                            {
+                                menu ?
+                                    <Icon name={"arrow_right"} color={"#fff"} size={22}/>
+                                    : <></>
+                            }
+                        </TouchableOpacity>
+                }
                 >
                     {
                         menu ?
                             menu.mainCourses.slice(0, 3).map((item, index) => {
-                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={[2,4]} />
+                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
                             })
                             :
                             <Text>Loading...</Text>

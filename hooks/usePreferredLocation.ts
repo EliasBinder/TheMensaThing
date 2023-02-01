@@ -21,5 +21,5 @@ export const usePreferredLocation = () => {
             });
     }
 
-    return [preferredLocation, _setPreferredLocation] as ["BZ"|"BX"|"BK", (loc: "BZ"|"BX"|"BK") => void];
+    return [preferredLocation, _setPreferredLocation] as ["BZ"|"BX"|"BK"|"", (loc: "BZ"|"BX"|"BK") => void];
 }
