@@ -21,7 +21,6 @@ const DashboardScreen = () => {
     const imageSource = useProfileImage();
     const balanceRef = createRef<Text>()
     const balance = useBalance();
-    const openingHours = useOpeningHours();
 
     return (
         <View style={globalStyles.container}>
@@ -32,13 +31,16 @@ const DashboardScreen = () => {
                         <Image style={{width: 60, height: undefined, borderRadius: 15, overflow: 'hidden', aspectRatio: 1}} source={imageSource}/>
             } />
             <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewInner}>
-                { AZURE_INSTANCE.isLoggedIn() ? <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
-                    <Balance balance={balance}/>
-                </View> : <></>
+                { AZURE_INSTANCE.isLoggedIn() ?
+                    <View style={[globalStyles.cardRow, {marginBottom: 20}]} ref={balanceRef}>
+                        <Balance balance={balance}/>
+                    </View> : <></>
                 }
-                <View style={globalStyles.cardRow}>
-                    <OpeningHours/>
-                </View>
+                { AZURE_INSTANCE.isLoggedIn() ?
+                    <View style={globalStyles.cardRow}>
+                        <OpeningHours/>
+                    </View> : <></>
+                }
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <MensaOccupation/>
                 </View>
