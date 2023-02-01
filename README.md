@@ -9,6 +9,7 @@
   - List and explanation of features
   - Explanation of how the university APIs are integrated
   - Explanation of how geofencing is implemented
+  - background location not working for IOS on expo GO
 
 ## Description
 
