@@ -79,7 +79,26 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     title={"Pizza"}
                     icon={<Icon name={"pin"} color={"#fff"} size={25} />}
                     index={0}
+                    interaction={
+                        <TouchableOpacity style={{marginLeft: 'auto'}} onPress={() => navigation.navigate('Course', {
+                            title: "Pizza"
+                        })}>
+                            {
+                                menu ?
+                                    <Icon name={"arrow_right"} color={"#fff"} size={22}/>
+                                    : <></>
+                            }
+                        </TouchableOpacity>
+                }
                 >
+                    {
+                        menu ?
+                            menu.pizza.slice(0, 3).map((item, index) => {
+                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
+                            })
+                            :
+                            <Text>Loading...</Text>
+                    }
                 </Card>
             </View>
         </ScrollView>

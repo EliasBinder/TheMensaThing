@@ -32,6 +32,9 @@ export function CourseScreen({navigation, route}: propType) {
             case "Main courses":
                 setItems(menu.mainCourses);
                 break;
+            case "Pizza":
+                setItems(menu.pizza);
+                break;
         }
     }, [menu, location]);
 
