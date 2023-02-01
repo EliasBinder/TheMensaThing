@@ -5,7 +5,12 @@ export const useMensaOccupation = (location: "BZ"|"BX"|"BK") => {
     const [occupation, setOccupation] = useState(0);
 
     const fetchOccupation = (location3: "BZ"|"BX"|"BK") => {
-        fetch(`http://api.mensa/occupancy/${location3}`)
+        fetch(`https://europe-west1-unibz-mensapp.cloudfunctions.net/occupancy/${location3}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 setOccupation(data.occupancy)

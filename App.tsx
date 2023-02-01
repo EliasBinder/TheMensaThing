@@ -26,52 +26,10 @@ if(TaskManager.isTaskDefined(LOCATION_TASK_FENCING)){
     }
     if (eventType === GeofencingEventType.Enter) {
       console.log("You entered region:" + JSON.stringify(region));
-      /*fetch('https://api.github.com/users/defunkt', {
-          method: 'POST',
-          headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-          },
-
-          body: JSON.stringify({
-              user: 'test@unibz.it', //auth.username,
-              entered: true,
-              inLocation: region.identifier,
-          }),
-      })
-          .then((response) => response.json())
-          .then((responseJson) => {
-              //Showing response message coming from server
-              console.warn(responseJson);
-          })
-          .catch((error) => {
-              //display error message
-              console.warn(error);
-          });*/
+      enterRegion(region.identifier as "BZ"|"BX"|"BK");
     } else if (eventType === GeofencingEventType.Exit) {
       console.log("You left region:" + JSON.stringify(region));
-      /*fetch('https://api.github.com/users/defunkt', {
-          method: 'POST',
-          headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-          },
-
-          body: JSON.stringify({
-              user: 'test@unibz.it', //auth.username,
-              entered: false,
-              inLocation: region.identifier,
-          }),
-      })
-          .then((response) => response.json())
-          .then((responseJson) => {
-              //Showing response message coming from server
-              console.warn(responseJson);
-          })
-          .catch((error) => {
-              //display error message
-              console.warn(error);
-          });*/
+      exitRegion(region.identifier as "BZ"|"BX"|"BK");
     } else {
       //none of the events triggered
     }

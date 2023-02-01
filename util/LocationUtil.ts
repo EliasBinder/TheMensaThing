@@ -6,7 +6,7 @@ export const mensaLocations = [
         latitude: 46.497816,
         longitude: 11.349857,
          */
-        identifier: 'Mensa BZ',
+        identifier: 'BZ',
         latitude: 46.4983,
         longitude: 11.3502,
         radius: 10,
@@ -15,7 +15,7 @@ export const mensaLocations = [
         state: LocationGeofencingRegionState.Unknown
     },
     {
-        identifier: 'Mensa BX',
+        identifier: 'BX',
         latitude: 46.7150,
         longitude: 11.6530,
         radius: 10,
@@ -23,5 +23,14 @@ export const mensaLocations = [
         notifyOnExit: true,
         state: LocationGeofencingRegionState.Unknown
     },
+    {
+        identifier: 'BK',
+        latitude: 46.4990,
+        longitude: 11.3540,
+        radius: 10,
+        notifyOnEnter: true,
+        notifyOnExit: true,
+        state: LocationGeofencingRegionState.Unknown
+    }
 ];
 

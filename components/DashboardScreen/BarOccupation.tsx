@@ -10,12 +10,9 @@ export function BarOccupation() {
         <Card
             title={"UniBar"}
             icon={<Icon name={"cafe"} color={"#E6E6E6"} size={25}/>}
-            interaction={
-                <TouchableOpacity style={{marginLeft: 'auto'}}>
-                    <Icon name={"tune"} color={"#E6E6E6"} size={25}/>
-                </TouchableOpacity>}
             index={1}
         >
+            {/* For now only using hard coded values, adding values as soon as backend is ready */}
             <View style={styles.cardSection}>
                 <Text style={styles.cardText}>Occupation in Bolzano</Text>
                 <View style={styles.occupationContainer}>

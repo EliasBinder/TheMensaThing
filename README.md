@@ -20,4 +20,8 @@ Note: This project uses package manager yarn and the expo cli. If you don't have
 1. Clone the repository
 2. Setup git submodules using `git submodule update --init --recursive`
 3. Install the dependencies (using `yarn install`)
-4. Start the project using `expo start`. Note: Your phone and computer need to be on the same network for the app to work.
+4. Start the project using `npm start`. Note: Your phone and computer need to be on the same network for the app to work.
+
+## Structure of code
+
+

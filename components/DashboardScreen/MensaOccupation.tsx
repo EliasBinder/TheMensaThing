@@ -2,16 +2,28 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {OccupationBar} from "./OccupationBar";
 import {globalColors} from "../../util/StyleUtil";
 import {Card} from "../Card";
-import React from "react";
+import React, {useEffect} from "react";
 import {scale} from "../../util/ScaleUtil";
 import {LocationSelectorSheet} from "../LocationSelectorSheet";
 import {Icon} from "../Icon";
+import {useMensaOccupation} from "../../hooks/useMensaOccupation";
+import {usePreferredLocation} from "../../hooks/usePreferredLocation";
 
 export function MensaOccupation() {
 
     const [changeLocationModal, setChangeLocationModal] = React.useState(false);
 
-    const [location, setLocation] = React.useState('BZ');
+    const [location, setLocation] = usePreferredLocation();
+
+    const [occupation, setOccupation] = useMensaOccupation('BZ');
+
+    const [locationText, setLocationText] = React.useState("Bolzano");
+
+    useEffect(() => {
+        if (location == '') return;
+        setOccupation(location)
+        setLocationText(location == "BZ" ? "Bolzano" : location == "BX" ? "Bressanone" : "Bruneck");
+    }, [location]);
 
     return (
         <Card
@@ -24,14 +36,14 @@ export function MensaOccupation() {
             index={0}
         >
             <View style={styles.cardSection}>
-                <Text style={styles.cardText}>Occupation in Bolzano</Text>
+                <Text style={styles.cardText}>Occupation in {locationText}</Text>
                 <View style={styles.occupationContainer}>
-                    <OccupationBar occupation={'70%'} style={StyleSheet.create({})}/>
-                    <Text style={styles.occupationNum}>70%</Text>
+                    <OccupationBar occupation={occupation/155.0 + '%'} style={StyleSheet.create({})}/>
+                    <Text style={styles.occupationNum}>{parseInt(occupation/155.0 + '') + '%'}</Text>
                 </View>
                 <View style={styles.detailsContainer}>
-                    <Text style={styles.cardText}>Seats occupied: 60/130</Text>
-                    <Icon name={"trending_up"} color={"#fff"} size={25} style={{marginLeft: 'auto'}}></Icon>
+                    <Text style={styles.cardText}>Seats occupied: {occupation}/155</Text>
+                    {/*<Icon name={"trending_up"} color={"#fff"} size={25} style={{marginLeft: 'auto'}}></Icon>*/}
                 </View>
             </View>
             <LocationSelectorSheet visible={changeLocationModal} setVisible={setChangeLocationModal} location={location} setLocation={setLocation}/>

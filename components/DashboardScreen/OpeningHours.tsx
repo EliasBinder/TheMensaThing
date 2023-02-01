@@ -16,11 +16,12 @@ export function OpeningHours() {
 
     const [location, setLocation] = usePreferredLocation()
 
-    const [openingHours, setOpeningHours] = useOpeningHours(location);
+    const [openingHours, setOpeningHours] = useOpeningHours('BZ');
 
     const [locationText, setLocationText] = React.useState("Loading...");
 
     useEffect(() => {
+        if (location == '') return;
         setLocationText(location == "BZ" ? "Bolzano" : location == "BX" ? "Bressanone" : "Bruneck");
         setOpeningHours(location);
     }, [location]);
