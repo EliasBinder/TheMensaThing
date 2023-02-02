@@ -44,7 +44,8 @@ This application uses one submodule
 
 ### Explanation of how geofencing is implemented
 
-TODO
+To implement geofencing we used [expo-location](https://docs.expo.dev/versions/latest/sdk/location/). Furthermore, we use the expo Taskmanager to register a task for location tracking. This task then works in the background and sends events for given regions when the user enters or exits one of said regions. 
+We then implemented API endpoints to call when an event is triggered, to be able to tell it that a person entered or left a specific region. The Taskmanager needs to be registered at the beginning of the app before any hooks are called, otherwise it will not work correctly.
 
 ## Known issues
 
@@ -54,7 +55,6 @@ When using the expo go app on IOS (on a real device), the background location do
 
 ## Future improvements
 
-- Add preferred dishes screen
 - Improve backend by providing a more realistic view of the mensa occupation
 
 
