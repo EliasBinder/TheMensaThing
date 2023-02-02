@@ -11,7 +11,6 @@ export const useOpeningHours = (location: "BZ"|"BX"|"BK") => {
     const fetchOpeningHours = (location3: "BZ"|"BX"|"BK") => {
         if (AZURE_INSTANCE.isLoggedIn()) {
             AZURE_INSTANCE.getOpeningHours(location3).then((openingHours) => {
-                console.log("Opening hours: ", openingHours);
                 setOpeningHours({
                     isCurrentlyOpen: openingHours.IsCurrentlyOpen,
                     openingHours: openingHours.LiteralDescription.trimEnd().replace("\n", " and "),
