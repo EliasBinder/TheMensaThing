@@ -47,13 +47,9 @@ const DashboardScreen = () => {
                 <View style={[globalStyles.cardRow, {marginTop: 20}]}>
                     <BarOccupation/>
                 </View>
-                { AZURE_INSTANCE.isLoggedIn() ?
-                    (
-                        <View style={[globalStyles.cardRow, {marginTop: 20}]}>
-                            <Suggestion/>
-                        </View>)
-                    : <></>
-                }
+                <View style={[globalStyles.cardRow, {marginTop: 20}]}>
+                    <Suggestion/>
+                </View>
             </ScrollView>
         </View>
     )

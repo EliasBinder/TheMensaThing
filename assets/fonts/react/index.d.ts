@@ -28,6 +28,7 @@ export * from './Sesame';
 export * from './Share';
 export * from './SoyBeans';
 export * from './Star';
+export * from './StarFilled';
 export * from './Suggestion';
 export * from './ToggleOff';
 export * from './ToggleOn';

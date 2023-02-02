@@ -45,7 +45,7 @@ export function CourseScreen({navigation, route}: propType) {
                 {
                     items !== [] ?
                         items.map((item, index) => {
-                            return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} style={styles.dishItem} />
+                            return <DishItem key={index} _menuItem={item} style={styles.dishItem} />
                         })
                     :
                         <Text style={styles.loadingText}>Loading...</Text>

@@ -179,52 +179,58 @@
     "className": "svgtofont-star",
     "unicode": "&#59934;"
   },
-  "suggestion": {
+  "star_filled": {
     "encodedCode": "\\ea1f",
     "prefix": "svgtofont",
-    "className": "svgtofont-suggestion",
+    "className": "svgtofont-star_filled",
     "unicode": "&#59935;"
   },
-  "toggle_off": {
+  "suggestion": {
     "encodedCode": "\\ea20",
     "prefix": "svgtofont",
-    "className": "svgtofont-toggle_off",
+    "className": "svgtofont-suggestion",
     "unicode": "&#59936;"
   },
-  "toggle_on": {
+  "toggle_off": {
     "encodedCode": "\\ea21",
     "prefix": "svgtofont",
-    "className": "svgtofont-toggle_on",
+    "className": "svgtofont-toggle_off",
     "unicode": "&#59937;"
   },
-  "trending_down": {
+  "toggle_on": {
     "encodedCode": "\\ea22",
     "prefix": "svgtofont",
-    "className": "svgtofont-trending_down",
+    "className": "svgtofont-toggle_on",
     "unicode": "&#59938;"
   },
-  "trending_up": {
+  "trending_down": {
     "encodedCode": "\\ea23",
     "prefix": "svgtofont",
-    "className": "svgtofont-trending_up",
+    "className": "svgtofont-trending_down",
     "unicode": "&#59939;"
   },
-  "tune": {
+  "trending_up": {
     "encodedCode": "\\ea24",
     "prefix": "svgtofont",
-    "className": "svgtofont-tune",
+    "className": "svgtofont-trending_up",
     "unicode": "&#59940;"
   },
-  "wheat": {
+  "tune": {
     "encodedCode": "\\ea25",
     "prefix": "svgtofont",
-    "className": "svgtofont-wheat",
+    "className": "svgtofont-tune",
     "unicode": "&#59941;"
   },
-  "wine": {
+  "wheat": {
     "encodedCode": "\\ea26",
     "prefix": "svgtofont",
-    "className": "svgtofont-wine",
+    "className": "svgtofont-wheat",
     "unicode": "&#59942;"
+  },
+  "wine": {
+    "encodedCode": "\\ea27",
+    "prefix": "svgtofont",
+    "className": "svgtofont-wine",
+    "unicode": "&#59943;"
   }
 }

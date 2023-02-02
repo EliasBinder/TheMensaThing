@@ -40,10 +40,10 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     {
                         menu ?
                             menu.firstCourses.slice(0, 3).map((item, index) => {
-                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
+                                return <DishItem key={index} _menuItem={item} />
                             })
                             :
-                            <Text>Loading...</Text>
+                            <Text style={styles.loadingText}>Loading...</Text>
                     }
                 </Card>
             </View>
@@ -67,10 +67,10 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     {
                         menu ?
                             menu.mainCourses.slice(0, 3).map((item, index) => {
-                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
+                                return <DishItem key={index} _menuItem={item} />
                             })
                             :
-                            <Text>Loading...</Text>
+                            <Text style={styles.loadingText}>Loading...</Text>
                     }
                 </Card>
             </View>
@@ -94,10 +94,10 @@ export function OverviewScreen({navigation}: {navigation: any}) {
                     {
                         menu ?
                             menu.pizza.slice(0, 3).map((item, index) => {
-                                return <DishItem key={index} iconUrl={item.imageUrl} title={item.name} eatingHabitsAttribs={item.allergens} />
+                                return <DishItem key={index} _menuItem={item} />
                             })
                             :
-                            <Text>Loading...</Text>
+                            <Text style={styles.loadingText}>Loading...</Text>
                     }
                 </Card>
             </View>
@@ -126,19 +126,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         alignSelf: "stretch",
         paddingHorizontal: scale(30),
-    }
-});
-
-const showMoreBtnStyles = StyleSheet.create({
-    button: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        marginTop: 30,
-        width: scale(230),
-        height: scale(45),
-        backgroundColor: globalColors.tertiary,
     },
-    buttonText: {
-        fontSize: 20
+    loadingText: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontFamily: 'Poppins_Bold'
     }
 });

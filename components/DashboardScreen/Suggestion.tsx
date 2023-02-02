@@ -13,7 +13,7 @@ export function Suggestion() {
             index={2}
         >
             <View style={styles.cardSection}>
-                <DishItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>
+                {/*<DishItem iconUrl={"https://picsum.photos/400/300"} title={"Delicious meal"} eatingHabitsAttribs={[1,2,3,6]}/>*/}
             </View>
         </Card>
     )

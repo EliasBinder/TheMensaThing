@@ -1,33 +1,46 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {globalColors} from "../../util/StyleUtil";
 import {getImageOfIndex} from "../../util/EatingHabitsUtil";
 import {Icon} from "../Icon";
+import {usePreferredDishes} from "../../hooks/usePreferredDishes";
+import {menuItem} from "../../model/menu/menuItem";
 
 interface propType {
-    iconUrl: string,
-    title: string,
-    eatingHabitsAttribs: number[],
+    _menuItem: menuItem,
     style?: any
 }
 
-export function DishItem({iconUrl, title, eatingHabitsAttribs, style = {}}: propType) {
+export function DishItem({_menuItem, style = {}}: propType) {
     const [imgSource, setImgSource] = React.useState({uri: placeholder});
+
+    const [preferredDishes, setPreferredDishes] = usePreferredDishes();
 
     return (
         <View style={[styles.container, style]}>
-            <Image source={imgSource} style={styles.image} onLoadEnd={() => setImgSource({uri: iconUrl})}/>
+            <Image source={imgSource} style={styles.image} onLoadEnd={() => setImgSource({uri: _menuItem.imageUrl})}/>
             <View style={styles.infoContainer}>
-                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.title}>{_menuItem.name}</Text>
                 <View style={styles.eatingHabitsContainer}>
                     {
-                        eatingHabitsAttribs.map((item: number, index: number) => <Icon key={index}
+                        _menuItem.allergens.map((item: number, index: number) => <Icon key={index}
                                                                                        style={{marginLeft: index != 0 ? 3 : 0}}
                                                                                        name={getImageOfIndex(item)}
                                                                                        size={20}
                                                                                        color={globalColors.accent}/>)
                     }
                 </View>
+            </View>
+            <View style={styles.ratingContainer}>
+                <TouchableOpacity onPress={() => {
+                    if (preferredDishes.filter((item) => item.name == _menuItem.name).length == 1) {
+                        setPreferredDishes(preferredDishes.filter((item) => item.name != _menuItem.name));
+                    } else {
+                        setPreferredDishes([...preferredDishes, _menuItem]);
+                    }
+                }}>
+                    <Icon name={preferredDishes.filter((item) => item.name == _menuItem.name).length == 1?"star_filled":"star"} color={'#fff'} size={30}/>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -66,5 +79,12 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         marginTop: 10,
+    },
+    ratingContainer: {
+        backgroundColor: globalColors.secondary,
+        width: 40,
+        height: '100%',
+        justifyContent: "flex-start",
+        alignItems: "flex-end",
     }
 });
